@@ -6,7 +6,6 @@ export const Container = styled.div`
     justify-content: center;
 
     gap: .7rem;
-    margin-bottom: 4.5rem;
     
     h1 {
         font-family: 'Roboto', sans-serif;

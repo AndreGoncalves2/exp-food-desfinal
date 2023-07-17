@@ -1,8 +1,10 @@
 import { Container } from "./style";
 
-export function ButtonText({ title }) {
+export function ButtonText({ title, onClick }) {
     return (
-        <Container>
+        <Container 
+            onClick={onClick}
+        >
             {title}
         </Container>
     );
