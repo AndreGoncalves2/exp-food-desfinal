@@ -2,11 +2,13 @@ import { Container, Introduction } from './styles'
 import { Header } from '../../components/Header';
 
 import macaronsUrl from '../../assets/macarons.png';
+import { Section } from '../../components/Section';
 
 export function Home() {
     return (
         <Container>
             <Header />
+
             <Introduction>
                 <img src={macaronsUrl} alt="Foto de vários macarons" />
                 <div>
@@ -17,6 +19,10 @@ export function Home() {
                     </p>
                 </div>
             </Introduction>
+
+            <Section 
+                title="Refeições"
+            />
         </Container>
     );
 };
