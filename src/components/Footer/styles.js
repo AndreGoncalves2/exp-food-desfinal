@@ -5,8 +5,6 @@ export const Container = styled.footer`
 
     justify-content: space-between;
     
-    margin-top: 1.5rem;
-
     padding: 1.5rem 1.7rem;
     background-color: ${({ theme }) => theme.COLORS.DARK_600};
 
@@ -21,6 +19,10 @@ export const Container = styled.footer`
         }
         
         h4 {
+            font-family: Roboto, sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            
             color: ${({ theme }) => theme.COLORS.LIGHT_700};
         }
     }

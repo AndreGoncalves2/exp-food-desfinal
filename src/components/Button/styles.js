@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
+
     width: 100%;
     padding: .75rem;
     border: none;
@@ -13,4 +18,9 @@ export const Container = styled.button`
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
     background-color: ${({ theme }) => theme.COLORS.RED_100 };;
+
+    svg {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
 `
