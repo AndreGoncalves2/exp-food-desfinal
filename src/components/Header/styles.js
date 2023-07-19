@@ -8,6 +8,18 @@ export const Container = styled.header`
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
+    button {
+        background: transparent;
+        border: none;
+        
+        color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+        > svg{
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+
     h1 {
         font-size: 1.3rem;
     }
