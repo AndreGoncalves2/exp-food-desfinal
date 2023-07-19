@@ -2,7 +2,9 @@ import { Container, Introduction } from './styles'
 import { Header } from '../../components/Header';
 
 import macaronsUrl from '../../assets/macarons.png';
+
 import { Section } from '../../components/Section';
+import { Footer } from '../../components/Footer';
 
 export function Home() {
     return (
@@ -23,6 +25,17 @@ export function Home() {
             <Section 
                 title="Refeições"
             />
+
+            <Section 
+                title="Pratos principais"
+            />
+
+            <Section 
+                title="Bebidas"
+            />
+
+            <Footer />
+
         </Container>
     );
 };

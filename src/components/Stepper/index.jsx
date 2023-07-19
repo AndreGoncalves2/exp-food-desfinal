@@ -10,15 +10,15 @@ export function Stepper() {
         let newValue;
 
         if (operation == "+") {
-            newValue = Number(value) + 1
+            newValue = Number(value) + 1;
         } else {
-            newValue = Number(value) - 1
+            newValue = Number(value) - 1;
         };
 
         if (newValue <= 0) return;
 
         if (newValue < 10) {
-            newValue = newValue.toString().padStart(2, '0')
+            newValue = newValue.toString().padStart(2, '0');
         };
         
         setValue(newValue);
