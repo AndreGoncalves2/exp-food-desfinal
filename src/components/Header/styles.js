@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    
     display: flex;
     padding: 3.5rem 1.75rem 1.5rem;
     width: 100%;
@@ -26,6 +22,17 @@ export const Container = styled.header`
         }
     }
 
+    h2 {
+        position: absolute;
+        left: 5rem;
+
+        font-family: Roboto;
+        font-size: 1.6rem;
+
+        font-weight: 400;
+        
+    }
+
     h1 {
         font-size: 1.3rem;
     }
@@ -38,24 +45,23 @@ export const Container = styled.header`
 `;
 
 export const Menu = styled.div`
-    position:absolute;
+    position: absolute;
+
+    > div {
+        position: fixed;
+        z-index: 1;
+        top: 7.3rem;
+        left:-100%;
+    
+        height: 100vh;
+        width: 100vw;
+        background-color: ${({ theme }) => theme.COLORS.DARK_400};
+    }
 
     footer {
         position:absolute;
         bottom: 0;
         width: 100%;
-    }
-
-    .menu {
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left:-100%;
-
-        height: 100vh;
-        width: 100vw;
-
-        background-color: ${({ theme }) => theme.COLORS.DARK_400};
     }
 
     .menu-open {        
@@ -90,37 +96,6 @@ export const Menu = styled.div`
     }
 `;
 
-export const HeaderMenu = styled.header`
-    width: 100%;
-    height: fit-content;
-    
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-
-    padding: 3.75rem 1.75rem 1.75rem;
-
-    background-color: ${({ theme }) => theme.COLORS.DARK_700};
-
-    h2 {
-        display: inline;
-
-        font-family: Roboto, sans-serif;
-        font-size: 1.3rem;
-        font-weight: 400;
-    }
-
-    button {
-        height: 1.5rem;
-
-        svg {
-            
-            width: 1.5rem;
-            height: 1.5rem;
-        }
-    }
-`;
-
 export const MenuContainer = styled.div`
     margin: 2.25rem 1.75rem 0;
 
@@ -134,8 +109,8 @@ export const MenuContainer = styled.div`
         > button {
             width: 100%;
 
-            text-align: left;
             font-family: Poppins, sans-serif;
+            text-align: left;
             font-size: 1.5rem;
             
             font-weight: 300;

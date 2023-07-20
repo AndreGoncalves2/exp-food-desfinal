@@ -1,4 +1,4 @@
-import { Container, Menu, HeaderMenu, MenuContainer } from './styles';
+import { Container, Menu, MenuContainer } from './styles';
 
 import { Logo } from '../Logo/';
 import { Input } from '../Input';
@@ -14,44 +14,35 @@ import { ReceiptIcon } from '../ReceiptIcon';
 import { useState } from 'react';
 
 export function Header() {
-    const [isOpen, setIsOpen] = useState('menu');
-
-    function handleClassMenu() {
-        if (isOpen == 'menu' || isOpen == 'menu-close menu') {
-            document.querySelector('body').style.overflow = 'hidden';
-            setIsOpen('menu-open menu')
-        } else {
-            document.querySelector('body').style.overflow = 'auto';
-            setIsOpen('menu-close menu')
-        };
-    };
+    const [isOpen, setIsOpen] = useState(false);
+    const [classMenu, setClassMenu] = useState('');
 
     return (
         <Container>
             <button
-               onClick={handleClassMenu}
+               onClick={() => {
+                setIsOpen(prevent => !prevent)
+                isOpen ? setClassMenu('menu-close') : setClassMenu('menu-open');
+            }}
             >
-                <FiMenu />
+                {
+                   isOpen ? <AiOutlineClose /> : <FiMenu />
+                }  
             </button>
 
-            <Logo />
+            {isOpen && <h2>Menu</h2>}
             
-            <ReceiptIcon 
-                value="0"
-            />
-
+            {!isOpen && <Logo />}
+            
+            {   !isOpen &&
+                <ReceiptIcon     
+                    value="0"
+                />
+            }
             <Menu >   
-                <div className={isOpen}>
+                <div className={classMenu}>
 
-                    <HeaderMenu >
-                        <button
-                            onClick={handleClassMenu}
-                        >
-                            <AiOutlineClose />
-                        </button>
-
-                        <h2>Menu</h2>
-                    </HeaderMenu>
+                        
                     
                     <MenuContainer>
                         <Input
