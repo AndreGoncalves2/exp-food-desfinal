@@ -14,7 +14,7 @@ export const Container = styled.header`
         
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
-        > svg{
+        > svg {
             width: 2rem;
             height: 2rem;
         }
@@ -29,4 +29,48 @@ export const Container = styled.header`
     }
 
     background-color: ${({ theme }) => theme.COLORS.DARK_700};
+`;
+
+export const Menu = styled.div`
+    position: absolute;
+
+    div {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        
+        background-color: ${({ theme }) => theme.COLORS.DARK_400};
+    }
+    
+    .menu-open {
+        animation: show 1s ;
+        animation-fill-mode: forwards;
+    }
+    
+    .menu-close {
+        animation: hidden 1s ;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes show {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0%); 
+        }
+    }
+
+    @keyframes hidden {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            visibility: hidden;
+            transform: translateX(-100%); 
+        }
+    }
 `;

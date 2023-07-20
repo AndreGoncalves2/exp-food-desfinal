@@ -1,24 +1,25 @@
-import { Container } from './styles';
+import { Container, Menu } from './styles';
 
 import { Logo } from '../Logo/';
 
 import { FiMenu } from 'react-icons/fi'
+import { AiOutlineClose } from 'react-icons/ai'
+
 import { ReceiptIcon } from '../ReceiptIcon';
-import { Menu } from '../Menu';
 import { useState } from 'react';
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     
-    function handleMenuClick() {
-        setIsOpen(true);
-        alert(isOpen)
-    };
+    function handleButtonMenuClick() {
+        setIsOpen(prevent => !prevent);
+        console.log(isOpen)
+    }
 
     return (
         <Container>
             <button
-                onClick={handleMenuClick}
+                onClick={handleButtonMenuClick}
             >
                 <FiMenu />
             </button>
@@ -29,9 +30,21 @@ export function Header() {
                 value="0"
             />
 
-            <Menu 
-                isOpen={isOpen}
-            />
+            <Menu
+                
+            >   
+                <div
+                    className={isOpen ? "menu-open" : "menu-close"}
+                >
+
+                    <button
+                        onClick={handleButtonMenuClick}
+                    >
+                        <AiOutlineClose />
+                    </button>
+                </div>
+
+            </Menu>
  
         </Container>
     )
