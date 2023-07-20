@@ -1,25 +1,35 @@
-import { Container, Menu } from './styles';
+import { Container, Menu, HeaderMenu, MenuContainer } from './styles';
 
 import { Logo } from '../Logo/';
+import { Input } from '../Input';
+import { ButtonText } from '../ButtonText';
+import { Footer } from '../Footer';
 
 import { FiMenu } from 'react-icons/fi'
 import { AiOutlineClose } from 'react-icons/ai'
+import { BiSearch } from 'react-icons/bi'
+
 
 import { ReceiptIcon } from '../ReceiptIcon';
 import { useState } from 'react';
 
 export function Header() {
-    const [isOpen, setIsOpen] = useState(false);
-    
-    function handleButtonMenuClick() {
-        setIsOpen(prevent => !prevent);
-        console.log(isOpen)
-    }
+    const [isOpen, setIsOpen] = useState('menu');
+
+    function handleClassMenu() {
+        if (isOpen == 'menu' || isOpen == 'menu-close menu') {
+            document.querySelector('body').style.overflow = 'hidden';
+            setIsOpen('menu-open menu')
+        } else {
+            document.querySelector('body').style.overflow = 'auto';
+            setIsOpen('menu-close menu')
+        };
+    };
 
     return (
         <Container>
             <button
-                onClick={handleButtonMenuClick}
+               onClick={handleClassMenu}
             >
                 <FiMenu />
             </button>
@@ -30,22 +40,41 @@ export function Header() {
                 value="0"
             />
 
-            <Menu
-                
-            >   
-                <div
-                    className={isOpen ? "menu-open" : "menu-close"}
-                >
+            <Menu >   
+                <div className={isOpen}>
 
-                    <button
-                        onClick={handleButtonMenuClick}
-                    >
-                        <AiOutlineClose />
-                    </button>
+                    <HeaderMenu >
+                        <button
+                            onClick={handleClassMenu}
+                        >
+                            <AiOutlineClose />
+                        </button>
+
+                        <h2>Menu</h2>
+                    </HeaderMenu>
+                    
+                    <MenuContainer>
+                        <Input
+                            icon={<BiSearch />}
+                            type="text"
+                            placeholder="Busque por pratos ou ingredientes"
+                        />
+
+                        <div className="control-buttons">
+                            <ButtonText 
+                                title="Novo prato"
+                            />
+
+                            <ButtonText 
+                                title="Sair"
+                            />
+                        </div>
+
+                    </MenuContainer>  
+
+                    <Footer />
                 </div>
-
             </Menu>
- 
         </Container>
-    )
-}
+    );
+};

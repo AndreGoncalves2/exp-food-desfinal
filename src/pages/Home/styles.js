@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    margin-top: 8rem;
     width: 100%;
+    max-height: 100vh;
+    overflow: auto;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_400}
+
 `;
 
 export const Introduction = styled.div`

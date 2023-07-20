@@ -1,16 +1,21 @@
 import { Container } from "./styles";
 
-export function Input({ type, placeholder, label, ...rest }) {
+export function Input({ type, placeholder, label, icon, ...rest }) {
     return (
         <Container>
-            <label>
-                {label}
-            </label>
+            {   label &&
+                <label>
+                    {label}
+                </label>
+            }
+            <div className="input-box">
+                {icon}
                 <input
                     {...rest}
                     type={type}
                     placeholder={placeholder}
                 />
+            </div>
 
         </Container>
     );

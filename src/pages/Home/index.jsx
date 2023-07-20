@@ -10,31 +10,32 @@ export function Home() {
     return (
         <Container>
             <Header />
+            <main>
+                <Introduction>
+                    <img src={macaronsUrl} alt="Foto de vários macarons" />
+                    <div>
+                        <h3>Sabores inigualáveis</h3>
+                        <p>
+                            Sinta o cuidado do preparo com 
+                            ingredientes selecionados.
+                        </p>
+                    </div>
+                </Introduction>
 
-            <Introduction>
-                <img src={macaronsUrl} alt="Foto de vários macarons" />
-                <div>
-                    <h3>Sabores inigualáveis</h3>
-                    <p>
-                        Sinta o cuidado do preparo com 
-                        ingredientes selecionados.
-                    </p>
-                </div>
-            </Introduction>
+                <Section 
+                    title="Refeições"
+                />
 
-            <Section 
-                title="Refeições"
-            />
+                <Section 
+                    title="Pratos principais"
+                />
 
-            <Section 
-                title="Pratos principais"
-            />
+                <Section 
+                    title="Bebidas"
+                />
 
-            <Section 
-                title="Bebidas"
-            />
-
-            <Footer />
+                <Footer />
+            </main>
 
         </Container>
     );
