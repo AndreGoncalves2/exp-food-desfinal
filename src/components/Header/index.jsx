@@ -4,6 +4,7 @@ import { Logo } from '../Logo/';
 import { Input } from '../Input';
 import { ButtonText } from '../ButtonText';
 import { Footer } from '../Footer';
+import { MenuIsOpen } from './menuIsOpen';
 
 import { FiMenu } from 'react-icons/fi'
 import { AiOutlineClose } from 'react-icons/ai'
@@ -19,7 +20,19 @@ export function Header() {
 
     return (
         <Container>
-            <button
+            {
+                true && (
+                    <MenuIsOpen />
+                )
+            } 
+                { !isOpen && (
+                    <div className="container">
+
+                    </div> 
+                
+                )}
+
+            {/* <button
                onClick={() => {
                 setIsOpen(prevent => !prevent)
                 isOpen ? setClassMenu('menu-close') : setClassMenu('menu-open');
@@ -38,7 +51,7 @@ export function Header() {
                 <ReceiptIcon     
                     value="0"
                 />
-            }
+            } */}
             <Menu >   
                 <div className={classMenu}>
                     <MenuContainer>

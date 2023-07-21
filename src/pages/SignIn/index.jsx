@@ -19,7 +19,7 @@ export function SingIn() {
             <main>
                 <Logo />
 
-                <form action="">
+                <form >
                     <Input
                         type="email"
                         label="Email"

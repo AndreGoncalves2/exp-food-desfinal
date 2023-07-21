@@ -17,6 +17,7 @@ export const Container = styled.div`
         flex-direction: column;
 
         form {
+            margin-top: 4.5rem;
             width: 100%;
             display: flex;
             flex-direction: column;

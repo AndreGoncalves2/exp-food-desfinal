@@ -14,4 +14,8 @@ export const Container = styled.div`
         font-size: 2.3rem;
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
     }
+
+    img {
+        height: 2.7rem;
+    }
 `

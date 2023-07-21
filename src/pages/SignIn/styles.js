@@ -16,8 +16,10 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
 
-        form {
+        > form {
+            margin-top: 4.5rem;
             width: 100%;
+            
             display: flex;
             flex-direction: column;
             gap: 2rem;
