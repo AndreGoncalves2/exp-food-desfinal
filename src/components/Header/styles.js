@@ -13,6 +13,7 @@ export const Container = styled.header`
     button {
         background: transparent;
         border: none;
+        height: 2.45rem;
         
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
@@ -28,6 +29,8 @@ export const Container = styled.header`
 
         font-family: Roboto;
         font-size: 1.6rem;
+        height: 2.2rem;
+        
 
         font-weight: 400;
         

@@ -41,9 +41,6 @@ export function Header() {
             }
             <Menu >   
                 <div className={classMenu}>
-
-                        
-                    
                     <MenuContainer>
                         <Input
                             icon={<BiSearch />}
@@ -60,9 +57,8 @@ export function Header() {
                                 title="Sair"
                             />
                         </div>
-
-                    </MenuContainer>  
-
+                    </MenuContainer>
+                    
                     <Footer />
                 </div>
             </Menu>

@@ -18,42 +18,48 @@ export function Details() {
     return (
         <Container>
             <Header />
-            <main>
-                <ButtonText 
-                    title="< voltar"
-                    className="button-text"
-                />
+            <div className="details-wrapper">
+                <main>
+                    <ButtonText 
+                        title="< voltar"
+                        className="button-text"
+                    />
 
-                <img src={foodTest} alt="Foto do prato" />
-                
-                <Infos>
-                    <h2>Salada Ravanello</h2>
+                    <img src={foodTest} alt="Foto do prato" />
                     
-                    <p>
-                        Rabanetes, folhas verdes e 
-                        molho agridoce salpicados com gergelim.
-                    </p>
+                    <Infos>
+                        <h2>Salada Ravanello</h2>
+                        
+                        <p>
+                            Rabanetes, folhas verdes e 
+                            molho agridoce salpicados com gergelim.
+                        </p>
 
-                    <div className="ingredients">
-                        {
-                            ingredients.map((ingredient) => (
-                                <Tag title={ingredient} />
-                            ))
-                        }
-                    </div>
+                        <div className="ingredients">
+                            {
+                                ingredients.map((ingredient, index) => (
+                                    <Tag 
+                                        title={ingredient}
+                                        key={index}
+                                    />
+                                ))
+                            }
+                            </div>
 
-                    <Controls>
-                        <Stepper />
+                            <Controls>
+                                <Stepper />
 
-                        <Button 
-                            icon={<PiReceiptBold/>}
-                            title="pedir ∙ R$ 25,00"
-                        />
-                    </Controls>
-                </Infos>
-            </main>
-            
-            <Footer /> 
+                                <Button 
+                                    icon={<PiReceiptBold/>}
+                                    title="pedir ∙ R$ 25,00"
+                                />
+
+                            </Controls>
+                        </Infos>
+                    </main>
+
+                    <Footer /> 
+                </div>
         </Container>
     );
 };

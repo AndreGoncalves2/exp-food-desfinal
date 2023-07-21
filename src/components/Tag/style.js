@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     text-align: center;
-    width: fit-content;
     font-family: Poppins;
     font-size: 0.9rem;
 

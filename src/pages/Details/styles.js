@@ -1,11 +1,24 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    display: grid;
+    grid-template-rows: 7.4rem 1fr;
+
+    width: 100%;
+    max-height: 100vh;
+
+    background-color: ${({ theme }) => theme.COLORS.DARK_400};
+    
+    .details-wrapper {
+        overflow: auto;
+    }
+
+
     height: 100%;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
-    > main {
+    main {
         display: flex;
         flex-direction: column;
         align-items: center;
