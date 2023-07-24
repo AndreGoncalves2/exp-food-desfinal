@@ -4,12 +4,10 @@ import { Logo } from '../Logo/';
 import { Input } from '../Input';
 import { ButtonText } from '../ButtonText';
 import { Footer } from '../Footer';
-import { MenuIsOpen } from './menuIsOpen';
 
 import { FiMenu } from 'react-icons/fi'
-import { AiOutlineClose } from 'react-icons/ai'
 import { BiSearch } from 'react-icons/bi'
-
+import { AiOutlineClose } from 'react-icons/ai'
 
 import { ReceiptIcon } from '../ReceiptIcon';
 import { useState } from 'react';
@@ -20,19 +18,7 @@ export function Header() {
 
     return (
         <Container>
-            {
-                true && (
-                    <MenuIsOpen />
-                )
-            } 
-                { !isOpen && (
-                    <div className="container">
-
-                    </div> 
-                
-                )}
-
-            {/* <button
+            <button
                onClick={() => {
                 setIsOpen(prevent => !prevent)
                 isOpen ? setClassMenu('menu-close') : setClassMenu('menu-open');
@@ -43,6 +29,16 @@ export function Header() {
                 }  
             </button>
 
+            
+                { !isOpen && (
+                    <div className="container">
+
+                    </div> 
+                
+                )}
+
+            
+
             {isOpen && <h2>Menu</h2>}
             
             {!isOpen && <Logo />}
@@ -51,7 +47,7 @@ export function Header() {
                 <ReceiptIcon     
                     value="0"
                 />
-            } */}
+            }
             <Menu >   
                 <div className={classMenu}>
                     <MenuContainer>
