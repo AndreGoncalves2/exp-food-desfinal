@@ -5,8 +5,6 @@ export const Container = styled.header`
     padding: 3.5rem 1.75rem 1.5rem;
     width: 100%;
     grid-template-columns: 1fr auto 1fr;
-    /* align-items: center;
-    justify-content: space-between; */
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
@@ -33,9 +31,7 @@ export const Container = styled.header`
         font-size: 1.6rem;
         height: 2.2rem;
         
-
         font-weight: 400;
-        
     }
 
     h1 {
@@ -43,6 +39,7 @@ export const Container = styled.header`
     }
 
     img {
+        height: 1.5rem;
         width: 1.5rem;
     }
 

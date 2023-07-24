@@ -3,7 +3,6 @@ import { Container, FormNewDish } from "./styles";
 import { Header } from '../../components/Header';
 import { ButtonText } from "../../components/ButtonText";
 import { Input } from "../../components/Input";
-import { Tag } from "../../components/Tag";
 import { InputFake } from "../../components/InputFake";
 
 export function CreateDish() {
@@ -35,6 +34,7 @@ export function CreateDish() {
 
                 <InputFake 
                     title="Ingredientes"
+                    is
                 />
 
             </FormNewDish>
