@@ -4,6 +4,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    align-self: center;
 
     gap: .7rem;
     
@@ -13,6 +14,15 @@ export const Container = styled.div`
         
         font-size: 2.3rem;
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
+    }
+
+    h4 {
+        font-family: Roboto, sans-serif;
+        font-size: 0.75rem;
+        font-style: normal;
+        font-weight: 400;
+
+        color: ${({ theme }) => theme.COLORS.BLUE_200};
     }
 
     img {

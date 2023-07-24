@@ -4,7 +4,6 @@ import { Logo } from '../Logo/';
 import { Input } from '../Input';
 import { ButtonText } from '../ButtonText';
 import { Footer } from '../Footer';
-import { MenuIsOpen } from './menuIsOpen';
 
 import { FiMenu } from 'react-icons/fi'
 import { AiOutlineClose } from 'react-icons/ai'
@@ -18,40 +17,31 @@ export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [classMenu, setClassMenu] = useState('');
 
+    const isAdmin = true;
+
     return (
         <Container>
-            {
-                true && (
-                    <MenuIsOpen />
-                )
-            } 
-                { !isOpen && (
-                    <div className="container">
-
-                    </div> 
-                
-                )}
-
-            {/* <button
+            <button
                onClick={() => {
                 setIsOpen(prevent => !prevent)
                 isOpen ? setClassMenu('menu-close') : setClassMenu('menu-open');
             }}
             >
                 {
-                   isOpen ? <AiOutlineClose /> : <FiMenu />
+                    isOpen ? <AiOutlineClose /> : <FiMenu />
                 }  
             </button>
 
             {isOpen && <h2>Menu</h2>}
             
-            {!isOpen && <Logo />}
+            {!isOpen && <Logo isAdmin={isAdmin} />}
             
-            {   !isOpen &&
+            {   isOpen || !isAdmin && 
                 <ReceiptIcon     
                     value="0"
                 />
-            } */}
+            } 
+
             <Menu >   
                 <div className={classMenu}>
                     <MenuContainer>
@@ -62,9 +52,12 @@ export function Header() {
                         />
 
                         <div className="control-buttons">
-                            <ButtonText 
-                                title="Novo prato"
-                            />
+
+                            { isAdmin && 
+                                <ButtonText 
+                                    title="Novo prato"
+                                />
+                            }
 
                             <ButtonText 
                                 title="Sair"
