@@ -11,6 +11,7 @@ export const Container = styled.div`
     }
 
     button {
+        float: right;
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
         background: transparent;
         border: none;

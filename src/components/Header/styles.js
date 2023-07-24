@@ -1,19 +1,21 @@
 import styled from 'styled-components';
 
 export const Container = styled.header`
-    display: flex;
+    display: grid;
     padding: 3.5rem 1.75rem 1.5rem;
     width: 100%;
-    
-    align-items: center;
-    justify-content: space-between;
+    grid-template-columns: 1fr auto 1fr;
+    /* align-items: center;
+    justify-content: space-between; */
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
 
     button {
+        align-self: left;
         background: transparent;
         border: none;
         height: 2.45rem;
+        width: fit-content;
         
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
 

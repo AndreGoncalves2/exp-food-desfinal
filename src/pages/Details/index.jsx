@@ -15,6 +15,8 @@ import { useState } from "react";
 export function Details() {
     const [ingredients, setIngredients] = useState(["alface", "cebola", "pão naan"])
 
+    const isAdmin = true;
+
     return (
         <Container>
             <Header />
@@ -44,7 +46,14 @@ export function Details() {
                                     />
                                 ))
                             }
-                            </div>
+                        </div>
+
+                        {    isAdmin &&
+
+                            <Button title="Editar pedido"/>
+                        }
+
+                        {    !isAdmin &&
 
                             <Controls>
                                 <Stepper />
@@ -53,12 +62,13 @@ export function Details() {
                                     icon={<PiReceiptBold/>}
                                     title="pedir ∙ R$ 25,00"
                                 />
-
                             </Controls>
-                        </Infos>
-                    </main>
+                        }
 
-                    <Footer /> 
+                    </Infos>
+                </main>
+
+                <Footer /> 
                 </div>
         </Container>
     );

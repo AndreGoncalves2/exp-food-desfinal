@@ -77,10 +77,15 @@ export const Infos = styled.div`
         justify-content: space-around;
         gap: 1.5rem;
     }
+
+
+    > button {
+        margin-block: 3rem 3.38rem;
+    }
 `;
 
 export const Controls = styled.div`
     display: flex;
     gap: 1rem;
-    margin-block: 3rem 3.38rem ;
+    margin-block: 3rem 3.38rem;
 `;

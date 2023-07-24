@@ -6,8 +6,9 @@ import { ButtonText } from '../ButtonText';
 import { Footer } from '../Footer';
 
 import { FiMenu } from 'react-icons/fi'
-import { BiSearch } from 'react-icons/bi'
 import { AiOutlineClose } from 'react-icons/ai'
+import { BiSearch } from 'react-icons/bi'
+
 
 import { ReceiptIcon } from '../ReceiptIcon';
 import { useState } from 'react';
@@ -15,6 +16,8 @@ import { useState } from 'react';
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [classMenu, setClassMenu] = useState('');
+
+    const isAdmin = true;
 
     return (
         <Container>
@@ -25,29 +28,20 @@ export function Header() {
             }}
             >
                 {
-                   isOpen ? <AiOutlineClose /> : <FiMenu />
+                    isOpen ? <AiOutlineClose /> : <FiMenu />
                 }  
             </button>
 
-            
-                { !isOpen && (
-                    <div className="container">
-
-                    </div> 
-                
-                )}
-
-            
-
             {isOpen && <h2>Menu</h2>}
             
-            {!isOpen && <Logo />}
+            {!isOpen && <Logo isAdmin={isAdmin} />}
             
-            {   !isOpen &&
+            {   isOpen || !isAdmin && 
                 <ReceiptIcon     
                     value="0"
                 />
-            }
+            } 
+
             <Menu >   
                 <div className={classMenu}>
                     <MenuContainer>
@@ -58,9 +52,12 @@ export function Header() {
                         />
 
                         <div className="control-buttons">
-                            <ButtonText 
-                                title="Novo prato"
-                            />
+
+                            { isAdmin && 
+                                <ButtonText 
+                                    title="Novo prato"
+                                />
+                            }
 
                             <ButtonText 
                                 title="Sair"
