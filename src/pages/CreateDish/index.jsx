@@ -6,6 +6,7 @@ import { Input } from "../../components/Input";
 import { InputFake } from "../../components/InputFake";
 
 export function CreateDish() {
+
     return (
         <Container>
             <Header />
@@ -33,8 +34,7 @@ export function CreateDish() {
                 />
 
                 <InputFake 
-                    title="Ingredientes"
-                    is
+                    title="Ingredientes" 
                 />
 
             </FormNewDish>
