@@ -18,6 +18,7 @@ export default {
         LIGHT_700: "#4D585E",
 
         RED_100: "#750310",
+        RED_400: "#AB4D55",
 
         BLUE_200: "#82F3FF",
 

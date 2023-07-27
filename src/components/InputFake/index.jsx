@@ -25,8 +25,9 @@ export function InputFake({ title }) {
 
             <Wrapper>
                 { NewTag &&
-                    NewTag.map(title => (
-                        <Tag 
+                    NewTag.map((title, index) => (
+                        <Tag
+                            key={index}
                             title={title} 
                             onClick={() => deleteTag(title)} 
                         />
