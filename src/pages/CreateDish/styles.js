@@ -30,17 +30,45 @@ export const FormNewDish = styled.div`
         display: flex;
         align-items: center;
         
-        border: 1px solid red;
 
         > label {
             position: absolute;
-          
-    
-            border: 1px solid blue;
+
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+
+            font-family: Poppins;
+
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1.5rem;
+            font-style: normal;
+            
+            margin-left: 2rem;
+
+            color: ${({ theme }) => theme.COLORS.LIGHT_100};
+            
+            > svg {
+                height: 1.5rem;
+                width: 1.5rem;
+            }
         }
     
         #file-input {
             display: none;
+        }
+    }
+
+    .button-wrapper {
+        display: flex;
+        gap: 2rem;
+        
+
+        button:nth-child(1) {
+            width: 50vw;
+
+            background-color: ${({ theme }) => theme.COLORS.DARK_800};
         }
     }
     

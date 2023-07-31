@@ -12,7 +12,7 @@ import { DropDown } from "../../components/DropDown";
 import { FiUpload } from "react-icons/fi";
 
 export function CreateDish() {
-    const edit = false;
+    const edit = true;
 
     return (
         <Container>
@@ -66,10 +66,20 @@ export function CreateDish() {
                     placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                 />
 
-                <Button 
-                    title="Salvar alterações"
-                    className="save"
-                />
+
+                <div className="button-wrapper">
+                    <Button
+                        title="Excluir prato"
+                        
+                    />
+
+                    { edit && 
+                        <Button
+                            title="Salvar alterações"
+                            className="save"
+                        />  
+                    }
+                </div>
 
             </FormNewDish>
             <Footer />

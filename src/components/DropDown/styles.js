@@ -11,6 +11,8 @@ export const Container = styled.div`
     
     .wrapper {
         position: relative;
+        
+        margin-top: 1rem;
 
         border-radius: 0.3rem;
         background-color: ${({ theme }) => theme.COLORS.DARK_900};
@@ -24,7 +26,7 @@ export const Container = styled.div`
             justify-content: space-between;
             align-items: center;
             
-            padding: 1rem;
+            padding: .7rem 1rem;
             border-radius: 0.3rem;
             
             font-family: Roboto, sans-serif;
@@ -38,6 +40,7 @@ export const Container = styled.div`
             > span {
                 display: flex;
                 align-items: center;
+                line-height: 1rem;
                 
                 svg {
                     width: 1.7rem;

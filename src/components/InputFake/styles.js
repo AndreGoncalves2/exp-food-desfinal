@@ -7,6 +7,8 @@ export const Container = styled.div`
         font-size: 1rem;
         font-weight: 400;
 
+        margin-bottom: 1rem;
+
         color: ${({ theme }) => theme.COLORS.LIGHT_400};
     }
 
@@ -14,6 +16,10 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
     width: 100%;
+
+    height: 3rem;
+
+    border-radius: 0.5rem;
     padding: 0.5rem;
 
     display: flex;
