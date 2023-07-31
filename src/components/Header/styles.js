@@ -73,8 +73,7 @@ export const Menu = styled.div`
     
     .menu-close {
         animation: hidden .4s ;
-        animation-fill-mode: forwards;
-        
+        animation-fill-mode: forwards;  
     }
 
     @keyframes show {
