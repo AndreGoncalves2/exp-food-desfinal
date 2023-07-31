@@ -9,7 +9,10 @@ import { TextArea } from "../../components/TextArea";
 import { Footer } from "../../components/Footer";
 import { DropDown } from "../../components/DropDown";
 
+import { FiUpload } from "react-icons/fi";
+
 export function CreateDish() {
+    const edit = false;
 
     return (
         <Container>
@@ -24,10 +27,17 @@ export function CreateDish() {
 
                 <h2>Novo prato</h2>
 
-                <Input
-                    label="Imagem do prato"
-                    type="file"
-                />
+                <div className="file-input-wrapper">
+                    <label htmlFor="file-input">
+                        <FiUpload /> {
+                            edit ? "Selecione imagem para alterá-la" :  "Selecione imagem"
+                        }
+                    </label>
+                    <Input
+                        id="file-input"
+                        type="file"
+                    />
+                </div>
 
                 <Input 
                     label="Nome"

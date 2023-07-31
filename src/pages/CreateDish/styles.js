@@ -24,4 +24,24 @@ export const FormNewDish = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    
+    .file-input-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        
+        border: 1px solid red;
+
+        > label {
+            position: absolute;
+          
+    
+            border: 1px solid blue;
+        }
+    
+        #file-input {
+            display: none;
+        }
+    }
+    
 `;  
