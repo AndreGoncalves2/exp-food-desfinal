@@ -65,7 +65,7 @@ export const FormNewDish = styled.div`
         gap: 2rem;
         
 
-        button:nth-child(1) {
+        .delete-button {
             width: 50vw;
 
             background-color: ${({ theme }) => theme.COLORS.DARK_800};

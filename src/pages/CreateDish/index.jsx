@@ -68,17 +68,18 @@ export function CreateDish() {
 
 
                 <div className="button-wrapper">
-                    <Button
-                        title="Excluir prato"
+                    { edit &&
+                        <Button
+                            className="delete-button"
+                            title="Excluir prato"
                         
-                    />
-
-                    { edit && 
+                        />
+                    }
+ 
                         <Button
                             title="Salvar alterações"
                             className="save"
                         />  
-                    }
                 </div>
 
             </FormNewDish>
