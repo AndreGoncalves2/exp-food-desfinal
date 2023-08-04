@@ -7,10 +7,20 @@ import { Logo } from "../../components/Logo";
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 
 export function SingIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const { signIn, user } = useAuth();
+
+
+    function handleSignIn() {
+        signIn({ email, password });
+
+        console.log(user)
+    };
     
     const navigate = useNavigate(); 
     
@@ -36,6 +46,10 @@ export function SingIn() {
                     
                     <Button 
                         title="Entrar"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleSignIn();
+                        }}
                     />
 
                     <ButtonText 

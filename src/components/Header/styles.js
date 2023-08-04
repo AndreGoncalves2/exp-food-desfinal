@@ -51,7 +51,7 @@ export const Menu = styled.div`
 
     > div {
         position: fixed;
-        z-index: 1;
+        z-index: 2;
         top: 7.3rem;
         left:-100%;
     
