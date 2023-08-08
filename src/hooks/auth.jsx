@@ -13,6 +13,9 @@ function AuthProvider({ children }) {
             const { user, token } = response.data;
             
             api.defaults.headers.authorization = ` Bearer ${token}`;
+            
+            window.localStorage.setItem('@foodexplorer:user', JSON.stringify(user));
+            window.localStorage.setItem('@foodexplorer:token', token);
 
             setData({ user, token });
         } catch (error) {
@@ -22,6 +25,8 @@ function AuthProvider({ children }) {
                 alert("Nào foi possível fazer o login");
             }
         }
+
+
     };  
     return (
         <AuthContext.Provider value={{ signIn, user: data.user }}
