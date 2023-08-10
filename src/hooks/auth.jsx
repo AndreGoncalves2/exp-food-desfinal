@@ -23,18 +23,17 @@ function AuthProvider({ children }) {
                 alert(error.response.data.message);
             } else {
                 alert("Nào foi possível fazer o login");
-            }
-        }
+            };
+        };
+    };
 
-
-    };  
     return (
         <AuthContext.Provider value={{ signIn, user: data.user }}
         >
             {children}
         </AuthContext.Provider>
-    )
-    };
+    );
+};
 
 function useAuth() {
     const context = useContext(AuthContext);
