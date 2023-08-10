@@ -19,11 +19,12 @@ export const Container = styled.div`
         align-items: center;
         gap: .88rem;
 
+        color: ${({ theme }) => theme.COLORS.LIGHT_500 };
+
         > svg {
             height: 2rem;
             width: 2rem;
         }
-        color: ${({ theme }) => theme.COLORS.LIGHT_500 };
         
         input {
             width:100%;
@@ -34,7 +35,7 @@ export const Container = styled.div`
             font-family: Roboto, sans-serif;
             font-size: 1rem;
             font-weight: 400;
-
+            
             color: ${({ theme }) => theme.COLORS.LIGHT_500 };
         }
 

@@ -19,6 +19,13 @@ export function Header() {
 
     const isAdmin = true;
 
+    function handleLogOut() {
+        window.localStorage.removeItem('@foodexplorer:token');
+        window.localStorage.removeItem('@foodexplorer:user');
+
+        window.location.reload();
+    };
+
     return (
         <Container>
             <button
@@ -53,14 +60,22 @@ export function Header() {
 
                         <div className="control-buttons">
 
-                            { isAdmin && 
-                                <ButtonText 
-                                    title="Novo prato"
-                                />
+                            { isAdmin &&
+                               <div className="adm-controls">
+
+                                   <ButtonText 
+                                       title="Novo prato"
+                                   />
+
+                                   <ButtonText 
+                                       title="Criar usuário"
+                                   />
+                               </div>
                             }
 
                             <ButtonText 
                                 title="Sair"
+                                onClick={handleLogOut}
                             />
                         </div>
                     </MenuContainer>

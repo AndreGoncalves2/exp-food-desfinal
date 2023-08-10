@@ -107,8 +107,12 @@ export const MenuContainer = styled.div`
 
         margin-top: 2.25rem;
 
-        > button {
-            width: 100%;
+        .adm-controls {
+            display: flex;
+            flex-direction: column;
+        }
+
+        button {
 
             font-family: Poppins, sans-serif;
             text-align: left;
