@@ -10,9 +10,20 @@ import { Footer } from "../../components/Footer";
 import { DropDown } from "../../components/DropDown";
 
 import { FiUpload } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export function CreateDish() {
+    const [name, setName] = useState("");
+    const [dishCategory, setDishCategory] = useState("");
+
     const edit = true;
+    const navigate = useNavigate();
+
+    function handleSubmit() {
+        console.log(name);
+        console.log(dishCategory)
+    }
 
     return (
         <Container>
@@ -21,6 +32,7 @@ export function CreateDish() {
             <ButtonText
                 className="button-text"
                 title="< Voltar"
+                onClick={() => navigate(-1)}
             />
 
             <FormNewDish >
@@ -43,12 +55,12 @@ export function CreateDish() {
                     label="Nome"
                     type="text"
                     placeholder="Ex.: Salada Ceasar"
+                    onChange={(e) => setName(e.target.value)}
                 />
 
                 <DropDown 
                     label="Categoria"
-                    title="Refeição"
-
+                    setName={setDishCategory}
                 />
 
                 <InputFake 
@@ -79,6 +91,7 @@ export function CreateDish() {
                         <Button
                             title="Salvar alterações"
                             className="save"
+                            onClick={handleSubmit}
                         />  
                 </div>
 

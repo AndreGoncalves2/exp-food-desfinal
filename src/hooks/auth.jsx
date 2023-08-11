@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 
 export const AuthContext = createContext();
@@ -19,6 +19,7 @@ function AuthProvider({ children }) {
 
             setData({ user, token });
         } catch (error) {
+            console.log(error);
             if (error.response) {
                 alert(error.response.data.message);
             } else {
@@ -27,6 +28,17 @@ function AuthProvider({ children }) {
         };
     };
 
+    useEffect(() => {
+        const user = window.localStorage.getItem('@foodexplorer:user');
+        const token = window.localStorage.getItem('@foodexplorer:token');
+
+        api.defaults.headers.authorization = ` Bearer ${token}`;
+        setData({
+            user: JSON.parse(user),
+            token
+        });
+    }, []);
+    
     return (
         <AuthContext.Provider value={{ signIn, user: data.user }}
         >

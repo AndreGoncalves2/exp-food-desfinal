@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 
-export function Input({ type, placeholder, label, icon, ...rest }) {
+export function Input({ type, placeholder, label, icon, onChange, ...rest }) {
     return (
         <Container>
             {   label &&
@@ -14,6 +14,7 @@ export function Input({ type, placeholder, label, icon, ...rest }) {
                     {...rest}
                     type={type}
                     placeholder={placeholder}
+                    onChange={onChange}
                 />
             </div>
 

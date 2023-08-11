@@ -12,12 +12,22 @@ import { BiSearch } from 'react-icons/bi'
 
 import { ReceiptIcon } from '../ReceiptIcon';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [classMenu, setClassMenu] = useState('');
 
+    const navigate = useNavigate();
+
     const isAdmin = true;
+
+    function handleLogOut() {
+        window.localStorage.removeItem('@foodexplorer:token');
+        window.localStorage.removeItem('@foodexplorer:user');
+
+        window.location.reload();
+    };
 
     return (
         <Container>
@@ -53,14 +63,23 @@ export function Header() {
 
                         <div className="control-buttons">
 
-                            { isAdmin && 
-                                <ButtonText 
-                                    title="Novo prato"
-                                />
+                            { isAdmin &&
+                               <div className="adm-controls">
+
+                                   <ButtonText 
+                                       title="Novo prato"
+                                       onClick={() => navigate("/create")}
+                                   />
+
+                                   <ButtonText 
+                                       title="Criar usuário"
+                                   />
+                               </div>
                             }
 
                             <ButtonText 
                                 title="Sair"
+                                onClick={handleLogOut}
                             />
                         </div>
                     </MenuContainer>
