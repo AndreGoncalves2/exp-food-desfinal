@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-
     h4 {
         font-family: Roboto, sans-serif;
         font-size: 1rem;
@@ -17,15 +16,15 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
     width: 100%;
 
-    height: 3rem;
 
     border-radius: 0.5rem;
     padding: 0.5rem;
 
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
     gap: 1rem;
-    
+
 
     background-color: ${({ theme }) => theme.COLORS.DARK_800};
 `;

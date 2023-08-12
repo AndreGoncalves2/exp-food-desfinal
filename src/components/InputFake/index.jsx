@@ -3,9 +3,9 @@ import { Container, Wrapper } from "./styles";
 
 import { Tag } from "../Tag";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export function InputFake({ title }) {
+export function InputFake({ title, setIngredients }) {
     const [NewTag, setNewTag] = useState([]);
     const [TagName, setTagName] = useState("");
 
@@ -17,7 +17,11 @@ export function InputFake({ title }) {
     function deleteTag(title) {
         const tagFiltered = NewTag.filter(tag => tag != title);
         setNewTag(tagFiltered);
-    }   ;
+    };
+
+    useEffect(() =>{
+        setIngredients(NewTag);
+    }, [NewTag]);
 
     return (
         <Container>

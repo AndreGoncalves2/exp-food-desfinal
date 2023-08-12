@@ -12,18 +12,49 @@ import { DropDown } from "../../components/DropDown";
 import { FiUpload } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { api } from "../../services/api";
 
 export function CreateDish() {
     const [name, setName] = useState("");
-    const [dishCategory, setDishCategory] = useState("");
+    const [category, setCategory] = useState("");
+    const [ingredients, setIngredients] = useState("");
+    const [price, setPrice] = useState("");
+    const [description, setDescription] = useState("");
 
     const edit = true;
     const navigate = useNavigate();
 
-    function handleSubmit() {
-        console.log(name);
-        console.log(dishCategory)
-    }
+    async function handleSubmit() {
+        const photo = "asd";
+
+        const dish = {
+            name,
+            description,
+            photo,
+            category,
+            price,
+            ingredients
+        };
+
+        try {
+            await api.post("/dish", dish);
+            alert("Prato cadastrado com sucesso !");
+            navigate("/");
+        } catch (error) {
+            if (error.response) {
+                alert(error.response.data.message);
+            };
+        };
+    };
+
+    function formatPrice(e) {
+        const formattedInput = e.target.value.replace(/[^\d.,]+/g, "").replace(/\,/g, ".");
+        
+        const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
+        .format(formattedInput);
+        
+        setPrice(formattedPrice);
+    };
 
     return (
         <Container>
@@ -60,22 +91,26 @@ export function CreateDish() {
 
                 <DropDown 
                     label="Categoria"
-                    setName={setDishCategory}
+                    setDishCategory={setCategory}
                 />
 
                 <InputFake 
                     title="Ingredientes" 
+                    setIngredients={setIngredients}
                 />
 
                 <Input 
                     label="Preço"
-                    type="number"
-                    placeholder="R$ 00,00"
+                    value={price}
+                    onBlur={(e) => formatPrice(e)}
+                    onFocus={(e)=> e.target.value = ""}
+                    onChange={(e) => setPrice(e.target.value)}
                 />
 
                 <TextArea 
                     label="Descrição"
                     placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                    onChange={(e) => setDescription(e.target.value)}
                 />
 
 

@@ -17,7 +17,7 @@ export const Container = styled.div`
     .input-box {
         display: flex;
         align-items: center;
-        gap: .88rem;
+        gap: .3rem;
 
         color: ${({ theme }) => theme.COLORS.LIGHT_500 };
 
