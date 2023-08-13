@@ -21,16 +21,30 @@ export function CreateDish() {
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
 
+    const [img, setImage] = useState(null);
+
     const edit = true;
     const navigate = useNavigate();
 
+    function handleSetImg(event) {
+        const file = event.target.files[0];
+        setImage(file);
+    };
+
     async function handleSubmit() {
-        const photo = "asd";
+        if (!name || !description || !category || !price || !ingredients) {
+            return alert("Preencha todos os campos.");
+        };
+
+        if (!img) {
+            return alert("Selecione uma imagem.");
+        };
+            const photo = new FormData();
+            photo.append("photo", img);
 
         const dish = {
             name,
             description,
-            photo,
             category,
             price,
             ingredients
@@ -79,6 +93,7 @@ export function CreateDish() {
                     <Input
                         id="file-input"
                         type="file"
+                        onChange={handleSetImg}
                     />
                 </div>
 
