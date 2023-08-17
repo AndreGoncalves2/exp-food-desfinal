@@ -9,14 +9,24 @@ import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 
 export function Home() {
-    const [dishes, setDishes] = useState([]);
-
-    const dishFiltered = dishes.filter(d => d.category == "refeição")
-    console.log(dishFiltered)
+    const [meals, setMeals] = useState([]);
+    const [desserts, setDesserts] = useState([]);
+    const [drinks, setDrinks] = useState([]);
     useEffect(() => {
         async function findDishes() {
             const { data } = await api.get("/dish");
-            setDishes(data);
+            data.forEach((dish) => {
+                dish.price = `R$ ${dish.price.replace('.', ',')}`
+            });
+
+            const findByRefection = data.filter(d => d.category == "Refeição");
+            setMeals(findByRefection);
+
+            const findByDessert = data.filter(d => d.category == "Sobremesa");
+            setDesserts(findByDessert);
+            
+            const findByDrinks = data.filter(d => d.category == "Bebidas");
+            setDrinks(findByDrinks);
         };
         findDishes();
     }, [])
@@ -37,14 +47,17 @@ export function Home() {
 
                 <Section 
                     title="Refeições"
+                    meals={meals}
                 />
 
                 <Section 
-                    title="Pratos principais"
+                    title="Sobremesas"
+                    desserts={desserts}
                 />
 
                 <Section 
                     title="Bebidas"
+                    drinks={drinks}
                 />
 
                 <Footer />

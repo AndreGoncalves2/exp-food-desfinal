@@ -25,6 +25,8 @@ export const Container = styled.div`
 
     img {
         width: 5.5rem;
+        height: 5.5rem;
+        border-radius: 50%;
     }
 
     .dish-Name {
