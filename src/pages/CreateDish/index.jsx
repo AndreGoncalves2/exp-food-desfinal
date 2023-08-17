@@ -39,19 +39,20 @@ export function CreateDish() {
         if (!img) {
             return alert("Selecione uma imagem.");
         };
-            const photo = new FormData();
-            photo.append("photo", img);
+        
+        const form = new FormData();
+        form.append("photo", img);
 
-        const dish = {
-            name,
-            description,
-            category,
-            price,
-            ingredients
-        };
+        form.append("name", name);
+        form.append("description", description);
+        form.append("category", category);
+        form.append("price", price);
+        form.append("ingredients", ingredients);
 
+
+        console.log(form.get("description"))
         try {
-            await api.post("/dish", dish);
+            await api.post("/dish", form);
             alert("Prato cadastrado com sucesso !");
             navigate("/");
         } catch (error) {
