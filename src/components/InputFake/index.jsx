@@ -40,6 +40,7 @@ export function InputFake({ title, setIngredients }) {
 
                 <Tag 
                     isNew
+                    value={TagName}
                     onChange={(e) => setTagName(e.target.value)}
                     onClick={newTag}
                 />

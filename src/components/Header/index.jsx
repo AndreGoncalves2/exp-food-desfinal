@@ -13,6 +13,7 @@ import { BiSearch } from 'react-icons/bi'
 import { ReceiptIcon } from '../ReceiptIcon';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +21,14 @@ export function Header() {
 
     const navigate = useNavigate();
 
-    const isAdmin = true;
+    const { user } = useAuth();
+    const isAdmin = Boolean(user.adm);
 
-    function handleLogOut() {
-        window.localStorage.removeItem('@foodexplorer:token');
-        window.localStorage.removeItem('@foodexplorer:user');
+    const { signOut } = useAuth();
 
-        window.location.reload();
+    function handleSignOut() {
+        signOut();
+        navigate("/");
     };
 
     return (
@@ -79,7 +81,7 @@ export function Header() {
 
                             <ButtonText 
                                 title="Sair"
-                                onClick={handleLogOut}
+                                onClick={handleSignOut}
                             />
                         </div>
                     </MenuContainer>

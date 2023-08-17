@@ -17,7 +17,7 @@ import { api } from "../../services/api";
 export function CreateDish() {
     const [name, setName] = useState("");
     const [category, setCategory] = useState("");
-    const [ingredients, setIngredients] = useState("");
+    const [ingredients, setIngredients] = useState([]);
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
 
@@ -39,7 +39,7 @@ export function CreateDish() {
         if (!img) {
             return alert("Selecione uma imagem.");
         };
-        
+
         const form = new FormData();
         form.append("photo", img);
 
@@ -49,8 +49,6 @@ export function CreateDish() {
         form.append("price", price);
         form.append("ingredients", ingredients);
 
-
-        console.log(form.get("description"))
         try {
             await api.post("/dish", form);
             alert("Prato cadastrado com sucesso !");

@@ -13,13 +13,10 @@ export function SingIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { signIn, user } = useAuth();
-
+    const { signIn } = useAuth();
 
     function handleSignIn() {
         signIn({ email, password });
-
-        console.log(user)
     };
     
     const navigate = useNavigate(); 
