@@ -10,6 +10,7 @@ export function Section({ title, meals, desserts, drinks }) {
                 { meals &&
                     meals.map((meal) => (
                         <Card
+                            dishId={meal.id}
                             img={meal.img}
                             dishName={meal.name}
                             price={meal.price}
@@ -19,7 +20,8 @@ export function Section({ title, meals, desserts, drinks }) {
                 
                 { desserts &&
                     desserts.map((dessert) => (
-                        <Card 
+                        <Card
+                            dishId={dessert.id}
                             img={dessert.img}
                             dishName={dessert.name}
                             price={dessert.price}
@@ -28,7 +30,8 @@ export function Section({ title, meals, desserts, drinks }) {
                 }
                 { drinks &&
                     drinks.map((drink) => (
-                        <Card 
+                        <Card
+                            dishId={drink.id}
                             img={drink.img}
                             dishName={drink.name}
                             price={drink.price}

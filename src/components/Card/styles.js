@@ -20,7 +20,11 @@ export const Container = styled.div`
         position: absolute;
         top: 1rem;
         right: 1rem;
-        color: ${({ theme }) => theme.COLORS.LIGHT_300}
+
+        background: transparent;
+        border: none;
+
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
     }
 
     img {

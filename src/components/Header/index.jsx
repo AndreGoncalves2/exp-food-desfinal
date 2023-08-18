@@ -64,6 +64,10 @@ export function Header() {
                         />
 
                         <div className="control-buttons">
+                            <ButtonText 
+                                title="Meus favoritos"
+                                onClick={() => navigate("/favorite")}
+                            />
 
                             { isAdmin &&
                                <div className="adm-controls">

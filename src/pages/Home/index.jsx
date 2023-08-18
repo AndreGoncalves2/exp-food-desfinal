@@ -12,9 +12,12 @@ export function Home() {
     const [meals, setMeals] = useState([]);
     const [desserts, setDesserts] = useState([]);
     const [drinks, setDrinks] = useState([]);
+
     useEffect(() => {
         async function findDishes() {
+
             const { data } = await api.get("/dish");
+
             data.forEach((dish) => {
                 dish.price = `R$ ${dish.price.replace('.', ',')}`
             });
@@ -28,6 +31,7 @@ export function Home() {
             const findByDrinks = data.filter(d => d.category == "Bebidas");
             setDrinks(findByDrinks);
         };
+
         findDishes();
     }, [])
     return (
