@@ -10,12 +10,12 @@ import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 
 export function Card({ dishName, price, img, dishId }) {
-    const { user } = useAuth();
-
-    
     const [isFavorite, setIsFavorite] = useState(false);
     
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
+
+    const { user } = useAuth();
+    
     
     async function handleFavorite() {
         console.log(dishId)
