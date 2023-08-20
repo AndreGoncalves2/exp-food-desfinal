@@ -6,23 +6,37 @@ import { Stepper } from "../Stepper";
 import { api } from "../../services/api";
 
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import { useState } from "react";
-import { useAuth } from "../../hooks/auth";
+import { useEffect, useState } from "react";
 
 export function Card({ dishName, price, img, dishId }) {
     const [isFavorite, setIsFavorite] = useState(false);
     
-    const imgUrl = `${api.defaults.baseURL}/dish/${img}`
-
-    const { user } = useAuth();
     
+    const imgUrl = `${api.defaults.baseURL}/dish/${img}`
     
     async function handleFavorite() {
-        console.log(dishId)
-        setIsFavorite(!isFavorite);
-    }
 
-    
+        if (isFavorite) {
+
+            await api.delete(`/favorite/${dishId}`);
+            setIsFavorite(!isFavorite);
+            return;
+        };
+
+        await api.post("/favorite", { dishId });
+        setIsFavorite(!isFavorite);
+    };
+
+    useEffect(() => {
+        api.get(`/favorite/${dishId}`).then((response) => {
+            const [stateFavorite] = response.data;
+            if (stateFavorite.dish_id == dishId) {
+                setIsFavorite(true);
+            };
+            
+        }).catch(() => {return});
+    }, []);
+
     return (
         <Container>
             <button 
@@ -36,7 +50,7 @@ export function Card({ dishName, price, img, dishId }) {
             </button>
             
             { img &&
-                <img src={imgUrl} alt="" />
+                <img src={imgUrl} alt="Foto do prato" />
             }
 
             <h3 className="dish-Name" >{dishName}</h3>

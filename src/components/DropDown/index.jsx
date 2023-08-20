@@ -6,7 +6,7 @@ import { TbChevronDown } from 'react-icons/tb';
 export function DropDown({ label, setDishCategory }) {
     const [dropDownOpen, setDropDownOpen] = useState(false);
     const [classDropDown, setClassDropDown] = useState('');
-    const [category, setCategory] = useState("refeição");
+    const [category, setCategory] = useState("Refeição");
 
 
     function handleDropDownClick() {
