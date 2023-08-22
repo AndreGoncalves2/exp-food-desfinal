@@ -13,6 +13,7 @@ import { FiUpload } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { api } from "../../services/api";
+import { useAuth } from "../../hooks/auth";
 
 export function CreateDish() {
     const [name, setName] = useState("");
@@ -22,6 +23,8 @@ export function CreateDish() {
     const [description, setDescription] = useState("");
 
     const [img, setImage] = useState(null);
+
+    const { signOut } = useAuth();
 
     const edit = true;
     const navigate = useNavigate();
@@ -54,8 +57,10 @@ export function CreateDish() {
             alert("Prato cadastrado com sucesso !");
             navigate("/");
         } catch (error) {
-            if (error.response) {
+            if (error.response.status == 401) {
                 alert(error.response.data.message);
+                signOut();
+                navigate("/");                
             };
         };
     };
