@@ -7,14 +7,12 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 export function MyFavorites() {
-    const [favorites, setFavorites] = useState([])
+    const [favorites, setFavorites] = useState([]);
     const navigate = useNavigate();
-    
-    console.log(favorites)
     useEffect(() => {
         async function getFavorites() {
-            const  { data } = await api.get("/favorite");
-            setFavorites(data)
+            const { data } = await api.get("/favorite/user/index");
+            setFavorites(data);
         };
 
         getFavorites();
@@ -30,10 +28,14 @@ export function MyFavorites() {
 
             <h1>Meus Favoritos</h1>
             <FavContainer>
-                <FavCard />
-                <FavCard />
-                <FavCard />
-                <FavCard />
+                {favorites &&
+                    favorites.map((favorite) => (
+                        <FavCard 
+                            title={favorite.name}
+                            img={favorite.img}
+                        />
+                    ))
+                }
             </FavContainer>
         </Container>
     );
