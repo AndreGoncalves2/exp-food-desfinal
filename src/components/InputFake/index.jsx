@@ -5,8 +5,9 @@ import { Tag } from "../Tag";
 
 import { useEffect, useState } from "react";
 
-export function InputFake({ title, setIngredients }) {
-    const [NewTag, setNewTag] = useState([]);
+export function InputFake({ title, setIngredients, ingredients }) {
+    console.log(ingredients.splice(","))
+    const [NewTag, setNewTag] = useState([ingredients]);
     const [TagName, setTagName] = useState("");
 
     function newTag() {

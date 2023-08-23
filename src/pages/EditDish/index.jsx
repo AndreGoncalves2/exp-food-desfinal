@@ -10,12 +10,14 @@ import { Footer } from "../../components/Footer";
 import { DropDown } from "../../components/DropDown";
 
 import { FiUpload } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 
-export function CreateDish() {
+export function EditDish() {
+    const { id } = useParams();
+
     const [name, setName] = useState("");
     const [category, setCategory] = useState("");
     const [ingredients, setIngredients] = useState([]);
@@ -27,6 +29,7 @@ export function CreateDish() {
     const { signOut } = useAuth();
 
     const navigate = useNavigate();
+    const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
 
     function handleSetImg(event) {
         const file = event.target.files[0];
@@ -66,14 +69,24 @@ export function CreateDish() {
         };
     };
 
-    function formatPrice(e) {
-        const formattedInput = e.target.value.replace(/[^\d.,]+/g, "").replace(/\,/g, ".");
-        
-        const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
-        .format(formattedInput);
-        
-        setPrice(formattedPrice);
+    function loadInfos(data) {
+        setCategory(data.category);
+        setDescription(data.description);
+        setName(data.name);
+        setPrice(data.price);
+        setImage(data.img);
+        setIngredients(data.ingredients);
     };
+
+    useEffect(() => {
+        async function FindDishInfos() {
+            const { data } = await api.get(`/dish/${id}`);
+            loadInfos(data);
+            console.log(data);
+        };
+
+        FindDishInfos();
+    },[])
 
     return (
         <Container>
@@ -87,7 +100,7 @@ export function CreateDish() {
 
             <FormNewDish >
 
-                <h2>Novo prato</h2>
+                <h2>Editar prato</h2>
 
                 <div className="file-input-wrapper">
                     <label htmlFor="file-input">
@@ -95,6 +108,7 @@ export function CreateDish() {
                             img ? "Selecione imagem para alterá-la" :  "Selecione imagem"
                         }
                     </label>
+
                     <Input
                         id="file-input"
                         type="file"
@@ -104,6 +118,7 @@ export function CreateDish() {
 
                 <Input 
                     label="Nome"
+                    value={name}
                     type="text"
                     placeholder="Ex.: Salada Ceasar"
                     onChange={(e) => setName(e.target.value)}
@@ -115,26 +130,36 @@ export function CreateDish() {
                 />
 
                 <InputFake 
-                    title="Ingredientes" 
+                    title="Ingredientes"
+                    ingredients={ingredients}
                     setIngredients={setIngredients}
                 />
 
                 <Input 
                     label="Preço"
-                    value={price}
-                    onBlur={(e) => formatPrice(e)}
+                    type="number"
+                    
+                    placeholder={formattedPrice.format(price)}
+                    onBlur={(e) => e.target.value = ""}
                     onFocus={(e)=> e.target.value = ""}
                     onChange={(e) => setPrice(e.target.value)}
                 />
 
                 <TextArea 
                     label="Descrição"
+                    value={description}
                     placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                     onChange={(e) => setDescription(e.target.value)}
                 />
 
 
                 <div className="button-wrapper">
+                    <Button
+                        className="delete-button"
+                        title="Excluir prato"
+                    
+                    />
+
                     <Button
                         title="Salvar alterações"
                         className="save"

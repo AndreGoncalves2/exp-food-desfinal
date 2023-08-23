@@ -74,7 +74,9 @@ export function Card({ dishName, price, img, dishId }) {
             }
             
             { img &&
-                <img src={imgUrl} alt="Foto do prato" />
+                <img src={imgUrl} alt="Foto do prato" 
+                    onClick={() => navigate(`/dish/${dishId}`)}   
+                />
             }
 
             <h3 className="dish-Name" >{dishName}</h3>

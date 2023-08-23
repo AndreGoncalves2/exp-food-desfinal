@@ -7,7 +7,6 @@ import { Stepper } from "../../components/Stepper";
 import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
 
-import foodTest from '../../assets/foodtest.png';
 import { PiReceiptBold } from 'react-icons/pi'
 
 import { useEffect, useState } from "react";
@@ -32,7 +31,7 @@ export function Details() {
     useEffect(() => {
         async function getCurrentDish() {
             const { data } = await api.get(`/dish/${id}`);
-            setIngredients(data.ingredients.split(","));
+            setIngredients(data.ingredients);
             setDish(data);
         };
         getCurrentDish();
@@ -70,7 +69,9 @@ export function Details() {
 
                         {    user.adm &&
 
-                            <Button title="Editar pedido"/>
+                            <Button title="Editar pedido" 
+                                onClick={() => navigate(`/dish/edit/${dish.id}`)}
+                            />
                         }
 
                         {    !user.adm &&
