@@ -4,11 +4,14 @@ import { Container, Wrapper } from "./styles";
 import { Tag } from "../Tag";
 
 import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 
-export function InputFake({ title, setIngredients, ingredients }) {
-    console.log(ingredients.splice(","))
-    const [NewTag, setNewTag] = useState([ingredients]);
+export function InputFake({ title, setIngredients, dish_id }) {
+
+    const [NewTag, setNewTag] = useState([]);
     const [TagName, setTagName] = useState("");
+
+   
 
     function newTag() {
         setNewTag(prevent => [...prevent, TagName]);
@@ -22,7 +25,19 @@ export function InputFake({ title, setIngredients, ingredients }) {
 
     useEffect(() =>{
         setIngredients(NewTag);
-    }, [NewTag]);
+    },[newTag]);
+
+    useEffect(() => {
+        async function loadingIngredients() {
+            const { data } = await api.get(`/ingredients/${dish_id}`);
+            let oldIngredient= [];
+            data.forEach((ingredient) => {
+                oldIngredient.push(ingredient.name)
+            })
+            setNewTag(oldIngredient);
+        };
+        loadingIngredients()
+    },[])
 
     return (
         <Container>

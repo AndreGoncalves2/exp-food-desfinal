@@ -27,7 +27,6 @@ export function EditDish() {
     const [img, setImage] = useState(null);
 
     const { signOut } = useAuth();
-
     const navigate = useNavigate();
     const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -70,19 +69,19 @@ export function EditDish() {
     };
 
     function loadInfos(data) {
+        console.log(data)
         setCategory(data.category);
         setDescription(data.description);
         setName(data.name);
         setPrice(data.price);
         setImage(data.img);
-        setIngredients(data.ingredients);
+        setIngredients(data.ingredients.split(','));
     };
 
     useEffect(() => {
         async function FindDishInfos() {
             const { data } = await api.get(`/dish/${id}`);
             loadInfos(data);
-            console.log(data);
         };
 
         FindDishInfos();
@@ -131,7 +130,7 @@ export function EditDish() {
 
                 <InputFake 
                     title="Ingredientes"
-                    ingredients={ingredients}
+                    dish_id={id}
                     setIngredients={setIngredients}
                 />
 

@@ -26,12 +26,10 @@ export function Details() {
 
     const imgUrl = `${api.defaults.baseURL}/dish/${dish.img}`;
 
-
-
     useEffect(() => {
         async function getCurrentDish() {
             const { data } = await api.get(`/dish/${id}`);
-            setIngredients(data.ingredients);
+            setIngredients(data.ingredients.split(','));
             setDish(data);
         };
         getCurrentDish();
