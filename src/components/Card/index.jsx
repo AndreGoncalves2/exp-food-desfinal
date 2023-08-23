@@ -6,11 +6,16 @@ import { Stepper } from "../Stepper";
 import { api } from "../../services/api";
 
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { GoPencil } from 'react-icons/go';
+
 import { useEffect, useState } from "react";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 export function Card({ dishName, price, img, dishId }) {
+    const { user } = useAuth();
+    const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
-    
     
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
     
@@ -27,6 +32,30 @@ export function Card({ dishName, price, img, dishId }) {
         setIsFavorite(!isFavorite);
     };
 
+    function handleCardIcon() {
+        if (user.adm){
+            return (
+                <button 
+                    className="heart" 
+                    onClick={() => navigate(`/dish/${dishId}`)}
+                >   
+                <GoPencil />
+                </button>
+            )
+        } else {
+            return (
+                <button 
+                    className="heart" 
+                    onClick={handleFavorite}
+                >   
+                {
+                    isFavorite ? <AiFillHeart /> : <AiOutlineHeart />
+                }
+            </button>
+            )
+        }
+    }
+
     useEffect(() => {
         api.get(`/favorite/${dishId}`).then((response) => {
             const [stateFavorite] = response.data;
@@ -39,15 +68,10 @@ export function Card({ dishName, price, img, dishId }) {
 
     return (
         <Container>
-            <button 
-                className="heart" 
-                onClick={handleFavorite}
-            >
-                {
-                    isFavorite ? <AiFillHeart /> : <AiOutlineHeart />
-                }
 
-            </button>
+            {
+                handleCardIcon()
+            }
             
             { img &&
                 <img src={imgUrl} alt="Foto do prato" />

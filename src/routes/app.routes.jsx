@@ -11,7 +11,7 @@ export function AppRoutes() {
         <Routes>\
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<SignUp />}/>
-            <Route path="/:id" element={<Details />} />
+            <Route path="/dish/:id" element={<Details />} />
             <Route path="/create" element={<CreateDish />} />
             <Route path="/favorite" element={<MyFavorites />} />
         </Routes>

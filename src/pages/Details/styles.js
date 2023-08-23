@@ -41,6 +41,8 @@ export const Container = styled.div`
             height: 16.5rem;
             width: 16.5rem;
 
+            border-radius: 50%;
+
             margin-bottom: 1rem;
         }
     }

@@ -10,13 +10,33 @@ import { Footer } from "../../components/Footer";
 import foodTest from '../../assets/foodtest.png';
 import { PiReceiptBold } from 'react-icons/pi'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { api } from "../../services/api";
+import { useAuth } from "../../hooks/auth";
 
 export function Details() {
-    const [ingredients, setIngredients] = useState(["alface", "cebola", "pão naan"])
+    const [dish, setDish] = useState([]);
+    const [ingredients, setIngredients] = useState([]);
 
-    const isAdmin = true;
+    const { user } = useAuth();
+    const { id } = useParams();
+    const navigate = useNavigate();
 
+    console.log(dish)
+
+    const imgUrl = `${api.defaults.baseURL}/dish/${dish.img}`;
+
+
+
+    useEffect(() => {
+        async function getCurrentDish() {
+            const { data } = await api.get(`/dish/${id}`);
+            setIngredients(data.ingredients.split(","));
+            setDish(data);
+        };
+        getCurrentDish();
+    },[])
     return (
         <Container>
             <Header />
@@ -25,16 +45,16 @@ export function Details() {
                     <ButtonText 
                         title="< voltar"
                         className="button-text"
+                        onClick={() => navigate(-1)}
                     />
 
-                    <img src={foodTest} alt="Foto do prato" />
+                    <img src={imgUrl} alt="Foto do prato" />
                     
                     <Infos>
-                        <h2>Salada Ravanello</h2>
+                        <h2>{dish.name}</h2>
                         
                         <p>
-                            Rabanetes, folhas verdes e 
-                            molho agridoce salpicados com gergelim.
+                            {dish.description}
                         </p>
 
                         <div className="ingredients">
@@ -48,19 +68,19 @@ export function Details() {
                             }
                         </div>
 
-                        {    isAdmin &&
+                        {    user.adm &&
 
                             <Button title="Editar pedido"/>
                         }
 
-                        {    !isAdmin &&
+                        {    !user.adm &&
 
                             <Controls>
                                 <Stepper />
 
                                 <Button 
                                     icon={<PiReceiptBold/>}
-                                    title="pedir ∙ R$ 25,00"
+                                    title={"pedir ∙" +  dish.price+ "add mascara"}
                                 />
                             </Controls>
                         }

@@ -57,10 +57,12 @@ export function CreateDish() {
             alert("Prato cadastrado com sucesso !");
             navigate("/");
         } catch (error) {
-            if (error.response.status == 401) {
+            if (error.response.status == "401") {
                 alert(error.response.data.message);
                 signOut();
                 navigate("/");                
+            } else {
+                alert(error.response.data.message);
             };
         };
     };
