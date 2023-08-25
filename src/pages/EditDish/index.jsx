@@ -18,6 +18,7 @@ import { useAuth } from "../../hooks/auth";
 export function EditDish() {
     const { id } = useParams();
 
+    const [dishId, setDishId] = useState("");
     const [name, setName] = useState("");
     const [category, setCategory] = useState("");
     const [ingredients, setIngredients] = useState([]);
@@ -25,6 +26,7 @@ export function EditDish() {
     const [description, setDescription] = useState("");
 
     const [img, setImage] = useState(null);
+    const [oldImg, setOldImg] = useState(null);
 
     const { signOut } = useAuth();
     const navigate = useNavigate();
@@ -52,29 +54,46 @@ export function EditDish() {
         form.append("category", category);
         form.append("price", price);
         form.append("ingredients", ingredients);
+        form.append("id", id);
+        form.append("oldImg", oldImg);
 
         try {
-            await api.post("/dish", form);
-            alert("Prato cadastrado com sucesso !");
+            await api.put("/dish", form);
+
+            alert("Alterações aplicadas !");
             navigate("/");
+
         } catch (error) {
             if (error.response.status == "401") {
                 alert(error.response.data.message);
+
                 signOut();
-                navigate("/");                
+                navigate("/");    
+
             } else {
                 alert(error.response.data.message);
             };
         };
     };
 
+    async function handleDelete(){
+        console.log(dishId)
+        try {
+            await api.delete(`/dish/${dishId}`);
+            alert("Excluído com sucesso !");
+            
+        } catch (error) {
+            alert(error);
+        };
+    };
+
     function loadInfos(data) {
-        console.log(data)
         setCategory(data.category);
         setDescription(data.description);
         setName(data.name);
         setPrice(data.price);
-        setImage(data.img);
+        setOldImg(data.img);
+        setDishId(data.id);
         setIngredients(data.ingredients.split(','));
     };
 
@@ -85,7 +104,7 @@ export function EditDish() {
         };
 
         FindDishInfos();
-    },[])
+    },[]);
 
     return (
         <Container>
@@ -156,6 +175,7 @@ export function EditDish() {
                     <Button
                         className="delete-button"
                         title="Excluir prato"
+                        onClick={handleDelete}
                     
                     />
 
