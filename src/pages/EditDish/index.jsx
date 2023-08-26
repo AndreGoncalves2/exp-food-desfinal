@@ -77,7 +77,6 @@ export function EditDish() {
     };
 
     async function handleDelete(){
-        console.log(dishId)
         try {
             await api.delete(`/dish/${dishId}`);
             alert("Excluído com sucesso !");

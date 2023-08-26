@@ -16,6 +16,7 @@ export function Card({ dishName, price, img, dishId }) {
     const { user } = useAuth();
     const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
+    const [stepperCont, setStepperCont] = useState("");
     
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
     
@@ -82,7 +83,9 @@ export function Card({ dishName, price, img, dishId }) {
             <h3 className="dish-Name" >{dishName}</h3>
             <h3 className="price" >{price}</h3>
 
-            <Stepper /> 
+            <Stepper 
+                setStepperCont={setStepperCont}
+            /> 
 
             <Button 
                 title="Incluir"

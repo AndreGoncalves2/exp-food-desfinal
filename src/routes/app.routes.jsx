@@ -6,6 +6,7 @@ import { CreateDish } from "../pages/CreateDish";
 import { SignUp } from "../pages/SignUp";
 import { MyFavorites } from "../pages/MyFavorites";
 import { EditDish } from "../pages/EditDish";
+import { Order } from "../pages/Order";
 
 export function AppRoutes() {
     return (
@@ -18,6 +19,8 @@ export function AppRoutes() {
             <Route path="/dish/edit/:id" element={<EditDish />} />
 
             <Route path="/favorite" element={<MyFavorites />} />
+            <Route path="/order" element={<Order />} />
+
         </Routes>
     );
 };

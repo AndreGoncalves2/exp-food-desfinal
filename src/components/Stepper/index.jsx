@@ -1,9 +1,9 @@
 import { Container } from "./styles";
-import { AiOutlineMinus, AiOutlinePlus, AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export function Stepper() {
+export function Stepper({ setStepperCont }) {
     const [value, setValue] = useState("01");
 
     function handleStepper(operation) {
@@ -23,6 +23,10 @@ export function Stepper() {
         
         setValue(newValue);
     };
+
+    useEffect(() => {
+        setStepperCont(value);
+    },[value])
 
     return (
         <Container>

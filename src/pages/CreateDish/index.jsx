@@ -112,6 +112,7 @@ export function CreateDish() {
                 <DropDown 
                     label="Categoria"
                     setDishCategory={setCategory}
+                    useCategories={["Refeição", "Sobremesa", "Bebidas"]}
                 />
 
                 <InputFake 

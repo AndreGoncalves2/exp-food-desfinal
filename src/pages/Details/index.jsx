@@ -17,12 +17,13 @@ import { useAuth } from "../../hooks/auth";
 export function Details() {
     const [dish, setDish] = useState([]);
     const [ingredients, setIngredients] = useState([]);
+    const [stepperCont, setStepperCont] = useState("");
+
+    const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
 
     const { user } = useAuth();
     const { id } = useParams();
     const navigate = useNavigate();
-
-    console.log(dish)
 
     const imgUrl = `${api.defaults.baseURL}/dish/${dish.img}`;
 
@@ -33,7 +34,8 @@ export function Details() {
             setDish(data);
         };
         getCurrentDish();
-    },[])
+    },[]);
+
     return (
         <Container>
             <Header />
@@ -50,9 +52,7 @@ export function Details() {
                     <Infos>
                         <h2>{dish.name}</h2>
                         
-                        <p>
-                            {dish.description}
-                        </p>
+                        <p>{dish.description}</p>
 
                         <div className="ingredients">
                             {
@@ -75,11 +75,13 @@ export function Details() {
                         {    !user.adm &&
 
                             <Controls>
-                                <Stepper />
+                                <Stepper
+                                    setStepperCont={setStepperCont}
+                                />
 
                                 <Button 
                                     icon={<PiReceiptBold/>}
-                                    title={"pedir ∙" +  dish.price+ "add mascara"}
+                                    title={"pedir ∙ " + formattedPrice.format(dish.price * stepperCont)}
                                 />
                             </Controls>
                         }

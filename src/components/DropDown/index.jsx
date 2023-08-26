@@ -3,10 +3,11 @@ import { Container } from './styles';
 
 import { TbChevronDown } from 'react-icons/tb';
 
-export function DropDown({ label, setDishCategory }) {
+export function DropDown({ label, setStatus, useCategories}) {
     const [dropDownOpen, setDropDownOpen] = useState(false);
     const [classDropDown, setClassDropDown] = useState('');
-    const [category, setCategory] = useState("Refeição");
+    const [categories, setCategories] = useState(useCategories)
+    const [category, setCategory] = useState(categories[0]);
 
 
     function handleDropDownClick() {
@@ -16,7 +17,7 @@ export function DropDown({ label, setDishCategory }) {
     };
 
     useEffect(() => {
-        setDishCategory(category);
+        // setStatus("peido");
     }, [category]);
 
     return (
@@ -43,7 +44,7 @@ export function DropDown({ label, setDishCategory }) {
                                 handleDropDownClick();
                             }
                         }
-                    >Refeição</button></li>
+                    >{categories[0]}</button></li>
 
                     <li><button
                         onClick={
@@ -52,7 +53,7 @@ export function DropDown({ label, setDishCategory }) {
                                 handleDropDownClick();
                             }
                         }
-                    >Sobremesa</button></li>
+                    >{categories[1]}</button></li>
 
                     <li><button
                         onClick={
@@ -61,7 +62,7 @@ export function DropDown({ label, setDishCategory }) {
                                 handleDropDownClick();
                             }
                         }
-                    >Bebidas</button></li>
+                    >{categories[2]}</button></li>
                 </ul>
             </div>
         </Container>
