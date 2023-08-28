@@ -16,8 +16,20 @@ export const Container = styled.div`
 
         border-radius: 0.3rem;
         background-color: ${({ theme }) => theme.COLORS.DARK_900};
+
+        .red {
+            color: ${({ theme }) => theme.COLORS.RED_300};
+        }
         
-        button {
+        .yellow {
+            color: ${({ theme }) => theme.COLORS.YELLOW_100};
+        }
+
+        .green {
+            color: ${({ theme }) => theme.COLORS.GREEN_100};
+        }
+
+        > button {
             width: 100%;
             background: transparent;
             border: none;
@@ -41,8 +53,14 @@ export const Container = styled.div`
                 display: flex;
                 align-items: center;
                 line-height: 1rem;
-                
+                gap: .5rem;
+
                 svg {
+                        height: .5rem;
+                        width: .5rem;
+                    }
+                
+                .arrow {
                     width: 1.7rem;
                     height: 1.7rem;
                 }
@@ -65,7 +83,29 @@ export const Container = styled.div`
             
             li {
                 button {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    background: transparent;
+                    border: none;
+
+                    padding: .7rem 1rem;
+
+
+                    font-family: Roboto, sans-serif;
+                    font-size: 0.87rem;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 160%;
+
+                    color: ${({ theme }) => theme.COLORS.LIGHT_400}; 
+
                     opacity: 0;
+
+                    svg {
+                        height: .5rem;
+                        width: .5rem;
+                    }
                 }
             }
         }

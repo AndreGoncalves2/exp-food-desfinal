@@ -65,14 +65,14 @@ export function Details() {
                             }
                         </div>
 
-                        {    user.adm &&
+                        {    Boolean(user.adm) &&
 
                             <Button title="Editar pedido" 
                                 onClick={() => navigate(`/dish/edit/${dish.id}`)}
                             />
                         }
 
-                        {    !user.adm &&
+                        {    Boolean(!user.adm) &&
 
                             <Controls>
                                 <Stepper

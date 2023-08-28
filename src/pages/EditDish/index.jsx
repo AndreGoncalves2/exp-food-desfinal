@@ -20,7 +20,8 @@ export function EditDish() {
 
     const [dishId, setDishId] = useState("");
     const [name, setName] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState({});
+    const [oldCategory, setOldCategory] = useState("");
     const [ingredients, setIngredients] = useState([]);
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
@@ -30,7 +31,7 @@ export function EditDish() {
 
     const { signOut } = useAuth();
     const navigate = useNavigate();
-    const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
+    const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
     function handleSetImg(event) {
         const file = event.target.files[0];
@@ -88,6 +89,7 @@ export function EditDish() {
 
     function loadInfos(data) {
         setCategory(data.category);
+        setOldCategory(data.category);
         setDescription(data.description);
         setName(data.name);
         setPrice(data.price);
@@ -143,7 +145,9 @@ export function EditDish() {
 
                 <DropDown 
                     label="Categoria"
-                    setDishCategory={setCategory}
+                    currentCategory={oldCategory}
+                    setStatus={setCategory}
+                    useCategories={[{title: "Refeição"}, {title: "Sobremesa"}, {title: "Bebidas"}]}
                 />
 
                 <InputFake 

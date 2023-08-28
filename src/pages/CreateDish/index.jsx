@@ -95,6 +95,7 @@ export function CreateDish() {
                             img ? "Selecione imagem para alterá-la" :  "Selecione imagem"
                         }
                     </label>
+
                     <Input
                         id="file-input"
                         type="file"
@@ -111,8 +112,9 @@ export function CreateDish() {
 
                 <DropDown 
                     label="Categoria"
-                    setDishCategory={setCategory}
-                    useCategories={["Refeição", "Sobremesa", "Bebidas"]}
+                    currentCategory={"Refeição"}
+                    setStatus={setCategory}
+                    useCategories={[{title: "Refeição"}, {title: "Sobremesa"}, {title: "Bebidas"}]}
                 />
 
                 <InputFake 

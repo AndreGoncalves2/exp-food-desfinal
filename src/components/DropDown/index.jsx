@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { Container } from './styles';
 
 import { TbChevronDown } from 'react-icons/tb';
+import { IoEllipse } from "react-icons/io5";
 
-export function DropDown({ label, setStatus, useCategories}) {
+export function DropDown({ label, setStatus, useCategories, currentCategory}) {
     const [dropDownOpen, setDropDownOpen] = useState(false);
-    const [classDropDown, setClassDropDown] = useState('');
-    const [categories, setCategories] = useState(useCategories)
-    const [category, setCategory] = useState(categories[0]);
-
+    const [classDropDown, setClassDropDown] = useState("");
+    const [categories, setCategories] = useState(useCategories);
+    
+    const [category, setCategory] = useState({});
 
     function handleDropDownClick() {
 
@@ -17,8 +18,15 @@ export function DropDown({ label, setStatus, useCategories}) {
     };
 
     useEffect(() => {
-        // setStatus("peido");
+        setStatus(category.title);
     }, [category]);
+
+    useEffect(() => {
+        if (currentCategory){ 
+            setCategory({ title: currentCategory});
+        };
+        
+    }, [currentCategory]);
 
     return (
         <Container
@@ -30,8 +38,8 @@ export function DropDown({ label, setStatus, useCategories}) {
                 <button
                     onClick={handleDropDownClick}
                 >
-                    <span>{category}</span>
-                    <span><TbChevronDown /></span>
+                    <span>  { category.color ?  <div><IoEllipse className={category.color} />{category.title} </div> : category.title } </span>
+                    <span><TbChevronDown className='arrow'/></span>
                 </button>
 
                 <ul
@@ -40,31 +48,43 @@ export function DropDown({ label, setStatus, useCategories}) {
                     <li><button
                         onClick={
                             (e) => {
-                                setCategory(e.target.textContent);
+                                setCategory(e.target.children.length == 1 ? {color: "red", title: e.target.textContent} : {title: e.target.textContent});
                                 handleDropDownClick();
                             }
                         }
-                    >{categories[0]}</button></li>
+                    >
+                        {
+                            categories[0].color ? <div> <IoEllipse className={categories[0].color} /> {categories[0].title} </div> : categories[0].title 
+                        }
+                    </button></li>
 
                     <li><button
                         onClick={
                             (e) => {
-                                setCategory(e.target.textContent);
+                                setCategory(e.target.children.length == 1 ? {color: "yellow", title: e.target.textContent} : {title: e.target.textContent});
                                 handleDropDownClick();
                             }
                         }
-                    >{categories[1]}</button></li>
+                    >
+                        {
+                            categories[1].color ? <div><IoEllipse className={categories[1].color}/> {categories[1].title}</div> : categories[1].title
+                        }
+                    </button></li>
 
                     <li><button
                         onClick={
                             (e) => {
-                                setCategory(e.target.textContent);
+                                setCategory(e.target.children.length == 1 ? {color: "green", title: e.target.textContent} : {title: e.target.textContent});
                                 handleDropDownClick();
                             }
                         }
-                    >{categories[2]}</button></li>
+                    >   
+                    {
+                        categories[2].color ? <div><IoEllipse className={categories[2].color}/> {categories[2].title}</div> : categories[2].title
+                    }
+                    </button></li>
                 </ul>
             </div>
         </Container>
     )
-}
+};

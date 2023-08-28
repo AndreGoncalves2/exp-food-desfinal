@@ -18,9 +18,12 @@ export default {
         LIGHT_700: "#4D585E",
 
         RED_100: "#750310",
+        RED_300: "#AB222E",
         RED_400: "#AB4D55",
 
         BLUE_200: "#82F3FF",
+        YELLOW_100: "#FBA94C",
+        GREEN_100: "#04D361",
 
         GRADIENT_200: "linear-gradient(180deg, #091E26 0%, #00131C 100%)",
     }
