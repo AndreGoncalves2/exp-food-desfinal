@@ -42,4 +42,4 @@ export const FavContainer = styled.main`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-`;
+    `
