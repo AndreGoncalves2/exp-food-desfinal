@@ -2,16 +2,24 @@ import { Container, OrderCard } from "./style";
 import { DropDown } from "../../components/DropDown";
 import { Header } from "../../components/Header";
 
-import { IoEllipse } from "react-icons/io5";
-
 import {  useState } from 'react';
+import { ButtonText } from "../../components/ButtonText";
+import { useNavigate } from "react-router-dom";
 
-export function Order() {
+export function OrderHistory() {
     const [status, setStatus] = useState("");
+    const navigate = useNavigate();
     
     return (
         <Container>
             <Header />
+
+            <ButtonText
+                className="button-text"
+                title="< Voltar"
+                onClick={() => navigate(-1)}
+            />
+
             <h1>Pedidos</h1>
 
             {/* <OrderCard>

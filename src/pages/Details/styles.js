@@ -1,22 +1,34 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    padding-inline: 3.5rem;
+
+    min-height: 100vh;
     display: grid;
-    grid-template-rows: 7.4rem 1fr;
-
-    width: 100%;
-    max-height: 100vh;
-
+    place-items: center;
+    
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
     
-    .details-wrapper {
-        overflow: auto;
+    > header {
+        position: fixed;
+        top: 0;
+        left: 0;
     }
 
+    footer {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }
 
-    height: 100%;
-
-    background-color: ${({ theme }) => theme.COLORS.DARK_400};
+    > div {        
+        .details-wrapper {
+            overflow: auto;
+        }
+    
+        background-color: ${({ theme }) => theme.COLORS.DARK_400};
+    }
 
     main {
         display: flex;
@@ -24,8 +36,6 @@ export const Container = styled.div`
         align-items: center;
 
         text-align: center;
-
-        margin: 2.3rem 3.5rem 0;
 
         > .button-text {
             align-self: flex-start;
@@ -49,6 +59,7 @@ export const Container = styled.div`
 `;
 
 export const Infos = styled.div`
+    max-width: 21rem;
     
     display: flex;
     flex-direction: column;
@@ -60,6 +71,8 @@ export const Infos = styled.div`
 
         font-weight: 500;
         line-height: 140%;
+
+        text-align: justify;
 
         color: ${({ theme }) => theme.COLORS.LIGHT_300};
     }
@@ -75,9 +88,18 @@ export const Infos = styled.div`
     }
 
     .ingredients {
-        display: flex;
-        justify-content: space-around;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        flex-wrap: wrap;
         gap: 1.5rem;
+
+        > div {
+            background-color: ${({ theme }) => theme.COLORS.DARK_1000};
+        }
+
+        button {
+            display: none;
+        }
     }
 
 

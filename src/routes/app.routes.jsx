@@ -6,7 +6,7 @@ import { CreateDish } from "../pages/CreateDish";
 import { SignUp } from "../pages/SignUp";
 import { MyFavorites } from "../pages/MyFavorites";
 import { EditDish } from "../pages/EditDish";
-import { Order } from "../pages/Order";
+import { Order } from "../pages/Oder";
 
 export function AppRoutes() {
     return (

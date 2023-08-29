@@ -39,58 +39,59 @@ export function Details() {
     return (
         <Container>
             <Header />
-            <div className="details-wrapper">
-                <main>
-                    <ButtonText 
-                        title="< voltar"
-                        className="button-text"
-                        onClick={() => navigate(-1)}
-                    />
+            <div>
+                <div className="details-wrapper">
+                    <main>
+                        <ButtonText 
+                            title="< voltar"
+                            className="button-text"
+                            onClick={() => navigate(-1)}
+                        />
 
-                    <img src={imgUrl} alt="Foto do prato" />
-                    
-                    <Infos>
-                        <h2>{dish.name}</h2>
+                        <img src={imgUrl} alt="Foto do prato" />
                         
-                        <p>{dish.description}</p>
+                        <Infos>
+                            <h2>{dish.name}</h2>
+                            
+                            <p>{dish.description}</p>
 
-                        <div className="ingredients">
-                            {
-                                ingredients.map((ingredient, index) => (
-                                    <Tag 
-                                        title={ingredient}
-                                        key={index}
-                                    />
-                                ))
+                            <div className="ingredients">
+                                {
+                                    ingredients.map((ingredient, index) => (
+                                        <Tag 
+                                            title={ingredient}
+                                            key={index}
+                                        />
+                                    ))
+                                }
+                            </div>
+
+                            {    Boolean(user.adm) &&
+
+                                <Button title="Editar pedido" 
+                                    onClick={() => navigate(`/dish/edit/${dish.id}`)}
+                                />
                             }
-                        </div>
 
-                        {    Boolean(user.adm) &&
+                            {    Boolean(!user.adm) &&
 
-                            <Button title="Editar pedido" 
-                                onClick={() => navigate(`/dish/edit/${dish.id}`)}
-                            />
-                        }
+                                <Controls>
+                                    <Stepper
+                                        setStepperCont={setStepperCont}
+                                    />
 
-                        {    Boolean(!user.adm) &&
+                                    <Button 
+                                        icon={<PiReceiptBold/>}
+                                        title={"pedir ∙ " + formattedPrice.format(dish.price * stepperCont)}
+                                    />
+                                </Controls>
+                            }
 
-                            <Controls>
-                                <Stepper
-                                    setStepperCont={setStepperCont}
-                                />
-
-                                <Button 
-                                    icon={<PiReceiptBold/>}
-                                    title={"pedir ∙ " + formattedPrice.format(dish.price * stepperCont)}
-                                />
-                            </Controls>
-                        }
-
-                    </Infos>
-                </main>
-
-                <Footer /> 
+                        </Infos>
+                    </main>
                 </div>
+            </div>
+        <Footer /> 
         </Container>
     );
 };

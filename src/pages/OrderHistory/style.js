@@ -9,6 +9,17 @@ export const Container = styled.div`
 
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
+    > .button-text {
+        margin-left: 2.2rem;
+        align-self: flex-start;
+        margin-bottom: 1rem;
+
+        font-size: 1.5rem;
+        line-height: 140%;
+
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    }
+
     > h1 {
         margin-inline: 2.20rem;
 

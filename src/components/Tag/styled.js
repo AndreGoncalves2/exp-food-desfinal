@@ -25,6 +25,8 @@ export const Container = styled.div`
     input {
         width: 100%;
         
+        text-align: center;
+        
         background: transparent;
         border: none;
 

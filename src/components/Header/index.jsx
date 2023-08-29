@@ -49,7 +49,8 @@ export function Header() {
             {!isOpen && <Logo isAdmin={isAdmin} />}
             
             {   isOpen || !isAdmin && 
-                <ReceiptIcon     
+                <ReceiptIcon
+                    onClick={() => navigate("/order")}
                     value="0"
                 />
             } 
