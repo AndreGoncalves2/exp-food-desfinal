@@ -16,13 +16,14 @@ export const Container = styled.div`
     }
 
     footer {
-        position: absolute;
+        position: fixed;
         width: 100%;
         bottom: 0;
         left: 0;
     }
 
-    > div {        
+    > div {
+        margin-block: 10rem 5.5rem  ;
         .details-wrapper {
             overflow: auto;
         }

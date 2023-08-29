@@ -1,4 +1,4 @@
-import { Container, FavContainer } from "./styles";
+import { Container, OrderContainer } from "./styles";
 
 import { Header } from "../../components/Header";
 import { FavCard } from "../../components/FavCard";
@@ -10,15 +10,23 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 export function Order() {
-    const [favorites, setFavorites] = useState([]);
+    const [order, setOrder] = useState([]);
+    const [priceTotal, setPriceTotal] = useState(0);
     const navigate = useNavigate();
+    console.log(priceTotal);
+
+    console.log(order)
     useEffect(() => {
-        async function getFavorites() {
-            const { data } = await api.get("/favorite/user/index");
-            setFavorites(data);
+        async function getOrder() {
+            const { data } = await api.get("/order");
+            setOrder(data);
+
+            data.forEach((order) => {
+                setPriceTotal(priceTotal + order.total_price)
+            })
         };
 
-        getFavorites();
+        getOrder();
     },[])
     return (
         <Container>
@@ -31,17 +39,17 @@ export function Order() {
 
             <h1>Meu pedido</h1>
 
-            <FavContainer>
-                {favorites &&
-                    favorites.map((favorite) => (
+             <OrderContainer>
+                {order &&
+                   order.map((prod) => (
                         <FavCard 
-                            title={favorite.name}
-                            img={favorite.img}
+                            title={prod.name}
+                            img={prod.img}
                             removeText="Remover dos pedidos"
                         />
                     ))
                 }
-            </FavContainer>
+            </OrderContainer>
             
             <h2>Total: R$ 103,88</h2>
 

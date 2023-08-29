@@ -37,7 +37,7 @@ export const Container = styled.div`
     
 `;
 
-export const FavContainer = styled.main`
+export const OrderContainer = styled.main`
     padding-left: 2.2rem;
     display: flex;
     flex-direction: column;

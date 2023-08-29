@@ -55,7 +55,17 @@ export function Card({ dishName, price, img, dishId }) {
             </button>
             )
         }
-    }
+    };
+
+    async function handleAddOrder() {
+        const numberPrice = price.replace(/[a-zA-Z$]/g, '').replace(',', '.');
+        const totalPrice = numberPrice * stepperCont;
+        try {
+            await api.post("/order", { stepperCont , totalPrice, id:dishId });
+        } catch(error){
+            alert(error);
+        };
+    };
 
     useEffect(() => {
         api.get(`/favorite/${dishId}`).then((response) => {
@@ -89,6 +99,7 @@ export function Card({ dishName, price, img, dishId }) {
 
             <Button 
                 title="Incluir"
+                onClick={handleAddOrder}
             />
 
         </Container>

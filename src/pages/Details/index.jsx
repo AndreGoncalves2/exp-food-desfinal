@@ -27,6 +27,16 @@ export function Details() {
 
     const imgUrl = `${api.defaults.baseURL}/dish/${dish.img}`;
 
+    async function handleAddOrder() {
+        const totalPrice = dish.price * stepperCont;
+        console.log(totalPrice)
+        try {
+            await api.post("/order", { stepperCont , totalPrice, id })
+        } catch(error){
+            alert(error);
+        };
+    };
+
     useEffect(() => {
         async function getCurrentDish() {
             const { data } = await api.get(`/dish/${id}`);
@@ -83,6 +93,7 @@ export function Details() {
                                     <Button 
                                         icon={<PiReceiptBold/>}
                                         title={"pedir ∙ " + formattedPrice.format(dish.price * stepperCont)}
+                                        onClick={handleAddOrder}
                                     />
                                 </Controls>
                             }
