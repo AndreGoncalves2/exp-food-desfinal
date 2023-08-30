@@ -40,8 +40,24 @@ export const Container = styled.div`
 `;
 
 export const OrderContainer = styled.main`
-    padding-left: 2.2rem;
+    padding-inline: 2.2rem;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    > div {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+
+        font-family: Poppins;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 160%;
+
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+
+
+    }
     `

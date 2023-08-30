@@ -62,6 +62,7 @@ export function Card({ dishName, price, img, dishId }) {
         const totalPrice = numberPrice * stepperCont;
         try {
             await api.post("/order", { stepperCont , totalPrice, id:dishId });
+            alert("Produto adicionado");
         } catch(error){
             alert(error);
         };

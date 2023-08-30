@@ -4,16 +4,19 @@ import { Container } from './styles';
 import { ButtonText } from '../ButtonText';
 import { api } from '../../services/api';
 
-export function FavCard({ img, title, removeText, orderId }) {
+export function FavCard({ img, title, removeText, orderId, deleted }) {
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
 
     async function handleRemoveClick() {
         try {
-            const { data } = await api.delete(`/order/${orderId}`);
+            if (confirm("Deseja remover esse prato ?")) {
+                const data = await api.delete(`/order/${orderId}`);
+                deleted(data);
+            };
 
         } catch (error) {
-            alert(error)
-        }
+            alert(error.response.data.message);
+        };
     };
 
     return (

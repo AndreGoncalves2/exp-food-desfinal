@@ -11,25 +11,41 @@ import { BiSearch } from 'react-icons/bi'
 
 
 import { ReceiptIcon } from '../ReceiptIcon';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
+import { useOrder } from '../../hooks/orderContext';
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
-    const [classMenu, setClassMenu] = useState('');
+    const [classMenu, setClassMenu] = useState("");
+    const [ContIcon, setContIcon] = useState("");
+
+    const { order, getOrder } = useOrder();
 
     const navigate = useNavigate();
 
-    const { user } = useAuth();
+    const { user, signOut } = useAuth();
     const isAdmin = Boolean(user.adm);
-
-    const { signOut } = useAuth();
 
     function handleSignOut() {
         signOut();
         navigate("/");
     };
+
+    // console.log(ContIcon)
+    console.log(order)
+
+    useEffect(() => {
+        let quantity = 0;
+
+        order.forEach((item) =>{
+            quantity += item.quantity
+        });
+
+        const order = getOrder();
+        setContIcon(quantity);
+    }, [order])
 
     return (
         <Container>
@@ -51,7 +67,7 @@ export function Header() {
             {   isOpen || !isAdmin && 
                 <ReceiptIcon
                     onClick={() => navigate("/order")}
-                    value="0"
+                    value={ContIcon}
                 />
             } 
 

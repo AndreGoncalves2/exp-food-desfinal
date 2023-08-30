@@ -8,28 +8,32 @@ import { Button } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { useOrder } from "../../hooks/orderContext";
 
 export function Order() {
-    const [order, setOrder] = useState([]);
     const [priceTotal, setPriceTotal] = useState(0);
-    const [dish, setDish] = useState([]);
+    const [deleted, setDeleted] = useState("");
     const navigate = useNavigate();
-    console.log(priceTotal);
 
-    console.log(dish)
+    const { order, setOrder } = useOrder();
+    
     useEffect(() => {
         async function getOrder() {
+            let total = 0;
+            const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
+            
             const { data } = await api.get("/order");
             setOrder(data);
-
-            data.forEach((order) => {
-                setDish(prevent => [...prevent, data.id]);
-                setPriceTotal(priceTotal + order.total_price)
-            })
+            
+            data.forEach((order)=>{
+                total += order.total_price; 
+            });
+            
+            setPriceTotal(formattedPrice.format(total));
         };
 
         getOrder();
-    },[])
+    }, [deleted])
     return (
         <Container>
             <Header />
@@ -44,18 +48,24 @@ export function Order() {
              <OrderContainer>
                 {order &&
                    order.map((prod) => (
-                        <FavCard
+                        <div                
                             key={prod.id}
-                            orderId={prod.id}
-                            title={prod.name}
-                            img={prod.img}
-                            removeText="Remover dos pedidos"
-                        />
+                        >
+                            <FavCard
+                                deleted={setDeleted}
+                                orderId={prod.id}
+                                title={prod.name}
+                                img={prod.img}
+                                removeText="Remover dos pedidos"
+                            />
+
+                            <h3>{prod.quantity}x</h3>
+                        </div>
                     ))
                 }
             </OrderContainer>
             
-            <h2>Total: R$ 103,88</h2>
+            <h2>Total: {priceTotal}</h2>
 
             <Button 
                 title="Avançar"
