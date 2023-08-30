@@ -10,6 +10,7 @@ export function Section({ title, meals, desserts, drinks }) {
                 { meals &&
                     meals.map((meal) => (
                         <Card
+                            key={meal.id}
                             dishId={meal.id}
                             img={meal.img}
                             dishName={meal.name}
@@ -21,6 +22,7 @@ export function Section({ title, meals, desserts, drinks }) {
                 { desserts &&
                     desserts.map((dessert) => (
                         <Card
+                            key={dessert.id}
                             dishId={dessert.id}
                             img={dessert.img}
                             dishName={dessert.name}
@@ -31,6 +33,7 @@ export function Section({ title, meals, desserts, drinks }) {
                 { drinks &&
                     drinks.map((drink) => (
                         <Card
+                            key={drink.id}
                             dishId={drink.id}
                             img={drink.img}
                             dishName={drink.name}

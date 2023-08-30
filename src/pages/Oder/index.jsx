@@ -12,16 +12,18 @@ import { api } from "../../services/api";
 export function Order() {
     const [order, setOrder] = useState([]);
     const [priceTotal, setPriceTotal] = useState(0);
+    const [dish, setDish] = useState([]);
     const navigate = useNavigate();
     console.log(priceTotal);
 
-    console.log(order)
+    console.log(dish)
     useEffect(() => {
         async function getOrder() {
             const { data } = await api.get("/order");
             setOrder(data);
 
             data.forEach((order) => {
+                setDish(prevent => [...prevent, data.id]);
                 setPriceTotal(priceTotal + order.total_price)
             })
         };
@@ -42,7 +44,9 @@ export function Order() {
              <OrderContainer>
                 {order &&
                    order.map((prod) => (
-                        <FavCard 
+                        <FavCard
+                            key={prod.id}
+                            orderId={prod.id}
                             title={prod.name}
                             img={prod.img}
                             removeText="Remover dos pedidos"
