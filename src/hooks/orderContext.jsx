@@ -7,15 +7,16 @@ const OrderProvider = ({ children }) => {
     const [order, setOrder] = useState([]);
 
     async function getOrder() {
-        const order =  await api.get("/order");
-        return order;
-    }
+        const {data} =  await api.get("/order");
+        setOrder(data);
+        return data;
+    };
 
     return (
         <OrderContext.Provider value={{ order, setOrder, getOrder }}>
             {children}
         </OrderContext.Provider>
-    )
+    );
 };
 
 function useOrder() {

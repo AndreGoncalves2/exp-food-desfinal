@@ -1,7 +1,7 @@
 import { Container, OrderContainer } from "./styles";
 
 import { Header } from "../../components/Header";
-import { FavCard } from "../../components/FavCard";
+import { DishSmallCard } from "../../components/DishSmallCard";
 import { ButtonText } from "../../components/ButtonText";
 import { Button } from "../../components/Button";
 
@@ -51,7 +51,7 @@ export function Order() {
                         <div                
                             key={prod.id}
                         >
-                            <FavCard
+                            <DishSmallCard
                                 deleted={setDeleted}
                                 orderId={prod.id}
                                 title={prod.name}

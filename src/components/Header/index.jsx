@@ -33,18 +33,20 @@ export function Header() {
         navigate("/");
     };
 
-    // console.log(ContIcon)
-    console.log(order)
-
     useEffect(() => {
-        let quantity = 0;
+        async function loadOrders() {
+            let quantity = 0;
 
-        order.forEach((item) =>{
-            quantity += item.quantity
-        });
+            const data = await getOrder();
+            
+            data.forEach((item) =>{
+                quantity += item.quantity
+            });
+    
+            setContIcon(quantity);
+        };
 
-        const order = getOrder();
-        setContIcon(quantity);
+        loadOrders();
     }, [order])
 
     return (

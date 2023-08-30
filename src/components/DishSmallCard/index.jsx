@@ -4,19 +4,28 @@ import { Container } from './styles';
 import { ButtonText } from '../ButtonText';
 import { api } from '../../services/api';
 
-export function FavCard({ img, title, removeText, orderId, deleted }) {
+export function DishSmallCard({ img, title, removeText, orderId, favoriteId, deleted, isFavorite }) {
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
 
     async function handleRemoveClick() {
-        try {
-            if (confirm("Deseja remover esse prato ?")) {
-                const data = await api.delete(`/order/${orderId}`);
-                deleted(data);
+        if (isFavorite) {
+            try {
+                await api.delete(`/favorite/${favoriteId}`);
+            } catch (error) {
+                alert(error.response.data.message);
             };
 
-        } catch (error) {
-            alert(error.response.data.message);
+        } else {
+            try {
+                if (confirm("Deseja remover esse prato ?")) {
+                    await api.delete(`/order/${orderId}`);
+                };
+    
+            } catch (error) {
+                alert(error.response.data.message);
+            };
         };
+
     };
 
     return (

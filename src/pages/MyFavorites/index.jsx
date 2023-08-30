@@ -1,6 +1,6 @@
 import { Container, FavContainer } from "./styles";
 import { Header } from "../../components/Header";
-import { FavCard } from "../../components/FavCard";
+import { DishSmallCard } from "../../components/DishSmallCard";
 import { ButtonText } from "../../components/ButtonText";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -9,6 +9,7 @@ import { api } from "../../services/api";
 export function MyFavorites() {
     const [favorites, setFavorites] = useState([]);
     const navigate = useNavigate();
+
     useEffect(() => {
         async function getFavorites() {
             const { data } = await api.get("/favorite/user/index");
@@ -30,7 +31,10 @@ export function MyFavorites() {
             <FavContainer>
                 {favorites &&
                     favorites.map((favorite) => (
-                        <FavCard 
+                        <DishSmallCard
+                            isFavorite={true}
+                            favoriteId={favorite.id}
+                            key={favorite.id}
                             title={favorite.name}
                             img={favorite.img}
                             removeText="Remover dos favoritos"
