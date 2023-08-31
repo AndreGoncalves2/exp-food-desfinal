@@ -7,6 +7,7 @@ import { SignUp } from "../pages/SignUp";
 import { MyFavorites } from "../pages/MyFavorites";
 import { EditDish } from "../pages/EditDish";
 import { Order } from "../pages/Oder";
+import { OrderHistory } from "../pages/OrderHistory";
 
 export function AppRoutes() {
     return (
@@ -20,7 +21,7 @@ export function AppRoutes() {
 
             <Route path="/favorite" element={<MyFavorites />} />
             <Route path="/order" element={<Order />} />
-
+            <Route path="/orderhistory" element={<OrderHistory />} />
         </Routes>
     );
 };

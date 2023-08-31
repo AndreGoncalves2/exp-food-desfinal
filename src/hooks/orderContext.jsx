@@ -5,6 +5,7 @@ export const OrderContext = createContext();
 
 const OrderProvider = ({ children }) => {
     const [order, setOrder] = useState([]);
+    const [changeOrder, setChangeOrder] = useState([]);
 
     async function getOrder() {
         const {data} =  await api.get("/order");
@@ -13,7 +14,7 @@ const OrderProvider = ({ children }) => {
     };
 
     return (
-        <OrderContext.Provider value={{ order, setOrder, getOrder }}>
+        <OrderContext.Provider value={{ order, setOrder, changeOrder, setChangeOrder, getOrder }}>
             {children}
         </OrderContext.Provider>
     );

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 4rem;
+    
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
     
     > .button-text {

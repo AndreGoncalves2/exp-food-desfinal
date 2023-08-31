@@ -8,6 +8,8 @@ import { api } from "../../services/api";
 
 export function MyFavorites() {
     const [favorites, setFavorites] = useState([]);
+    const [removeFav, setRemoveFav] = useState([]);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -17,7 +19,7 @@ export function MyFavorites() {
         };
 
         getFavorites();
-    },[])
+    },[removeFav])
     return (
         <Container>
             <Header />
@@ -33,7 +35,8 @@ export function MyFavorites() {
                     favorites.map((favorite) => (
                         <DishSmallCard
                             isFavorite={true}
-                            favoriteId={favorite.id}
+                            dishId={favorite.dish_id}
+                            removeFav={setRemoveFav}
                             key={favorite.id}
                             title={favorite.name}
                             img={favorite.img}

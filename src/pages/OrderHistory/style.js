@@ -32,7 +32,7 @@ export const Container = styled.div`
     } 
 `;
 
-export const OrderCard = styled.div`
+export const AdmOrderCard = styled.div`
     /* max-width: 30rem; */
     margin-inline: 2.20rem;
 
@@ -51,3 +51,24 @@ export const OrderCard = styled.div`
    
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
 `;
+
+export const UserOrderCard = styled.div`
+    /* max-width: 30rem; */
+    margin-inline: 2.20rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    padding: 1.5rem;
+    font-family: Roboto;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+
+    border: 2px solid ${({ theme }) => theme.COLORS.DARK_1000};
+    border-radius: 0.5rem;
+   
+    color: ${({ theme }) => theme.COLORS.LIGHT_400};
+`;
+

@@ -12,10 +12,9 @@ import { useOrder } from "../../hooks/orderContext";
 
 export function Order() {
     const [priceTotal, setPriceTotal] = useState(0);
-    const [deleted, setDeleted] = useState("");
     const navigate = useNavigate();
 
-    const { order, setOrder } = useOrder();
+    const { order, setOrder, changeOrder, setChangeOrder } = useOrder();
     
     useEffect(() => {
         async function getOrder() {
@@ -33,7 +32,7 @@ export function Order() {
         };
 
         getOrder();
-    }, [deleted])
+    }, [changeOrder])
     return (
         <Container>
             <Header />
@@ -52,7 +51,6 @@ export function Order() {
                             key={prod.id}
                         >
                             <DishSmallCard
-                                deleted={setDeleted}
                                 orderId={prod.id}
                                 title={prod.name}
                                 img={prod.img}

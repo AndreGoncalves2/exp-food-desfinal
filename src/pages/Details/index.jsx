@@ -13,11 +13,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
+import { useOrder } from "../../hooks/orderContext";
 
 export function Details() {
     const [dish, setDish] = useState([]);
     const [ingredients, setIngredients] = useState([]);
     const [stepperCont, setStepperCont] = useState("");
+
+    const { setChangeOrder } = useOrder();
 
     const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -29,11 +32,13 @@ export function Details() {
 
     async function handleAddOrder() {
         const totalPrice = dish.price * stepperCont;
-        console.log(totalPrice)
         try {
-            await api.post("/order", { stepperCont , totalPrice, id })
+            const data = await api.post("/order", { stepperCont , totalPrice, id });
+            setChangeOrder(data);
+            alert("Produto adicionado");
+
         } catch(error){
-            alert(error);
+            alert(error.response.data.message);
         };
     };
 

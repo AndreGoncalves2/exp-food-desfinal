@@ -3,14 +3,20 @@ import { Container } from './styles';
 
 import { ButtonText } from '../ButtonText';
 import { api } from '../../services/api';
+import { useOrder } from '../../hooks/orderContext';
+import { useNavigate } from 'react-router-dom';
 
-export function DishSmallCard({ img, title, removeText, orderId, favoriteId, deleted, isFavorite }) {
+export function DishSmallCard({ img, title, removeText, removeFav, orderId, dishId, isFavorite }) {
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
+    const { setChangeOrder } = useOrder();
+
+    const navigate = useNavigate();
 
     async function handleRemoveClick() {
         if (isFavorite) {
             try {
-                await api.delete(`/favorite/${favoriteId}`);
+                const data = await api.delete(`/favorite/${dishId}`);
+                removeFav(data);
             } catch (error) {
                 alert(error.response.data.message);
             };
@@ -18,7 +24,8 @@ export function DishSmallCard({ img, title, removeText, orderId, favoriteId, del
         } else {
             try {
                 if (confirm("Deseja remover esse prato ?")) {
-                    await api.delete(`/order/${orderId}`);
+                    const data = await api.delete(`/order/${orderId}`);
+                    setChangeOrder(data);
                 };
     
             } catch (error) {
@@ -32,7 +39,10 @@ export function DishSmallCard({ img, title, removeText, orderId, favoriteId, del
         <Container>
             {img &&
 
-                <img src={imgUrl} alt="" />
+                <img
+                    src={imgUrl} alt="" 
+                    onClick={() => navigate(`/dish/${dishId}`)}
+                />
             }
 
             <div>

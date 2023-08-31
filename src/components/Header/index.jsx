@@ -21,7 +21,7 @@ export function Header() {
     const [classMenu, setClassMenu] = useState("");
     const [ContIcon, setContIcon] = useState("");
 
-    const { order, getOrder } = useOrder();
+    const { getOrder, changeOrder } = useOrder();
 
     const navigate = useNavigate();
 
@@ -47,7 +47,7 @@ export function Header() {
         };
 
         loadOrders();
-    }, [order])
+    }, [changeOrder])
 
     return (
         <Container>

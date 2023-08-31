@@ -11,12 +11,15 @@ import { GoPencil } from 'react-icons/go';
 import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { useOrder } from "../../hooks/orderContext";
 
 export function Card({ dishName, price, img, dishId }) {
     const { user } = useAuth();
     const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
     const [stepperCont, setStepperCont] = useState("");
+
+    const { setChangeOrder } = useOrder();
     
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
     
@@ -61,7 +64,9 @@ export function Card({ dishName, price, img, dishId }) {
         const numberPrice = price.replace(/[a-zA-Z$]/g, '').replace(',', '.');
         const totalPrice = numberPrice * stepperCont;
         try {
-            await api.post("/order", { stepperCont , totalPrice, id:dishId });
+            const data = await api.post("/order", { stepperCont , totalPrice, id:dishId });
+            setChangeOrder(data);
+            
             alert("Produto adicionado");
         } catch(error){
             alert(error);
