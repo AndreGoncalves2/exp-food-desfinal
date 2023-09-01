@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { useOrder } from "../../hooks/orderContext";
 
 export function Card({ dishName, price, img, dishId }) {
-    const { user } = useAuth();
+    const { user, signOut } = useAuth();
     const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
     const [stepperCont, setStepperCont] = useState("");
@@ -74,13 +74,19 @@ export function Card({ dishName, price, img, dishId }) {
     };
 
     useEffect(() => {
-        api.get(`/favorite/${dishId}`).then((response) => {
-            const [stateFavorite] = response.data;
-            if (stateFavorite.dish_id == dishId) {
-                setIsFavorite(true);
+        async function loadFavorites() {
+            try {
+                const { data } = await api.get(`/favorite/${dishId}`);
+                if(data) setIsFavorite(true);
+
+            } catch(error) {
+                if (error.response.status == 401) signOut();
+                console.log(error.response);
             };
-            
-        }).catch(() => {return});
+        };
+
+        loadFavorites();
+
     }, []);
 
     return (

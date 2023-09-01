@@ -10,7 +10,8 @@ const OrderProvider = ({ children }) => {
     async function getOrder() {
         const {data} =  await api.get("/order");
         setOrder(data);
-        return data;
+        const orderUnbilled = data.map((order) => order.invoice == 0);
+        return orderUnbilled;
     };
 
     return (
