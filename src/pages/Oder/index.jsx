@@ -14,7 +14,11 @@ export function Order() {
     const [priceTotal, setPriceTotal] = useState(0);
     const navigate = useNavigate();
 
-    const { order, setOrder, changeOrder, setChangeOrder } = useOrder();
+    const { order, setOrder, changeOrder } = useOrder();
+
+    async function handleFinalize() {
+        const sale = await api.post("/sale")
+    }
     
     useEffect(() => {
         async function getOrder() {
@@ -32,7 +36,9 @@ export function Order() {
         };
 
         getOrder();
-    }, [changeOrder])
+
+    }, [changeOrder]);
+
     return (
         <Container>
             <Header />
@@ -66,7 +72,8 @@ export function Order() {
             <h2>Total: {priceTotal}</h2>
 
             <Button 
-                title="Avançar"
+                title="Finalizar"
+                onClick={handleFinalize}
             />
 
         </Container>

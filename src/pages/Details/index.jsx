@@ -45,7 +45,7 @@ export function Details() {
     useEffect(() => {
         async function getCurrentDish() {
             const { data } = await api.get(`/dish/${id}`);
-            setIngredients(data.ingredients.split(','));
+            setIngredients(data.ingredient.split(','));
             setDish(data);
         };
         getCurrentDish();
