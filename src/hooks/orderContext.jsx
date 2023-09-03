@@ -7,15 +7,14 @@ const OrderProvider = ({ children }) => {
     const [order, setOrder] = useState([]);
     const [changeOrder, setChangeOrder] = useState([]);
 
-    async function getOrder() {
-        const {data} =  await api.get("/order");
+    async function getUnbilledOrder() {
+        const { data } =  await api.get(`/order/${false}`);
         setOrder(data);
-        const orderUnbilled = data.map((order) => order.invoice == 0);
-        return orderUnbilled;
+        return data;
     };
 
     return (
-        <OrderContext.Provider value={{ order, setOrder, changeOrder, setChangeOrder, getOrder }}>
+        <OrderContext.Provider value={{ order, setOrder, changeOrder, setChangeOrder, getUnbilledOrder }}>
             {children}
         </OrderContext.Provider>
     );

@@ -2,9 +2,11 @@ import { Container } from './styles';
 import polygon from "../../assets/polygon.svg";
 
 
-export function Logo({ isAdmin }) {
+export function Logo({ isAdmin, onClick }) {
     return (
-        <Container>
+        <Container
+            onClick={onClick}
+        >
             <img src={polygon} alt="Ícone de um polígono" />
             <h1>food Explorer</h1>
             {

@@ -14,19 +14,29 @@ export function Order() {
     const [priceTotal, setPriceTotal] = useState(0);
     const navigate = useNavigate();
 
-    const { order, setOrder, changeOrder } = useOrder();
+    const { order, setChangeOrder, changeOrder, getUnbilledOrder } = useOrder();
 
     async function handleFinalize() {
-        const sale = await api.post("/sale")
-    }
+        if (order.length === 0) {
+            alert("Pedido sem produtos.");
+            return;
+        };
+
+        try {
+            const sale = await api.post("/sale");
+            setChangeOrder(sale);
+            alert("Pedido Finalizado");
+        } catch (error) {
+            alert(error.response.data.message);
+        }
+    };
     
     useEffect(() => {
-        async function getOrder() {
+        async function loadOrder() {
             let total = 0;
             const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
             
-            const { data } = await api.get("/order");
-            setOrder(data);
+            const data = await getUnbilledOrder();           
             
             data.forEach((order)=>{
                 total += order.total_price; 
@@ -35,7 +45,7 @@ export function Order() {
             setPriceTotal(formattedPrice.format(total));
         };
 
-        getOrder();
+        loadOrder();
 
     }, [changeOrder]);
 
@@ -59,6 +69,7 @@ export function Order() {
                             <DishSmallCard
                                 orderId={prod.id}
                                 title={prod.name}
+                                dishId={prod.dish_id}
                                 img={prod.img}
                                 removeText="Remover dos pedidos"
                             />

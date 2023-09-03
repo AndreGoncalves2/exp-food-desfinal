@@ -21,7 +21,7 @@ export function Header() {
     const [classMenu, setClassMenu] = useState("");
     const [ContIcon, setContIcon] = useState("");
 
-    const { getOrder, changeOrder } = useOrder();
+    const { getUnbilledOrder, changeOrder } = useOrder();
 
     const navigate = useNavigate();
 
@@ -36,14 +36,17 @@ export function Header() {
     useEffect(() => {
         async function loadOrders() {
             let quantity = 0;
-
-            const data = await getOrder();
-            
-            data.forEach((item) =>{
-                quantity += item.quantity
-            });
+            try {
+                const data = await getUnbilledOrder();
+                
+                data.forEach((item) =>{
+                    quantity += item.quantity
+                });
     
-            setContIcon(quantity);
+                setContIcon(quantity);
+            } catch (e) {
+                console.log(error.response.data.message);
+            };
         };
 
         loadOrders();
@@ -64,7 +67,7 @@ export function Header() {
 
             {isOpen && <h2>Menu</h2>}
             
-            {!isOpen && <Logo isAdmin={isAdmin} />}
+            {!isOpen && <Logo onClick={() => navigate("/")} isAdmin={isAdmin} />}
             
             {   isOpen || !isAdmin && 
                 <ReceiptIcon
