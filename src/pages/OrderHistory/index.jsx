@@ -2,17 +2,28 @@ import { Container, AdmOrderCard, UserOrderCard } from "./style";
 import { DropDown } from "../../components/DropDown";
 import { Header } from "../../components/Header";
 
-import {  useState } from 'react';
+import {  useEffect, useState } from 'react';
 import { ButtonText } from "../../components/ButtonText";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
+import { api } from "../../services/api";
 
 export function OrderHistory() {
     const [status, setStatus] = useState("");
+    const [sales, setSales] = useState([]);
     const navigate = useNavigate();
 
     const { user } = useAuth();
-    
+    console.log(sales);
+
+    useEffect(() => {
+        async function loadSales() {
+            const { data } = await api.get("/sale");
+            setSales(data);
+        }
+
+        loadSales();
+    }, [])
     return (
         <Container>
             <Header />
