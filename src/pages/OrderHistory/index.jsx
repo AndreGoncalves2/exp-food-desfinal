@@ -8,31 +8,56 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
 import { api } from "../../services/api";
 
+import moment from "moment/moment";
+import { IoEllipse } from "react-icons/io5";
+
 export function OrderHistory() {
     const [status, setStatus] = useState("");
     const [sales, setSales] = useState([]);
     const navigate = useNavigate();
 
     const { user } = useAuth();
-    console.log(sales);
+    // console.log(sales);
+
+    function verifyStatus(status) {
+        if (status == "Pendente") {
+            return (
+                <span> <IoEllipse className="red"/> Pendente</span>
+            );
+        } else if (status == "Preparando") {
+            return (
+                <span> <IoEllipse className="yellow"/> Preparando</span>
+            );
+        } else if (status == "Entregue") {
+            return (
+                <span> <IoEllipse className="green"/> Entregue</span>
+            );
+        };
+    };
 
     useEffect(() => {
         async function loadSales() {
-            const salesCase = [];
+            const result = {};
             const { data } = await api.get("/sale");
 
-            for (const sale of data) {
-                const { id } = sale;
+            data.forEach(item => {
+                const { id, name, quantity, created_at, status } = item;
 
-                if (!salesCase[id]) {
-                    salesCase[id] = [];
+                let date = moment(new Date ((created_at + "z"))).format("MM/YYYY HH:mm");
+                date = date.replace(/:/g, 'h');
+
+                const orderNumber = id.toString().padStart(5, "0");
+                
+                if (!result[id]) {
+                    result[id] = { id, dishes: [], date, orderNumber, status };
                 };
-                salesCase[id].push(sale);
-            };
+                
+                result[id].dishes.push(`${quantity} x ${name} `);
+                const objetosFinais = Object.values(result);
 
-            setSales(salesCase);
+                setSales(objetosFinais);
+            });
         };
-
         loadSales();
     }, [])
     return (
@@ -48,27 +73,30 @@ export function OrderHistory() {
             <h1>Pedidos</h1>
             { Boolean(user.adm) &&
 
-                <AdmOrderCard>
-                    <h4>00004 20/05 às 18h00</h4>
-                    <p>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</p>
+                sales.map((sale, index) => (
+                    <AdmOrderCard key={index}>
+                        <h4> <span>{sale.orderNumber}</span> <span>{sale.date}</span></h4>
+                        <p>{sale.dishes}</p>
 
-                    <DropDown 
-                        setStatus={setStatus}
-                        useCategories={[{color: "red", title: "pendente"}, {color: "yellow", title: "Preparando"}, {color: "green", title: "Entregue"}]}
-                    />
-                </AdmOrderCard>
+                        <DropDown
+                            currentCategory={"Pendente"}
+                            setStatus={setStatus}
+                            useCategories={[{color: "red", title: "Pendente"}, {color: "yellow", title: "Preparando"}, {color: "green", title: "Entregue"}]}
+                        />
+                    </AdmOrderCard>
+                ))
             }
 
             { Boolean(!user.adm) &&
                 
                     
-                sales.map((sale) => (
-                    <UserOrderCard>
-                        <h4>00004 20/05 às 18h00</h4>
-                    <p>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</p>
+                sales.map((sale, index) => (
+                    <UserOrderCard key={index} >
+                        <h4> <span>{sale.orderNumber}</span> {verifyStatus(sale.status)} <span>{sale.date}</span></h4>
+                        
+                        <p>{sale.dishes}</p>
                     </UserOrderCard>
                 ))
-
             }
 
         </Container>

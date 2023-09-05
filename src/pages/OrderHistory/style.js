@@ -30,10 +30,26 @@ export const Container = styled.div`
 
         color: ${({ theme }) => theme.COLORS.LIGHT_300};
     } 
+
+    h4 {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .red {
+            color: ${({ theme }) => theme.COLORS.RED_300};
+        }
+        
+        .yellow {
+            color: ${({ theme }) => theme.COLORS.YELLOW_100};
+        }
+
+        .green {
+            color: ${({ theme }) => theme.COLORS.GREEN_100};
+        }
 `;
 
 export const AdmOrderCard = styled.div`
-    /* max-width: 30rem; */
     margin-inline: 2.20rem;
 
     display: flex;
@@ -53,7 +69,6 @@ export const AdmOrderCard = styled.div`
 `;
 
 export const UserOrderCard = styled.div`
-    /* max-width: 30rem; */
     margin-inline: 2.20rem;
 
     display: flex;

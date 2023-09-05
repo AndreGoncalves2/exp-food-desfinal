@@ -22,8 +22,14 @@ export function DropDown({ label, setStatus, useCategories, currentCategory}) {
     }, [category]);
 
     useEffect(() => {
-        if (currentCategory){ 
-            setCategory({ title: currentCategory});
+        if (currentCategory == "Pendente") {
+            setCategory({ title: ` Pendente`, color: "red"});
+        
+        } else if (currentCategory == "Preparando") {
+                setCategory({ title: ` Preparando`, color: "yellow"})
+    
+        } else if (currentCategory == "Entregue") {
+            setCategory({ title: ` Entregue`, color: "green"})
         };
         
     }, [currentCategory]);
