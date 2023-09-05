@@ -18,9 +18,20 @@ export function OrderHistory() {
 
     useEffect(() => {
         async function loadSales() {
+            const salesCase = [];
             const { data } = await api.get("/sale");
-            setSales(data);
-        }
+
+            for (const sale of data) {
+                const { id } = sale;
+
+                if (!salesCase[id]) {
+                    salesCase[id] = [];
+                };
+                salesCase[id].push(sale);
+            };
+
+            setSales(salesCase);
+        };
 
         loadSales();
     }, [])
@@ -49,10 +60,14 @@ export function OrderHistory() {
             }
 
             { Boolean(!user.adm) &&
-                <UserOrderCard>
-                <h4>00004 20/05 às 18h00</h4>
-                <p>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</p>
-            </UserOrderCard>
+                
+                    
+                sales.map((sale) => (
+                    <UserOrderCard>
+                        <h4>00004 20/05 às 18h00</h4>
+                    <p>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</p>
+                    </UserOrderCard>
+                ))
 
             }
 
