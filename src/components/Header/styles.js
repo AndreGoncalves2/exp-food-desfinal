@@ -107,7 +107,7 @@ export const MenuContainer = styled.div`
 
         margin-top: 2.25rem;
 
-        .adm-controls {
+        .controls {
             display: flex;
             flex-direction: column;
         }

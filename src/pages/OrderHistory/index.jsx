@@ -10,6 +10,7 @@ import { api } from "../../services/api";
 
 import moment from "moment/moment";
 import { IoEllipse } from "react-icons/io5";
+import { Footer } from "../../components/Footer";
 
 export function OrderHistory() {
     const [status, setStatus] = useState("");
@@ -17,7 +18,6 @@ export function OrderHistory() {
     const navigate = useNavigate();
 
     const { user } = useAuth();
-    // console.log(sales);
 
     function verifyStatus(status) {
         if (status == "Pendente") {
@@ -39,7 +39,7 @@ export function OrderHistory() {
         async function loadSales() {
             const result = {};
             const { data } = await api.get("/sale");
-
+            
             data.forEach(item => {
                 const { id, name, quantity, created_at, status } = item;
 
@@ -53,9 +53,12 @@ export function OrderHistory() {
                 };
                 
                 result[id].dishes.push(`${quantity} x ${name} `);
-                const objetosFinais = Object.values(result);
 
-                setSales(objetosFinais);
+                let finalResult = Object.values(result);
+
+                finalResult = finalResult.sort((a, b) => b.id - a.id);
+
+                setSales(finalResult);
             });
         };
         loadSales();
@@ -64,40 +67,49 @@ export function OrderHistory() {
         <Container>
             <Header />
 
-            <ButtonText
-                className="button-text"
-                title="< Voltar"
-                onClick={() => navigate(-1)}
-            />
+            <main>
+                <ButtonText
+                    className="button-text"
+                    title="< Voltar"
+                    onClick={() => navigate(-1)}
+                />
 
-            <h1>Pedidos</h1>
-            { Boolean(user.adm) &&
+                <h1>Pedidos</h1>
 
-                sales.map((sale, index) => (
-                    <AdmOrderCard key={index}>
-                        <h4> <span>{sale.orderNumber}</span> <span>{sale.date}</span></h4>
-                        <p>{sale.dishes}</p>
+                <div className="card">
 
-                        <DropDown
-                            currentCategory={"Pendente"}
-                            setStatus={setStatus}
-                            useCategories={[{color: "red", title: "Pendente"}, {color: "yellow", title: "Preparando"}, {color: "green", title: "Entregue"}]}
-                        />
-                    </AdmOrderCard>
-                ))
-            }
+                    { Boolean(user.adm) &&
 
-            { Boolean(!user.adm) &&
-                
-                    
-                sales.map((sale, index) => (
-                    <UserOrderCard key={index} >
-                        <h4> <span>{sale.orderNumber}</span> {verifyStatus(sale.status)} <span>{sale.date}</span></h4>
+                        sales.map((sale, index) => (
+                            <AdmOrderCard key={index}>
+                                <h4> <span>{sale.orderNumber}</span> <span>{sale.date}</span></h4>
+                                <p>{sale.dishes}</p>
+
+                                <DropDown
+                                    sale={sale.id}
+                                    currentCategory={sale.status}
+                                    setStatus={setStatus}
+                                    useCategories={[{color: "red", title: "Pendente"}, {color: "yellow", title: "Preparando"}, {color: "green", title: "Entregue"}]}
+                                />
+                            </AdmOrderCard>
+                        ))
+                    }
+
+                    { Boolean(!user.adm) &&
                         
-                        <p>{sale.dishes}</p>
-                    </UserOrderCard>
-                ))
-            }
+                            
+                        sales.map((sale, index) => (
+                            <UserOrderCard key={index} >
+                                <h4> <span>{sale.orderNumber}</span> {verifyStatus(sale.status)} <span>{sale.date}</span></h4>
+                                
+                                <p>{sale.dishes}</p>
+                            </UserOrderCard>
+                        ))
+                    }
+                </div>
+            </main>
+
+            <Footer />
 
         </Container>
     )

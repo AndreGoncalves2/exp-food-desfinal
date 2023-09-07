@@ -14,8 +14,10 @@ export function InputFake({ title, setIngredients, dish_id }) {
    
 
     function newTag() {
-        setNewTag(prevent => [...prevent, TagName]);
-        setTagName("");
+        if (TagName != '') {
+            setNewTag(prevent => [...prevent, TagName]);
+            setTagName("");
+        };
     };
 
     function deleteTag(title) {
@@ -58,7 +60,10 @@ export function InputFake({ title, setIngredients, dish_id }) {
                     isNew
                     value={TagName}
                     onChange={(e) => setTagName(e.target.value)}
-                    onClick={newTag}
+                    onClick={(event) => {
+                        event.preventDefault();
+                        newTag();
+                    }}
                 />
                 
             </Wrapper>

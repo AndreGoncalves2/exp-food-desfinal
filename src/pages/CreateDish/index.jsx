@@ -34,7 +34,7 @@ export function CreateDish() {
     };
 
     async function handleSubmit() {
-        if (!name || !description || !category || !price || !ingredients) {
+        if (!name || !description || !category || !price || ingredients == '') {
             return alert("Preencha todos os campos.");
         };
 
@@ -78,74 +78,83 @@ export function CreateDish() {
     return (
         <Container>
             <Header />
+            <main>
+                <ButtonText
+                    className="button-text"
+                    title="< Voltar"
+                    onClick={(event) => {
+                        event.preventDefault();
+                        navigate(-1)
+                    }}
+                />
 
-            <ButtonText
-                className="button-text"
-                title="< Voltar"
-                onClick={() => navigate(-1)}
-            />
+                <FormNewDish >
 
-            <FormNewDish >
+                    <h2>Novo prato</h2>
 
-                <h2>Novo prato</h2>
+                    <div className="file-input-wrapper">
+                        <label htmlFor="file-input">
+                            <FiUpload /> {
+                                img ? "Selecione imagem para alterá-la" :  "Selecione imagem"
+                            }
+                        </label>
 
-                <div className="file-input-wrapper">
-                    <label htmlFor="file-input">
-                        <FiUpload /> {
-                            img ? "Selecione imagem para alterá-la" :  "Selecione imagem"
-                        }
-                    </label>
+                        <Input
+                            id="file-input"
+                            type="file"
+                            onChange={handleSetImg}
+                        />
+                    </div>
 
-                    <Input
-                        id="file-input"
-                        type="file"
-                        onChange={handleSetImg}
+                    <Input 
+                        label="Nome"
+                        type="text"
+                        placeholder="Ex.: Salada Ceasar"
+                        onChange={(e) => setName(e.target.value)}
                     />
-                </div>
 
-                <Input 
-                    label="Nome"
-                    type="text"
-                    placeholder="Ex.: Salada Ceasar"
-                    onChange={(e) => setName(e.target.value)}
-                />
+                    <DropDown 
+                        label="Categoria"
+                        currentCategory={"Refeição"}
+                        setStatus={setCategory}
+                        useCategories={[{title: "Refeição"}, {title: "Sobremesa"}, {title: "Bebidas"}]}
+                    />
 
-                <DropDown 
-                    label="Categoria"
-                    currentCategory={"Refeição"}
-                    setStatus={setCategory}
-                    useCategories={[{title: "Refeição"}, {title: "Sobremesa"}, {title: "Bebidas"}]}
-                />
+                    <InputFake 
+                        title="Ingredientes" 
+                        setIngredients={setIngredients}
+                    />
 
-                <InputFake 
-                    title="Ingredientes" 
-                    setIngredients={setIngredients}
-                />
+                    <Input 
+                        label="Preço"
+                        value={price}
+                        placeholder="R$ 0,00"
+                        onBlur={(e) => formatPrice(e)}
+                        onFocus={(e)=> e.target.value = ""}
+                        onChange={(e) => setPrice(e.target.value)}
+                    />
 
-                <Input 
-                    label="Preço"
-                    value={price}
-                    onBlur={(e) => formatPrice(e)}
-                    onFocus={(e)=> e.target.value = ""}
-                    onChange={(e) => setPrice(e.target.value)}
-                />
-
-                <TextArea 
-                    label="Descrição"
-                    placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
-                    onChange={(e) => setDescription(e.target.value)}
-                />
+                    <TextArea 
+                        label="Descrição"
+                        placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
 
 
-                <div className="button-wrapper">
-                    <Button
-                        title="Salvar alterações"
-                        className="save"
-                        onClick={handleSubmit}
-                    />  
-                </div>
+                    <div className="button-wrapper">
+                        <Button
+                            title="Salvar alterações"
+                            className="save"
+                            onClick={(event) => {
+                                event.preventDefault();
+                                handleSubmit();
+                            }}
+                        />  
+                    </div>
 
-            </FormNewDish>
+                </FormNewDish>
+            </main>
+
             <Footer />
         </Container>
     )

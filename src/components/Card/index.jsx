@@ -18,7 +18,7 @@ export function Card({ dishName, price, img, dishId }) {
     const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
     const [stepperCont, setStepperCont] = useState("");
-
+   
     const { setChangeOrder } = useOrder();
     
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`

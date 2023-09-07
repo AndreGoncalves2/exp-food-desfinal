@@ -5,7 +5,7 @@ export const Container = styled.div`
     grid-template-rows: 7.4rem 1fr;
 
     width: 100%;
-    max-height: 100vh;
+    min-height: 100vh;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
     

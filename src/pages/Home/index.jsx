@@ -37,6 +37,7 @@ export function Home() {
     return (
         <Container>
             <Header />
+
             <main>
                 <Introduction>
                     <img src={macaronsUrl} alt="Foto de vários macarons" />
@@ -64,9 +65,9 @@ export function Home() {
                     drinks={drinks}
                 />
 
-                <Footer />
             </main>
-
+            
+            <Footer />
         </Container>
     );
 };

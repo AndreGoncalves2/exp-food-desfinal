@@ -1,24 +1,35 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+    min-height: 100vh;
+    position: relative;
+
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
-
-    .button-text {
-        margin: 1rem 2rem 0;
-    }
     
-    h2 {
-        color: ${({ theme }) => theme.COLORS.LIGHT_100};
-        font-family: Roboto, sans-serif;
-        font-weight: normal;
-    }
+    main {
+        .button-text {
+            margin: 1rem 2rem 0;
+        }
 
-    .save {
-        background-color: ${({ theme }) => theme.COLORS.RED_400};
+        h2 {
+            color: ${({ theme }) => theme.COLORS.LIGHT_100};
+            font-family: Roboto, sans-serif;
+            font-weight: normal;
+        }
+     
+        .save {
+            background-color: ${({ theme }) => theme.COLORS.RED_400};
+        }
+     
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
     }
 `;
 
-export const FormNewDish = styled.div`
+export const FormNewDish = styled.form`
     padding: 2.19rem 2rem 3.32rem;
     
     display: flex;
@@ -64,7 +75,6 @@ export const FormNewDish = styled.div`
         display: flex;
         gap: 2rem;
         
-
         .delete-button {
             width: 50vw;
 

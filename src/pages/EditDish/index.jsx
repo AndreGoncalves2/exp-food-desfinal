@@ -81,7 +81,7 @@ export function EditDish() {
         try {
             await api.delete(`/dish/${dishId}`);
             alert("Excluído com sucesso !");
-            
+            navigate("/");   
         } catch (error) {
             alert(error);
         };
@@ -114,7 +114,10 @@ export function EditDish() {
             <ButtonText
                 className="button-text"
                 title="< Voltar"
-                onClick={() => navigate(-1)}
+                onClick={(event) => {
+                    event.preventDefault();
+                    navigate(-1)
+                }}
             />
 
             <FormNewDish >
@@ -178,14 +181,20 @@ export function EditDish() {
                     <Button
                         className="delete-button"
                         title="Excluir prato"
-                        onClick={handleDelete}
+                        onClick={(event) => {
+                            event.preventDefault();
+                            handleDelete();
+                        }}
                     
                     />
 
                     <Button
                         title="Salvar alterações"
                         className="save"
-                        onClick={handleSubmit}
+                        onClick={(event) => {
+                            event.preventDefault();
+                            handleSubmit();
+                        }}
                     />  
                 </div>
 

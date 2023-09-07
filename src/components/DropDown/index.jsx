@@ -3,8 +3,9 @@ import { Container } from './styles';
 
 import { TbChevronDown } from 'react-icons/tb';
 import { IoEllipse } from "react-icons/io5";
+import { api } from '../../services/api';
 
-export function DropDown({ label, setStatus, useCategories, currentCategory}) {
+export function DropDown({ label, setStatus, useCategories, currentCategory, sale }) {
     const [dropDownOpen, setDropDownOpen] = useState(false);
     const [classDropDown, setClassDropDown] = useState("");
     const [categories, setCategories] = useState(useCategories);
@@ -15,6 +16,24 @@ export function DropDown({ label, setStatus, useCategories, currentCategory}) {
 
         setDropDownOpen(prevent => !prevent);
         dropDownOpen ? setClassDropDown('dropdown-close') : setClassDropDown('dropdown-open');
+    };
+
+    async function handleChangeCategory(statusName) {
+        setDropDownOpen(prevent => !prevent);
+        dropDownOpen ? setClassDropDown('dropdown-close') : setClassDropDown('dropdown-open');
+
+        try {
+            await api.put("/sale", { statusName, sale })
+        } catch (error) {
+            if (error.response.status == "401") {
+                alert(error.response.data.message);
+
+                signOut();
+                navigate("/");               
+            } else {
+                alert(error.response.data.message);
+            };
+        };
     };
 
     useEffect(() => {
@@ -30,6 +49,8 @@ export function DropDown({ label, setStatus, useCategories, currentCategory}) {
     
         } else if (currentCategory == "Entregue") {
             setCategory({ title: ` Entregue`, color: "green"})
+        } else {
+            setCategory({ title: `${currentCategory}`});
         };
         
     }, [currentCategory]);
@@ -55,12 +76,12 @@ export function DropDown({ label, setStatus, useCategories, currentCategory}) {
                         onClick={
                             (e) => {
                                 setCategory(e.target.children.length == 1 ? {color: "red", title: e.target.textContent} : {title: e.target.textContent});
-                                handleDropDownClick();
+                                e.target.children.length == 1 ? handleChangeCategory(e.target.textContent) : handleDropDownClick();
                             }
                         }
                     >
                         {
-                            categories[0].color ? <div> <IoEllipse className={categories[0].color} /> {categories[0].title} </div> : categories[0].title 
+                            categories[0].color ? <div><IoEllipse className={categories[0].color}/> {categories[0].title}</div> : categories[0].title 
                         }
                     </button></li>
 
@@ -68,7 +89,7 @@ export function DropDown({ label, setStatus, useCategories, currentCategory}) {
                         onClick={
                             (e) => {
                                 setCategory(e.target.children.length == 1 ? {color: "yellow", title: e.target.textContent} : {title: e.target.textContent});
-                                handleDropDownClick();
+                                e.target.children.length == 1 ? handleChangeCategory(e.target.textContent) : handleDropDownClick();
                             }
                         }
                     >
@@ -81,7 +102,7 @@ export function DropDown({ label, setStatus, useCategories, currentCategory}) {
                         onClick={
                             (e) => {
                                 setCategory(e.target.children.length == 1 ? {color: "green", title: e.target.textContent} : {title: e.target.textContent});
-                                handleDropDownClick();
+                                e.target.children.length == 1 ? handleChangeCategory(e.target.textContent) : handleDropDownClick();
                             }
                         }
                     >   

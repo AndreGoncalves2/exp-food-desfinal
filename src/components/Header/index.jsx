@@ -86,13 +86,12 @@ export function Header() {
                         />
 
                         <div className="control-buttons">
-                            <ButtonText 
-                                title="Meus favoritos"
-                                onClick={() => navigate("/favorite")}
-                            />
-
                             { isAdmin &&
-                               <div className="adm-controls">
+                               <div className="controls">
+                                    <ButtonText 
+                                        title="Pedidos"
+                                        onClick={() => navigate("/orderhistory")}
+                                    />
 
                                    <ButtonText 
                                        title="Novo prato"
@@ -105,10 +104,25 @@ export function Header() {
                                </div>
                             }
 
-                            <ButtonText 
-                                title="Sair"
-                                onClick={handleSignOut}
-                            />
+                            { !isAdmin &&
+                                <div className="controls">
+                                     <ButtonText 
+                                        title="Meus favoritos"
+                                        onClick={() => navigate("/favorite")}
+                                    />
+
+                                    <ButtonText 
+                                        title="Meus pedidos"
+                                        onClick={() => navigate("/orderhistory")}
+                                    />
+    
+                                    <ButtonText 
+                                        title="Sair"
+                                        onClick={handleSignOut}
+                                    />
+                                </div>
+                            }
+
                         </div>
                     </MenuContainer>
                     

@@ -18,7 +18,7 @@ export const Container = styled.div`
     }
 `;
 
-export const FormNewDish = styled.div`
+export const FormNewDish = styled.form`
     padding: 2.19rem 2rem 3.32rem;
     
     display: flex;
