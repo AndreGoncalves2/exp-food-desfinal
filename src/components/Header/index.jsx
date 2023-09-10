@@ -1,13 +1,10 @@
-import { Container, Menu, MenuContainer } from './styles';
+import { Container } from './styles';
 
 import { Logo } from '../Logo/';
-import { Input } from '../Input';
-import { ButtonText } from '../ButtonText';
-import { Footer } from '../Footer';
+import { Menu } from '../Menu';
 
 import { FiMenu } from 'react-icons/fi'
 import { AiOutlineClose } from 'react-icons/ai'
-import { BiSearch } from 'react-icons/bi'
 
 
 import { ReceiptIcon } from '../ReceiptIcon';
@@ -36,6 +33,7 @@ export function Header() {
     useEffect(() => {
         async function loadOrders() {
             let quantity = 0;
+
             try {
                 const data = await getUnbilledOrder();
                 
@@ -55,10 +53,10 @@ export function Header() {
     return (
         <Container>
             <button
-               onClick={() => {
-                setIsOpen(prevent => !prevent)
-                isOpen ? setClassMenu('menu-close') : setClassMenu('menu-open');
-            }}
+                onClick={() => {
+                    setIsOpen(prevent => !prevent)
+                    isOpen ? setClassMenu('menu-close') : setClassMenu('menu-open');
+                }}
             >
                 {
                     isOpen ? <AiOutlineClose /> : <FiMenu />
@@ -76,59 +74,11 @@ export function Header() {
                 />
             } 
 
-            <Menu >   
-                <div className={classMenu}>
-                    <MenuContainer>
-                        <Input
-                            icon={<BiSearch />}
-                            type="text"
-                            placeholder="Busque por pratos ou ingredientes"
-                        />
+            <Menu 
+                classMenu={classMenu} 
+                isAdmin={isAdmin}
+            />
 
-                        <div className="control-buttons">
-                            { isAdmin &&
-                               <div className="controls">
-                                    <ButtonText 
-                                        title="Pedidos"
-                                        onClick={() => navigate("/orderhistory")}
-                                    />
-
-                                   <ButtonText 
-                                       title="Novo prato"
-                                       onClick={() => navigate("/create")}
-                                   />
-
-                                   <ButtonText 
-                                       title="Criar usuário"
-                                   />
-                               </div>
-                            }
-
-                            { !isAdmin &&
-                                <div className="controls">
-                                     <ButtonText 
-                                        title="Meus favoritos"
-                                        onClick={() => navigate("/favorite")}
-                                    />
-
-                                    <ButtonText 
-                                        title="Meus pedidos"
-                                        onClick={() => navigate("/orderhistory")}
-                                    />
-    
-                                    <ButtonText 
-                                        title="Sair"
-                                        onClick={handleSignOut}
-                                    />
-                                </div>
-                            }
-
-                        </div>
-                    </MenuContainer>
-                    
-                    <Footer />
-                </div>
-            </Menu>
         </Container>
     );
 };

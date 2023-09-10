@@ -1,54 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Container = styled.header`
-    display: grid;
-    padding: 3.5rem 1.75rem 1.5rem;
-    width: 100%;
-    grid-template-columns: 1fr auto 1fr;
-
-    color: ${({ theme }) => theme.COLORS.LIGHT_100};
-
-    button {
-        align-self: left;
-        background: transparent;
-        border: none;
-        height: 2.45rem;
-        width: fit-content;
-        
-        color: ${({ theme }) => theme.COLORS.LIGHT_100};
-
-        > svg {
-            width: 2rem;
-            height: 2rem;
-        }
-    }
-
-    h2 {
-        position: absolute;
-        left: 5rem;
-
-        font-family: Roboto;
-        font-size: 1.6rem;
-        height: 2.2rem;
-        
-        font-weight: 400;
-    }
-
-    h1 {
-        font-size: 1.3rem;
-    }
-
-    img {
-        height: 1.5rem;
-        width: 1.5rem;
-    }
-
-    background-color: ${({ theme }) => theme.COLORS.DARK_700};
-`;
-
-export const Menu = styled.div`
+export const Container = styled.div`
     position: relative;
-    position: absolute;
 
     > div {
         position: fixed;
@@ -62,12 +15,12 @@ export const Menu = styled.div`
     }
 
     footer {
-        position:absolute;
-        bottom: 0;
+        position: absolute;
+        bottom: 7.3rem;
         width: 100%;
     }
 
-    .menu-open {        
+    .menu-open {
         animation: show .4s ;
         animation-fill-mode: forwards;
     }
@@ -151,6 +104,16 @@ export const DishModal = styled.div`
         gap: 2rem;
         margin: 8rem 2rem;
 
+        span {
+            font-family: Poppins;
+            text-align: center;
+            font-size: 1.5rem;
+            font-style: normal;
+            font-weight: 500;
+
+            color: ${({ theme }) => theme.COLORS.LIGHT_400 };
+    }
+
         .card-search {
             display: flex;
             align-items: center;
@@ -168,8 +131,9 @@ export const DishModal = styled.div`
             img {
                 height: 6rem;
                 width: 6rem;
+
+                border-radius: 50%;
             }
         }
     }
-
 `;
