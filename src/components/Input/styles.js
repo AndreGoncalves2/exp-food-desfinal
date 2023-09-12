@@ -31,7 +31,6 @@ export const Container = styled.div`
             background: transparent;
             border: none;
 
-
             font-family: Roboto, sans-serif;
             font-size: 1rem;
             font-weight: 400;
@@ -47,5 +46,15 @@ export const Container = styled.div`
     
         
         background-color: ${({ theme }) => theme.COLORS.DARK_900 };
+    }
+
+    @media (min-width: 600px) {
+        label {
+            font-size: 1.6rem;
+        }
+
+        .input-box {
+            border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100 };
+        }
     }
 `

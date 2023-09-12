@@ -24,4 +24,10 @@ export const Container = styled.div`
             gap: 2rem;
         }
     }
+
+    @media (min-width: 600px) {
+        form {
+            display: none;
+        }
+    }
 `;

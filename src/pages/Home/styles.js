@@ -11,6 +11,7 @@ export const Container = styled.div`
     
     main {
         overflow: auto;
+        margin-bottom: 3rem;
     }
 `;
 

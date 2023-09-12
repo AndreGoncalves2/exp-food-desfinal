@@ -6,15 +6,17 @@ import { Input } from "../Input";
 import { ButtonText } from "../ButtonText";
 import { Footer } from "../Footer";
 
-import imgDish from '../../assets/foodtest.png';
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { useAuth } from "../../hooks/auth";
 
 export function Menu({ classMenu, isAdmin }) {
     const [dishes, setDishes] = useState([])
     const [onSearch, setOnSearch] = useState(false);
     const navigate = useNavigate();
+
+    const { signOut } = useAuth();
 
     function handleSignOut() {
         signOut();

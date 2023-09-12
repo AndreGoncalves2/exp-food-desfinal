@@ -37,6 +37,13 @@ export const Container = styled.div`
             display: flex;
             gap: 2rem;
         }
+
+        .card {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
     
         .red {
             color: ${({ theme }) => theme.COLORS.RED_300};

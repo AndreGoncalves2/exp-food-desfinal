@@ -27,6 +27,7 @@ export function SingIn() {
                 <Logo />
 
                 <form >
+                    <h3>Faça login</h3>
                     <Input
                         type="email"
                         label="Email"
