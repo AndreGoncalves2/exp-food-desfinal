@@ -13,6 +13,20 @@ export const Container = styled.div`
         overflow: auto;
         margin-bottom: 3rem;
     }
+
+    .desktop-header {
+        display: none;
+    }
+
+    @media (min-width: 600px) {
+        .mobile-header {
+            display: none;
+        }
+
+        .desktop-header {
+            display: initial;
+        }
+    }
 `;
 
 export const Introduction = styled.div`

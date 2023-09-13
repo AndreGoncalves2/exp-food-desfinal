@@ -51,7 +51,7 @@ export function Header() {
     }, [changeOrder])
 
     return (
-        <Container>
+        <Container className='mobile-header'>
             <button
                 onClick={() => {
                     setIsOpen(prevent => !prevent)

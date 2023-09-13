@@ -86,6 +86,11 @@ export function Menu({ classMenu, isAdmin }) {
                                 <ButtonText 
                                     title="Criar usuário"
                                 />
+
+                                <ButtonText 
+                                    title="Sair"
+                                    onClick={handleSignOut}
+                                />
                             </div>
                         }
 

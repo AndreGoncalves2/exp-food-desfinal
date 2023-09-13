@@ -28,4 +28,11 @@ export const Container = styled.div`
     img {
         height: 2.7rem;
     }
+
+    @media (min-width: 600px) {
+        img {
+            height: 4.5rem;
+            width: 4.5rem;
+        }
+    }
 `

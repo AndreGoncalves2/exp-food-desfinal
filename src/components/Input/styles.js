@@ -43,7 +43,6 @@ export const Container = styled.div`
         padding: 0.75rem 0.88rem;
         border-radius: 0.5rem;
         border: none;
-    
         
         background-color: ${({ theme }) => theme.COLORS.DARK_900 };
     }
@@ -54,7 +53,7 @@ export const Container = styled.div`
         }
 
         .input-box {
-            border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100 };
+            border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100};
         }
     }
 `

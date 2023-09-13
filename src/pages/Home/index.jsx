@@ -7,6 +7,7 @@ import { Section } from '../../components/Section';
 import { Footer } from '../../components/Footer';
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
+import { DeskHeader } from '../../components/DeskHeader';
 
 export function Home() {
     const [meals, setMeals] = useState([]);
@@ -37,6 +38,7 @@ export function Home() {
     return (
         <Container>
             <Header />
+            <DeskHeader />
 
             <main>
                 <Introduction>

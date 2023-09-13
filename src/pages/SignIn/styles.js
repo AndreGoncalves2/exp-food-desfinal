@@ -33,6 +33,8 @@ export const Container = styled.div`
     }
 
     @media (min-width: 600px) {
+        padding-top: 20vh;
+        
         main {
             flex-direction: row;
             justify-content: space-around;
@@ -59,7 +61,6 @@ export const Container = styled.div`
                     font-weight: 500;
 
                     color: ${({ theme }) => theme.COLORS.LIGHT_100};
-
                 }
             }
         }

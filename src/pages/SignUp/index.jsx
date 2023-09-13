@@ -41,6 +41,7 @@ export function SignUp() {
                 <Logo />
                 
                 <form >
+                    <h3>Crie sua conta</h3>
                     <Input
                         type="text"
                         label="Seu nome"
