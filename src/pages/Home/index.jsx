@@ -14,34 +14,38 @@ export function Home() {
     const [desserts, setDesserts] = useState([]);
     const [drinks, setDrinks] = useState([]);
 
-    useEffect(() => {
-        async function findDishes() {
+    async function findDishes(url="/dish") {
 
-            const { data } = await api.get("/dish");
-
+        const { data } = await api.get(`${url}`);
+        
+        try {
             data.forEach((dish) => {
                 dish.price = `R$ ${dish.price.replace('.', ',')}`
             });
-
+    
             const findByRefection = data.filter(d => d.category == "Refeição");
             setMeals(findByRefection);
-
+    
             const findByDessert = data.filter(d => d.category == "Sobremesa");
             setDesserts(findByDessert);
             
             const findByDrinks = data.filter(d => d.category == "Bebidas");
             setDrinks(findByDrinks);
-        };
+        } catch {
+            return
+        }
+    };
 
-        findDishes();
+    useEffect(() => {
+        findDishes("/dish");
     }, [])
     return (
         <Container>
             <Header />
-            <DeskHeader />
+            <DeskHeader findDishes={findDishes}/>
 
             <main>
-                <Introduction>
+                <Introduction className="Introduction">
                     <img src={macaronsUrl} alt="Foto de vários macarons" />
                     <div>
                         <h3>Sabores inigualáveis</h3>

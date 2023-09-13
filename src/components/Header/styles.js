@@ -23,7 +23,7 @@ export const Container = styled.header`
         }
     }
 
-    h2 {
+    .menu {
         position: absolute;
         left: 5rem;
 
@@ -34,7 +34,7 @@ export const Container = styled.header`
         font-weight: 400;
     }
 
-    h1 {
+    h2 {
         font-size: 1.3rem;
     }
 

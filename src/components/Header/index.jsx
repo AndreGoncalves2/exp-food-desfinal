@@ -63,7 +63,7 @@ export function Header() {
                 }  
             </button>
 
-            {isOpen && <h2>Menu</h2>}
+            {isOpen && <h2 className="menu" >Menu</h2>}
             
             {!isOpen && <Logo onClick={() => navigate("/")} isAdmin={isAdmin} />}
             

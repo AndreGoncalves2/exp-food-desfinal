@@ -12,7 +12,8 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
     
     const [category, setCategory] = useState({});
 
-    function handleDropDownClick() {
+    function handleDropDownClick(e) {
+        e.preventDefault();
 
         setDropDownOpen(prevent => !prevent);
         dropDownOpen ? setClassDropDown('dropdown-close') : setClassDropDown('dropdown-open');
@@ -35,6 +36,12 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
             };
         };
     };
+
+    function setColor(color, e) {
+        setCategory(e.target.children.length == 1 ? {color: `${color}`, title: e.target.textContent} : {title: e.target.textContent});
+        e.target.children.length == 1 ? handleChangeCategory(e.target.textContent) : handleDropDownClick(e);
+    };
+
 
     useEffect(() => {
         setStatus(category.title);
@@ -63,7 +70,7 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
 
             <div className="wrapper">
                 <button
-                    onClick={handleDropDownClick}
+                    onClick={(e) => handleDropDownClick(e)}
                 >
                     <span>  { category.color ?  <div><IoEllipse className={category.color} />{category.title} </div> : category.title } </span>
                     <span><TbChevronDown className='arrow'/></span>
@@ -75,8 +82,8 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
                     <li><button
                         onClick={
                             (e) => {
-                                setCategory(e.target.children.length == 1 ? {color: "red", title: e.target.textContent} : {title: e.target.textContent});
-                                e.target.children.length == 1 ? handleChangeCategory(e.target.textContent) : handleDropDownClick();
+                                e.preventDefault(e);
+                                setColor("red", e)
                             }
                         }
                     >
@@ -88,8 +95,8 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
                     <li><button
                         onClick={
                             (e) => {
-                                setCategory(e.target.children.length == 1 ? {color: "yellow", title: e.target.textContent} : {title: e.target.textContent});
-                                e.target.children.length == 1 ? handleChangeCategory(e.target.textContent) : handleDropDownClick();
+                                e.preventDefault(e);
+                                setColor("yellow", e)
                             }
                         }
                     >
@@ -101,8 +108,8 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
                     <li><button
                         onClick={
                             (e) => {
-                                setCategory(e.target.children.length == 1 ? {color: "green", title: e.target.textContent} : {title: e.target.textContent});
-                                e.target.children.length == 1 ? handleChangeCategory(e.target.textContent) : handleDropDownClick();
+                                e.preventDefault(e);
+                                setColor("green", e)
                             }
                         }
                     >   

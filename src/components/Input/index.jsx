@@ -2,7 +2,7 @@ import { Container } from "./styles";
 
 export function Input({ type, placeholder, label, icon, onChange, ...rest }) {
     return (
-        <Container>
+        <Container className="input-container">
             {   label &&
                 <label>
                     {label}

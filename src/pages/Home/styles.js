@@ -24,7 +24,37 @@ export const Container = styled.div`
         }
 
         .desktop-header {
-            display: initial;
+            display: flex;
+        }
+    }
+
+    @media (min-width: 600px) {
+        main {
+            margin-inline: 8vw;
+            .Introduction {
+                margin: 10.5rem 0 0 0;
+                height: 16.25rem;
+
+                img {
+                    width: 35rem;
+                    height: 24rem;
+                }
+                
+                div {
+                    padding-right: 10vw;
+                    text-align: right;
+                    
+                    h3 {
+                        font-size: 2.5rem;
+                    }
+                    
+                    p {
+                        width: initial;
+
+                        text-align: right;
+                    }
+                }
+            }
         }
     }
 `;

@@ -7,8 +7,14 @@ export const Container = styled.div`
     align-self: center;
 
     gap: .7rem;
+
+    > div {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
     
-    h1 {
+    h2 {
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
         

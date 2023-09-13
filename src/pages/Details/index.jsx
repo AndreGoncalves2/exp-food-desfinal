@@ -48,6 +48,7 @@ export function Details() {
             setIngredients(data.ingredient.split(','));
             setDish(data);
         };
+        
         getCurrentDish();
     },[]);
 
