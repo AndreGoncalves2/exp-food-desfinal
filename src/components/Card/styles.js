@@ -3,9 +3,12 @@ import styled from 'styled-components';
 export const Container = styled.div`
     position: relative;
 
+    height: 18.25rem;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
     
     padding: 1.5rem;
@@ -66,6 +69,8 @@ export const Container = styled.div`
     }
 
     @media(min-width: 600px) {
+        height: initial;
+        
         width: 19rem;
         gap: .95rem;
 

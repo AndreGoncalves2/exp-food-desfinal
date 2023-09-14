@@ -13,13 +13,15 @@ import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useOrder } from "../../hooks/orderContext";
 
-export function Card({ dishName, price, img, dishId , dishDescription }) {
-    const { user, signOut } = useAuth();
-    const navigate = useNavigate();
+export function Card({ dishName, price, img, dishId , dishDescription, className }) {
     const [isFavorite, setIsFavorite] = useState(false);
     const [stepperCont, setStepperCont] = useState("");
-   
+    
+    const navigate = useNavigate();
+
+    const { user, signOut } = useAuth();
     const { setChangeOrder } = useOrder();
+    
     
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
     
@@ -90,7 +92,7 @@ export function Card({ dishName, price, img, dishId , dishDescription }) {
     }, []);
 
     return (
-        <Container>
+        <Container className={className} >
 
             {
                 handleCardIcon()
@@ -106,17 +108,20 @@ export function Card({ dishName, price, img, dishId , dishDescription }) {
             <p className="description">{dishDescription}</p>
             <h3 className="price" >{price}</h3>
 
-            <div className="card-controls">    
-                <Stepper 
-                    setStepperCont={setStepperCont}
-                /> 
+            {   Boolean(!user.adm) &&
 
-                <Button
-                    className="button"
-                    title="Incluir"
-                    onClick={handleAddOrder}
-                />
-            </div>
+                <div className="card-controls">    
+                    <Stepper 
+                        setStepperCont={setStepperCont}
+                    /> 
+
+                    <Button
+                        className="button"
+                        title="Incluir"
+                        onClick={handleAddOrder}
+                    />
+                </div>
+            }
 
         </Container>
     )

@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    display: grid;
-    grid-template-rows: 7.4rem 1fr;
-
     width: 100%;
     min-height: 100vh;
 
@@ -31,30 +28,6 @@ export const Container = styled.div`
     @media (min-width: 600px) {
         main {
             margin-inline: 8vw;
-            .Introduction {
-                margin: 10.5rem 0 0 0;
-                height: 16.25rem;
-
-                img {
-                    width: 35rem;
-                    height: 24rem;
-                }
-                
-                div {
-                    padding-right: 10vw;
-                    text-align: right;
-                    
-                    h3 {
-                        font-size: 2.5rem;
-                    }
-                    
-                    p {
-                        width: initial;
-
-                        text-align: right;
-                    }
-                }
-            }
         }
     }
 `;
@@ -62,8 +35,10 @@ export const Container = styled.div`
 export const Introduction = styled.div`
     position: relative;
     display: flex;
+    gap: 2rem;
 
-    margin: 2.75rem 1rem 0 2.25rem;
+    margin: 2.75rem 1rem 2.2rem 2.25rem;
+    padding-inline: 2rem;
     height: 7.5rem;
 
     border-radius: 0.2rem;
@@ -83,7 +58,7 @@ export const Introduction = styled.div`
         flex-direction: column;
         gap: .2rem;
         
-        margin: 2.25rem 0rem 1.3rem 9.5rem;
+        margin: 2.25rem 0rem 1.3rem 30vw;
         width: 100%;
         
         justify-content: center;
@@ -100,7 +75,6 @@ export const Introduction = styled.div`
         }
     
         p {
-            width: fit-content;
 
             font-family: Poppins, sans-serif;
             font-size: 0.75rem;
@@ -109,5 +83,33 @@ export const Introduction = styled.div`
 
             color: ${({ theme }) => theme.COLORS.LIGHT_300 };
         }
+
+    }
+    @media (min-width: 600px) {
+        margin: 10.5rem 0 0 0;
+            height: 16.25rem;
+
+            img {
+                width: 35rem;
+                height: 24rem;
+            }
+            
+            div {
+                padding-right: 10vw;
+                text-align: right;
+                
+                h3 {
+                    font-size: 2.9rem;
+                    font-weight: 500;
+                    line-height: 140%;
+                }
+                
+                p {
+                    width: initial;
+                    font-size: 1rem;
+
+                    text-align: right;
+                }
+            }
     }
 `;

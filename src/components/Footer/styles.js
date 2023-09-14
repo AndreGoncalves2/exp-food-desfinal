@@ -43,4 +43,26 @@ export const Container = styled.footer`
             color: ${({ theme }) => theme.COLORS.LIGHT_200};
         }
     }
+
+    @media (min-width: 600px) {
+        padding: 1.5rem 7.6rem;
+
+        .logo {
+            img {
+                width: 1.8rem;
+                height: 1.8rem;
+            }
+            
+            h4 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .copyright {
+        
+        h4 {
+            font-size: 0.87rem;
+        }
+    }
+    }
 `;

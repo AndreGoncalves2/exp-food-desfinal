@@ -1,15 +1,34 @@
 import { Container } from "./styles";
 import { Card } from "../Card";
 
+import { PiCaretRightLight, PiCaretLeftLight } from "react-icons/pi"
+import { useRef } from "react";
+
 export function Section({ title, meals, desserts, drinks }) {
+    const sectionRef = useRef(null);
+
+        const moveScroll = (direction) => {
+            const section = sectionRef.current;
+            if (direction == "left") {
+
+                section.scrollLeft -= section.clientWidth
+            } else {
+                
+                section.scrollLeft += section.clientWidth
+            }
+            
+
+        };  
+
     return (
         <Container>
             <h2>{title}</h2>
             
-            <div className="cards">
-                <div className="fora">
 
-                <div className="gradient-left"> <span> aaaaaaaaa </span>  </div>
+            <div className="meals" ref={sectionRef}>
+                <div onClick={() => moveScroll("left")} className="gradient-left"> <span><PiCaretLeftLight /></span> </div>
+                <div onClick={() => moveScroll("right")} className="gradient-right"> <span><PiCaretRightLight /></span> </div>
+
                 { meals &&
                     meals.map((meal) => (
                         <Card
@@ -22,9 +41,9 @@ export function Section({ title, meals, desserts, drinks }) {
                         />
                     ))
                 }
-                <div className="gradient-right"> <span> aaaaaaaa </span> </div>
-                </div>
-                
+            </div>
+
+            <div className="desserts">
                 { desserts &&
                     desserts.map((dessert) => (
                         <Card
@@ -37,9 +56,13 @@ export function Section({ title, meals, desserts, drinks }) {
                         />
                     ))
                 }
+            </div>
+
+            <div>
                 { drinks &&
                     drinks.map((drink) => (
                         <Card
+                            className="drink"
                             key={drink.id}
                             dishId={drink.id}
                             img={drink.img}

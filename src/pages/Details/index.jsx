@@ -58,13 +58,15 @@ export function Details() {
             <div>
                 <div className="details-wrapper">
                     <main>
-                        <ButtonText 
-                            title="< voltar"
-                            className="button-text"
-                            onClick={() => navigate(-1)}
-                        />
+                        <div>
+                            <ButtonText 
+                                title="< voltar"
+                                className="button-text"
+                                onClick={() => navigate(-1)}
+                            />
 
-                        <img src={imgUrl} alt="Foto do prato" />
+                            <img src={imgUrl} alt="Foto do prato" />
+                        </div>
                         
                         <Infos>
                             <h2>{dish.name}</h2>

@@ -7,6 +7,7 @@ export const Container = styled.div`
     display: grid;
     place-items: center;
     
+    text-align: center;
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
     
     > header {
@@ -34,27 +35,48 @@ export const Container = styled.div`
     main {
         display: flex;
         flex-direction: column;
-        align-items: center;
 
         text-align: center;
 
-        > .button-text {
-            align-self: flex-start;
-            margin-bottom: 1rem;
+        > div {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
 
-            font-size: 1.5rem;
-            line-height: 140%;
-
-            color: ${({ theme }) => theme.COLORS.LIGHT_300};
-        }
+            > .button-text {
+                align-self: flex-start;
+                margin-bottom: 1rem;
     
-        > img {
-            height: 16.5rem;
-            width: 16.5rem;
+                font-size: 1.5rem;
+                line-height: 140%;
+    
+                color: ${({ theme }) => theme.COLORS.LIGHT_300};
+            }
+            
+            > img {
+                height: 16.5rem;
+                width: 16.5rem;
 
-            border-radius: 50%;
+                align-self: center;
+    
+                border-radius: 50%;
+    
+                margin-bottom: 1rem;
+            }
+        }
+    }
 
-            margin-bottom: 1rem;
+    @media (min-width: 600px) {
+        main {
+            flex-direction: row;
+            text-align: initial;
+
+            > img {
+                width: 24.3rem;
+                height: 24.3rem;
+
+                /* margin-right: 3rem; */
+            }
         }
     }
 `;
@@ -73,7 +95,7 @@ export const Infos = styled.div`
         font-weight: 500;
         line-height: 140%;
 
-        text-align: justify;
+        text-align: center;
 
         color: ${({ theme }) => theme.COLORS.LIGHT_300};
     }
@@ -107,10 +129,41 @@ export const Infos = styled.div`
     > button {
         margin-block: 3rem 3.38rem;
     }
+
+    @media (min-width: 600px) {
+        max-width: 43rem;
+        h2 {
+            font-size: 2.5rem;
+        }
+
+        p {
+            font-size: 1.5rem;
+        }
+
+        .ingredients {
+            max-width: 44rem;
+            display: flex;
+            div {
+                width: fit-content;
+                flex-basis: 22%;
+                
+                input {
+
+                }
+            }
+        }
+    }
 `;
 
 export const Controls = styled.div`
     display: flex;
     gap: 1rem;
     margin-block: 3rem 3.38rem;
+
+    @media (min-width: 600px) {
+        > button {
+            max-width: fit-content;
+            padding-inline: 1.5rem;
+        }
+    }
 `;
