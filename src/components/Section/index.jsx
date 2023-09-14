@@ -7,6 +7,9 @@ export function Section({ title, meals, desserts, drinks }) {
             <h2>{title}</h2>
             
             <div className="cards">
+                <div className="fora">
+
+                <div className="gradient-left"> <span> aaaaaaaaa </span>  </div>
                 { meals &&
                     meals.map((meal) => (
                         <Card
@@ -14,10 +17,13 @@ export function Section({ title, meals, desserts, drinks }) {
                             dishId={meal.id}
                             img={meal.img}
                             dishName={meal.name}
+                            dishDescription={meal.description}
                             price={meal.price}
                         />
                     ))
                 }
+                <div className="gradient-right"> <span> aaaaaaaa </span> </div>
+                </div>
                 
                 { desserts &&
                     desserts.map((dessert) => (
@@ -26,6 +32,7 @@ export function Section({ title, meals, desserts, drinks }) {
                             dishId={dessert.id}
                             img={dessert.img}
                             dishName={dessert.name}
+                            dishDescription={dessert.description}
                             price={dessert.price}
                         />
                     ))
@@ -37,11 +44,12 @@ export function Section({ title, meals, desserts, drinks }) {
                             dishId={drink.id}
                             img={drink.img}
                             dishName={drink.name}
+                            dishDescription={drink.description}
                             price={drink.price}
                         />
                     ))
                 }
-                
+
             </div>
         </Container>
     )

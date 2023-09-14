@@ -13,7 +13,7 @@ import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useOrder } from "../../hooks/orderContext";
 
-export function Card({ dishName, price, img, dishId }) {
+export function Card({ dishName, price, img, dishId , dishDescription }) {
     const { user, signOut } = useAuth();
     const navigate = useNavigate();
     const [isFavorite, setIsFavorite] = useState(false);
@@ -103,16 +103,20 @@ export function Card({ dishName, price, img, dishId }) {
             }
 
             <h3 className="dish-Name" >{dishName}</h3>
+            <p className="description">{dishDescription}</p>
             <h3 className="price" >{price}</h3>
 
-            <Stepper 
-                setStepperCont={setStepperCont}
-            /> 
+            <div className="card-controls">    
+                <Stepper 
+                    setStepperCont={setStepperCont}
+                /> 
 
-            <Button 
-                title="Incluir"
-                onClick={handleAddOrder}
-            />
+                <Button
+                    className="button"
+                    title="Incluir"
+                    onClick={handleAddOrder}
+                />
+            </div>
 
         </Container>
     )

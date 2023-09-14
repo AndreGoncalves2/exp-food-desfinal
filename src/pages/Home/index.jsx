@@ -1,7 +1,7 @@
 import { Container, Introduction } from './styles'
 import { Header } from '../../components/Header';
 
-import macaronsUrl from '../../assets/macarons.png';
+import macaronsUrl from '../../assets/pngegg-1.png';
 
 import { Section } from '../../components/Section';
 import { Footer } from '../../components/Footer';
