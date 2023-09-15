@@ -2,9 +2,12 @@ import { Container, FavContainer } from "./styles";
 import { Header } from "../../components/Header";
 import { DishSmallCard } from "../../components/DishSmallCard";
 import { ButtonText } from "../../components/ButtonText";
+import { DeskHeader } from "../../components/DeskHeader";
+
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { Footer } from "../../components/Footer";
 
 export function MyFavorites() {
     const [favorites, setFavorites] = useState([]);
@@ -23,6 +26,8 @@ export function MyFavorites() {
     return (
         <Container>
             <Header />
+            <DeskHeader />
+
             <ButtonText
                 className="button-text"
                 title="< Voltar"
@@ -45,6 +50,7 @@ export function MyFavorites() {
                     ))
                 }
             </FavContainer>
+            <Footer />
         </Container>
     );
 };

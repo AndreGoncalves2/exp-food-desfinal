@@ -5,14 +5,18 @@ export const Container = styled.div`
     
     font-size: 1rem;
     font-weight: 400;
-    line-height: 100%;
     
-    color: ${({ theme }) => theme.COLORS.LIGHT_400}; 
+    color: ${({ theme }) => theme.COLORS.LIGHT_400};
     
+    label {
+        display: block;
+        margin-top: .45rem;
+    }
+
     .wrapper {
         position: relative;
         
-        margin-top: 1rem;
+        margin-top: .5rem;
 
         border-radius: 0.3rem;
         background-color: ${({ theme }) => theme.COLORS.DARK_900};
@@ -38,7 +42,7 @@ export const Container = styled.div`
             justify-content: space-between;
             align-items: center;
             
-            padding: .7rem 1rem;
+            padding: .65rem 1rem;
             border-radius: 0.3rem;
             
             font-family: Roboto, sans-serif;
@@ -174,4 +178,4 @@ export const Container = styled.div`
             }
         }
     }
-    `;
+`;

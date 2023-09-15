@@ -14,6 +14,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
+import { DeskHeader } from "../../components/DeskHeader";
 
 export function EditDish() {
     const { id } = useParams();
@@ -110,95 +111,105 @@ export function EditDish() {
     return (
         <Container>
             <Header />
+            <DeskHeader />
+            <main>
 
-            <ButtonText
-                className="button-text"
-                title="< Voltar"
-                onClick={(event) => {
-                    event.preventDefault();
-                    navigate(-1)
-                }}
-            />
-
-            <FormNewDish >
-
-                <h2>Editar prato</h2>
-
-                <div className="file-input-wrapper">
-                    <label htmlFor="file-input">
-                        <FiUpload /> {
-                            img ? "Selecione imagem para alterá-la" :  "Selecione imagem"
-                        }
-                    </label>
-
-                    <Input
-                        id="file-input"
-                        type="file"
-                        onChange={handleSetImg}
-                    />
-                </div>
-
-                <Input 
-                    label="Nome"
-                    value={name}
-                    type="text"
-                    placeholder="Ex.: Salada Ceasar"
-                    onChange={(e) => setName(e.target.value)}
+                <ButtonText
+                    className="button-text"
+                    title="< Voltar"
+                    onClick={(event) => {
+                        event.preventDefault();
+                        navigate(-1)
+                    }}
                 />
 
-                <DropDown 
-                    label="Categoria"
-                    currentCategory={oldCategory}
-                    setStatus={setCategory}
-                    useCategories={[{title: "Refeição"}, {title: "Sobremesa"}, {title: "Bebidas"}]}
-                />
+                <FormNewDish >
 
-                <InputFake 
-                    title="Ingredientes"
-                    dish_id={id}
-                    setIngredients={setIngredients}
-                />
+                    <h2>Editar prato</h2>
 
-                <Input 
-                    label="Preço"
-                    type="number"
+                    <div className="new-dish-header">
+                        <div className="file-input-wrapper">
+                            <label htmlFor="file-input">
+                                <FiUpload /> {
+                                    img ? "Selecione imagem para alterá-la" :  "Selecione imagem"
+                                }
+                            </label>
+
+                            <Input
+                            label="Imagem do prato"
+                                id="file-input"
+                                type="file"
+                                onChange={handleSetImg}
+                            />
+                        </div>
+
+                        <Input 
+                            className="input-name"
+                            label="Nome"
+                            value={name}
+                            type="text"
+                            placeholder="Ex.: Salada Ceasar"
+                            onChange={(e) => setName(e.target.value)}
+                        />
+
+                        <DropDown 
+                            label="Categoria"
+                            currentCategory={oldCategory}
+                            setStatus={setCategory}
+                            useCategories={[{title: "Refeição"}, {title: "Sobremesa"}, {title: "Bebidas"}]}
+                        />
+                    </div>
                     
-                    placeholder={formattedPrice.format(price)}
-                    onBlur={(e) => e.target.value = ""}
-                    onFocus={(e)=> e.target.value = ""}
-                    onChange={(e) => setPrice(e.target.value)}
-                />
+                    <div className="new-dish-body">
+                        <InputFake 
+                            title="Ingredientes"
+                            dish_id={id}
+                            setIngredients={setIngredients}
+                        />
 
-                <TextArea 
-                    label="Descrição"
-                    value={description}
-                    placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
-                    onChange={(e) => setDescription(e.target.value)}
-                />
+                        <Input 
+                            label="Preço"
+                            type="number"
+                            
+                            placeholder={formattedPrice.format(price)}
+                            onBlur={(e) => e.target.value = ""}
+                            onFocus={(e)=> e.target.value = ""}
+                            onChange={(e) => setPrice(e.target.value)}
+                        />
+                    </div>
 
 
-                <div className="button-wrapper">
-                    <Button
-                        className="delete-button"
-                        title="Excluir prato"
-                        onClick={(event) => {
-                            event.preventDefault();
-                            handleDelete();
-                        }}
-                    
+                    <TextArea 
+                        label="Descrição"
+                        value={description}
+                        placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                        onChange={(e) => setDescription(e.target.value)}
                     />
 
-                    <Button
-                        title="Salvar alterações"
-                        className="save"
-                        onClick={(event) => {
-                            event.preventDefault();
-                            handleSubmit();
-                        }}
-                    />  
-                </div>
 
-            </FormNewDish>
+                    <div className="button-wrapper">
+                        <Button
+                            className="delete-button"
+                            title="Excluir prato"
+                            onClick={(event) => {
+                                event.preventDefault();
+                                handleDelete();
+                            }}
+                        
+                        />
+
+                        <Button
+                            title="Salvar alterações"
+                            className="save"
+                            onClick={(event) => {
+                                event.preventDefault();
+                                handleSubmit();
+                            }}
+                        />  
+                    </div>
+
+                </FormNewDish>
+            </main>
             <Footer />
         </Container>
     )

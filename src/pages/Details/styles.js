@@ -9,7 +9,11 @@ export const Container = styled.div`
     
     text-align: center;
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
-    
+
+    .desktop-header {
+        display: none;
+    }
+
     > header {
         position: fixed;
         top: 0;
@@ -38,25 +42,26 @@ export const Container = styled.div`
 
         text-align: center;
 
+        > .button-text {
+            align-self: flex-start;
+            margin-bottom: 2rem;
+
+            font-size: 1.5rem;
+            line-height: 140%;
+
+            color: ${({ theme }) => theme.COLORS.LIGHT_300};
+        }
+
         > div {
             display: flex;
             flex-direction: column;
             gap: 2rem;
 
-            > .button-text {
-                align-self: flex-start;
-                margin-bottom: 1rem;
-    
-                font-size: 1.5rem;
-                line-height: 140%;
-    
-                color: ${({ theme }) => theme.COLORS.LIGHT_300};
-            }
-            
+
             > img {
                 height: 16.5rem;
                 width: 16.5rem;
-
+    
                 align-self: center;
     
                 border-radius: 50%;
@@ -64,18 +69,31 @@ export const Container = styled.div`
                 margin-bottom: 1rem;
             }
         }
+
     }
 
     @media (min-width: 600px) {
+        .desktop-header {
+            display: initial;
+            width: 100%;
+        }
+
+        .mobile-header {
+            display: none;
+        }
+
+        gap: 3rem;
+
         main {
-            flex-direction: row;
-            text-align: initial;
+            > div {
+                flex-direction: row;
+                margin-bottom: 2.5rem;
+                gap: 3rem;
 
-            > img {
-                width: 24.3rem;
-                height: 24.3rem;
-
-                /* margin-right: 3rem; */
+                > img {
+                    width: 24.3rem;
+                    height: 24.3rem;
+                }
             }
         }
     }
@@ -128,6 +146,9 @@ export const Infos = styled.div`
 
     > button {
         margin-block: 3rem 3.38rem;
+        width: fit-content;
+        padding-inline: 1.5rem;
+
     }
 
     @media (min-width: 600px) {
@@ -138,6 +159,7 @@ export const Infos = styled.div`
 
         p {
             font-size: 1.5rem;
+            text-align: left;
         }
 
         .ingredients {

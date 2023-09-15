@@ -6,6 +6,7 @@ import { Tag } from "../../components/Tag";
 import { Stepper } from "../../components/Stepper";
 import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
+import { DeskHeader } from "../../components/DeskHeader";
 
 import { PiReceiptBold } from 'react-icons/pi'
 
@@ -55,58 +56,60 @@ export function Details() {
     return (
         <Container>
             <Header />
+            <DeskHeader />
+
             <div>
                 <div className="details-wrapper">
                     <main>
+                        <ButtonText 
+                            title="< voltar"
+                            className="button-text"
+                            onClick={() => navigate(-1)}
+                        />
+
                         <div>
-                            <ButtonText 
-                                title="< voltar"
-                                className="button-text"
-                                onClick={() => navigate(-1)}
-                            />
-
                             <img src={imgUrl} alt="Foto do prato" />
-                        </div>
                         
-                        <Infos>
-                            <h2>{dish.name}</h2>
-                            
-                            <p>{dish.description}</p>
+                            <Infos>
+                                <h2>{dish.name}</h2>
+                                
+                                <p>{dish.description}</p>
 
-                            <div className="ingredients">
-                                {
-                                    ingredients.map((ingredient, index) => (
-                                        <Tag 
-                                            title={ingredient}
-                                            key={index}
-                                        />
-                                    ))
+                                <div className="ingredients">
+                                    {
+                                        ingredients.map((ingredient, index) => (
+                                            <Tag 
+                                                title={ingredient}
+                                                key={index}
+                                            />
+                                        ))
+                                    }
+                                </div>
+
+                                {    Boolean(user.adm) &&
+
+                                    <Button title="Editar pedido" 
+                                        onClick={() => navigate(`/dish/edit/${dish.id}`)}
+                                    />
                                 }
-                            </div>
 
-                            {    Boolean(user.adm) &&
+                                {    Boolean(!user.adm) &&
 
-                                <Button title="Editar pedido" 
-                                    onClick={() => navigate(`/dish/edit/${dish.id}`)}
-                                />
-                            }
+                                    <Controls>
+                                        <Stepper
+                                            setStepperCont={setStepperCont}
+                                        />
 
-                            {    Boolean(!user.adm) &&
+                                        <Button 
+                                            icon={<PiReceiptBold/>}
+                                            title={"pedir ∙ " + formattedPrice.format(dish.price * stepperCont)}
+                                            onClick={handleAddOrder}
+                                        />
+                                    </Controls>
+                                }
 
-                                <Controls>
-                                    <Stepper
-                                        setStepperCont={setStepperCont}
-                                    />
-
-                                    <Button 
-                                        icon={<PiReceiptBold/>}
-                                        title={"pedir ∙ " + formattedPrice.format(dish.price * stepperCont)}
-                                        onClick={handleAddOrder}
-                                    />
-                                </Controls>
-                            }
-
-                        </Infos>
+                            </Infos>
+                        </div>
                     </main>
                 </div>
             </div>

@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    min-height: 100vh;
+    height: 100vh;
     position: relative;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
+
+    .desktop-header {
+        display: none;
+    }
     
     main {
         .button-text {
@@ -21,10 +25,28 @@ export const Container = styled.div`
             background-color: ${({ theme }) => theme.COLORS.RED_400};
         }
      
-        footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    @media (min-width: 600px) {
+        .desktop-header {
+            display: initial;
+        }
+    }
+
+    .mobile-header {
+        display: none;
+    }
+
+    > main {
+        .button-text {
+            font-size: 1.5rem;
+            margin-inline: 8vw;
         }
     }
 `;
@@ -35,6 +57,12 @@ export const FormNewDish = styled.form`
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+
+    .new-dish-header, .new-dish-body {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; 
+    }
     
     .file-input-wrapper {
         position: relative;
@@ -44,7 +72,7 @@ export const FormNewDish = styled.form`
 
         > label {
             position: absolute;
-
+            top: 3rem;
             display: flex;
             align-items: center;
             gap: .5rem;
@@ -79,6 +107,46 @@ export const FormNewDish = styled.form`
             width: 50vw;
 
             background-color: ${({ theme }) => theme.COLORS.DARK_800};
+        }
+    }
+
+    @media (min-width: 600px) {
+        padding: 2.55rem 0 7.25rem 0;
+        margin-inline: 8vw;
+
+        label {
+            font-size: 1rem;
+        }
+
+        .new-dish-header {
+            display: grid;
+            grid-template-columns: .5fr 1.3fr 1fr;
+            gap: 2.88rem;
+
+            .file-input-wrapper {
+                white-space: nowrap;
+
+                min-width: 14.2rem;
+                
+                > label {
+                    margin-left: 1rem;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .new-dish-body {
+            display: grid;
+            grid-template-columns: 1fr .4fr;
+        }
+
+        .button-wrapper {
+            align-self: flex-end;
+            width: fit-content;
+
+            button {
+                padding-inline: 1.5rem;
+            }
         }
     }
     

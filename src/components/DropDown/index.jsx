@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { Container } from './styles';
+import { useEffect, useState } from 'react';
 
 import { TbChevronDown } from 'react-icons/tb';
 import { IoEllipse } from "react-icons/io5";
@@ -63,9 +63,7 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
     }, [currentCategory]);
 
     return (
-        <Container
-            
-        >
+        <Container >
             <label htmlFor="">{label}</label>
 
             <div className="wrapper">

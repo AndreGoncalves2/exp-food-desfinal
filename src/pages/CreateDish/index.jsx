@@ -8,6 +8,7 @@ import { InputFake } from "../../components/InputFake";
 import { TextArea } from "../../components/TextArea";
 import { Footer } from "../../components/Footer";
 import { DropDown } from "../../components/DropDown";
+import { DeskHeader } from "../../components/DeskHeader";
 
 import { FiUpload } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
@@ -78,6 +79,7 @@ export function CreateDish() {
     return (
         <Container>
             <Header />
+            <DeskHeader />
             <main>
                 <ButtonText
                     className="button-text"
@@ -92,47 +94,53 @@ export function CreateDish() {
 
                     <h2>Novo prato</h2>
 
-                    <div className="file-input-wrapper">
-                        <label htmlFor="file-input">
-                            <FiUpload /> {
-                                img ? "Selecione imagem para alterá-la" :  "Selecione imagem"
-                            }
-                        </label>
+                    <div className="new-dish-header">
+                        <div className="file-input-wrapper">
+                            <label htmlFor="file-input">
+                                <FiUpload /> {
+                                    img ? "Selecione imagem para alterá-la" :  "Selecione imagem"
+                                }
+                            </label>
+
+                            <Input
+                                label="Imagem do prato"
+                                id="file-input"
+                                type="file"
+                                onChange={handleSetImg}
+                            />
+                        </div>
 
                         <Input
-                            id="file-input"
-                            type="file"
-                            onChange={handleSetImg}
+                            className="input-name"
+                            label="Nome"
+                            type="text"
+                            placeholder="Ex.: Salada Ceasar"
+                            onChange={(e) => setName(e.target.value)}
+                        />
+
+                        <DropDown 
+                            label="Categoria"
+                            currentCategory={"Refeição"}
+                            setStatus={setCategory}
+                            useCategories={[{title: "Refeição"}, {title: "Sobremesa"}, {title: "Bebidas"}]}
                         />
                     </div>
+                    
+                    <div className="new-dish-body">
+                        <InputFake 
+                            title="Ingredientes" 
+                            setIngredients={setIngredients}
+                        />
 
-                    <Input 
-                        label="Nome"
-                        type="text"
-                        placeholder="Ex.: Salada Ceasar"
-                        onChange={(e) => setName(e.target.value)}
-                    />
-
-                    <DropDown 
-                        label="Categoria"
-                        currentCategory={"Refeição"}
-                        setStatus={setCategory}
-                        useCategories={[{title: "Refeição"}, {title: "Sobremesa"}, {title: "Bebidas"}]}
-                    />
-
-                    <InputFake 
-                        title="Ingredientes" 
-                        setIngredients={setIngredients}
-                    />
-
-                    <Input 
-                        label="Preço"
-                        value={price}
-                        placeholder="R$ 0,00"
-                        onBlur={(e) => formatPrice(e)}
-                        onFocus={(e)=> e.target.value = ""}
-                        onChange={(e) => setPrice(e.target.value)}
-                    />
+                        <Input 
+                            label="Preço"
+                            value={price}
+                            placeholder="R$ 0,00"
+                            onBlur={(e) => formatPrice(e)}
+                            onFocus={(e)=> e.target.value = ""}
+                            onChange={(e) => setPrice(e.target.value)}
+                        />
+                    </div>
 
                     <TextArea 
                         label="Descrição"
