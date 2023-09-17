@@ -118,7 +118,8 @@ export function CreateDish() {
                             onChange={(e) => setName(e.target.value)}
                         />
 
-                        <DropDown 
+                        <DropDown
+                            className="category"
                             label="Categoria"
                             currentCategory={"Refeição"}
                             setStatus={setCategory}

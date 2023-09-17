@@ -96,7 +96,7 @@ export function EditDish() {
         setPrice(data.price);
         setOldImg(data.img);
         setDishId(data.id);
-        setIngredients(data.ingredients.split(','));
+        // setIngredients(data.ingredients.split(','));
     };
 
     useEffect(() => {

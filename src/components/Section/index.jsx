@@ -24,7 +24,6 @@ export function Section({ title, meals, desserts, drinks }) {
         <Container>
             <h2>{title}</h2>
             
-
             <div className="meals" ref={sectionRef}>
                 <div onClick={() => moveScroll("left")} className="gradient-left"> <span><PiCaretLeftLight /></span> </div>
                 <div onClick={() => moveScroll("right")} className="gradient-right"> <span><PiCaretRightLight /></span> </div>

@@ -9,7 +9,7 @@ export const Container = styled.div`
         display: none;
     }
     
-    .button-text {
+    > .button-text {
         margin: 1rem 2rem 0;
     }
 
@@ -29,14 +29,14 @@ export const Container = styled.div`
         width: 100%;
     }
     
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
         > .button-text {
-            margin: 2rem 8vw 0;
+            margin: 2rem 12vw 0;
             font-size: 1.5rem;
         }
 
         h1 {
-            margin-inline: 8vw;
+            margin-inline: 12vw;
         }
         
         .mobile-header {
@@ -54,13 +54,13 @@ export const FavContainer = styled.main`
     max-height: 50vh;
 
     padding-left: 2.2rem;
-    /* display: flex; */
+
+    display: flex;
     flex-direction: column;
     gap: 1.5rem;
 
-    @media (min-width: 600px) {
-        padding-inline: 8vw;
-        margin-bottom: 10rem;
+    @media (min-width: 768px) {
+        padding-inline: 12vw;
         display: grid;
         grid-row-gap: 3rem;
         grid-template-columns: 1fr 1fr 1fr 1fr;

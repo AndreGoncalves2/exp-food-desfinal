@@ -5,7 +5,7 @@ import { TbChevronDown } from 'react-icons/tb';
 import { IoEllipse } from "react-icons/io5";
 import { api } from '../../services/api';
 
-export function DropDown({ label, setStatus, useCategories, currentCategory, sale }) {
+export function DropDown({ label, setStatus, useCategories, currentCategory, sale, className }) {
     const [dropDownOpen, setDropDownOpen] = useState(false);
     const [classDropDown, setClassDropDown] = useState("");
     const [categories, setCategories] = useState(useCategories);
@@ -63,7 +63,7 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
     }, [currentCategory]);
 
     return (
-        <Container >
+        <Container className={className} >
             <label htmlFor="">{label}</label>
 
             <div className="wrapper">

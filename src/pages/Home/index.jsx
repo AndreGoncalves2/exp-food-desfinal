@@ -55,21 +55,27 @@ export function Home() {
                         </p>
                     </div>
                 </Introduction>
+                {   meals.length > 0 &&
+                    <Section 
+                        title="Refeições"
+                        meals={meals}
+                    />
+                }
 
-                <Section 
-                    title="Refeições"
-                    meals={meals}
-                />
+                {   desserts.length != 0 &&
+                    <Section 
+                        title="Sobremesas"
+                        desserts={desserts}
+                    />
+                }
 
-                <Section 
-                    title="Sobremesas"
-                    desserts={desserts}
-                />
+                {   drinks.length != 0 &&
 
-                <Section 
-                    title="Bebidas"
-                    drinks={drinks}
-                />
+                    <Section 
+                        title="Bebidas"
+                        drinks={drinks}
+                    />
+                }
 
             </main>
             

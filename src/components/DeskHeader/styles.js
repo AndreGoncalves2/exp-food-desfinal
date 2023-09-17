@@ -36,12 +36,13 @@ export const Container = styled.header`
 
     .button-text {
         white-space: nowrap;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         line-height: 100%;
     }
 
     .order-button {
-        max-width: 9.5rem;
+        max-width: 12rem;
+        white-space: nowrap;
     }
 
     .input-container {
@@ -53,10 +54,40 @@ export const Container = styled.header`
     }
 
     .logOut {
-        height: 1.3rem;
+        height: 2rem;
         border: none;
         background: transparent;
 
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
+        
+        svg {
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+
+    @media (min-width: 1240px) {
+        .button-text {
+            font-size: 1vw;
+        }
+
+        .order-button {
+            font-size: 1.2rem;
+            white-space: nowrap;
+        }
+
+        img {
+            height: 2.6rem;
+            width: 2.6rem;
+        }
+
+        .logo {
+            > div {
+            
+                h2 {
+                    font-size: 2rem;
+                }
+            }
+        }
     }
 `;

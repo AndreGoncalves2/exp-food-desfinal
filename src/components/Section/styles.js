@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
     margin-left: 1.5rem;
-    display: flex;
     flex-direction: column ;
 
     h2 {
@@ -30,7 +29,7 @@ export const Container = styled.section`
         display: none;
     }
 
-    @media(min-width: 600px) {
+    @media(min-width: 768px) {
         position: relative;
         margin-left: 0;
         
@@ -50,11 +49,15 @@ export const Container = styled.section`
         }
 
         .gradient-left, .gradient-right {
+            pointer-events: none;
+
             display: flex;
             align-items: center;
             position: absolute;
+            
             height: 27.61rem;
             bottom: 0;
+            height: 30.5rem;
             width: 17rem;
 
             color: white;
@@ -64,6 +67,7 @@ export const Container = styled.section`
             background: linear-gradient(-100deg, rgba(0, 10, 15, 0) 0%, #000A0F 100%);
 
             span {
+                pointer-events: all;
                 margin-left: 2rem;
 
                 svg {

@@ -6,6 +6,8 @@ export const Container = styled.div`
     justify-content: center;
     align-self: center;
 
+    cursor: pointer;
+
     gap: .7rem;
 
     > div {

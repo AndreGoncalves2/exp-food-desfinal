@@ -1,6 +1,7 @@
 import { Container, AdmOrderCard, UserOrderCard } from "./style";
 import { DropDown } from "../../components/DropDown";
 import { Header } from "../../components/Header";
+import { DeskHeader } from "../../components/DeskHeader";
 
 import {  useEffect, useState } from 'react';
 import { ButtonText } from "../../components/ButtonText";
@@ -22,15 +23,15 @@ export function OrderHistory() {
     function verifyStatus(status) {
         if (status == "Pendente") {
             return (
-                <span> <IoEllipse className="red"/> Pendente</span>
+                <span className="category"> <IoEllipse className="red"/> Pendente</span>
             );
         } else if (status == "Preparando") {
             return (
-                <span> <IoEllipse className="yellow"/> Preparando</span>
+                <span className="category"> <IoEllipse className="yellow"/> <p>Preparando</p></span>
             );
         } else if (status == "Entregue") {
             return (
-                <span> <IoEllipse className="green"/> Entregue</span>
+                <span className="category"> <IoEllipse className="green"/> Entregue</span>
             );
         };
     };
@@ -66,6 +67,7 @@ export function OrderHistory() {
     return (
         <Container>
             <Header />
+            <DeskHeader />
 
             <main>
                 <ButtonText
@@ -74,38 +76,48 @@ export function OrderHistory() {
                     onClick={() => navigate(-1)}
                 />
 
-                <h1>Pedidos</h1>
+                <h1>Histórico de Pedidos</h1>
 
                 <div className="card">
+                    <div>
 
-                    { Boolean(user.adm) &&
+                        <div className="index">
 
-                        sales.map((sale, index) => (
-                            <AdmOrderCard key={index}>
-                                <h4> <span>{sale.orderNumber}</span> <span>{sale.date}</span></h4>
-                                <p>{sale.dishes}</p>
+                            <span className="status">Status</span>
+                            <span>Código</span>
+                            <span>Detalhamento</span>
+                            <span className="date">Data e hora</span>
+                        </div>
+                        { Boolean(user.adm) &&
 
-                                <DropDown
-                                    sale={sale.id}
-                                    currentCategory={sale.status}
-                                    setStatus={setStatus}
-                                    useCategories={[{color: "red", title: "Pendente"}, {color: "yellow", title: "Preparando"}, {color: "green", title: "Entregue"}]}
-                                />
-                            </AdmOrderCard>
-                        ))
-                    }
+                            sales.map((sale, index) => (
+                                <AdmOrderCard key={index}>
+                                    <span className="sale-number">{sale.orderNumber}</span> <span className="sale-date">{sale.date}</span>
+                                    <p className="sale-dishes" >{sale.dishes}</p>
 
-                    { Boolean(!user.adm) &&
-                        
+                                    <DropDown
+                                        className="drop-down"
+                                        sale={sale.id}
+                                        currentCategory={sale.status}
+                                        setStatus={setStatus}
+                                        useCategories={[{color: "red", title: "Pendente"}, {color: "yellow", title: "Preparando"}, {color: "green", title: "Entregue"}]}
+                                    />
+                                </AdmOrderCard>
+                            ))
+                        }
+
+                        { Boolean(!user.adm) &&
                             
-                        sales.map((sale, index) => (
-                            <UserOrderCard key={index} >
-                                <h4> <span>{sale.orderNumber}</span> {verifyStatus(sale.status)} <span>{sale.date}</span></h4>
                                 
-                                <p>{sale.dishes}</p>
-                            </UserOrderCard>
-                        ))
-                    }
+                            sales.map((sale, index) => (
+                                <UserOrderCard key={index} >
+                                    <span className="sale-number">{sale.orderNumber}</span> {verifyStatus(sale.status)} <span className="sale-date">{sale.date}</span>
+                                    
+                                    <p className="sale-dishes">{sale.dishes}</p>
+                                </UserOrderCard>
+                            ))
+                        }
+                    </div>
                 </div>
             </main>
 

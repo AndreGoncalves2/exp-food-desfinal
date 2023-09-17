@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
@@ -11,8 +11,9 @@ export const Container = styled.div`
     }
     
     main {
+        padding-bottom: 5rem;
+
         .button-text {
-            margin: 1rem 2rem 0;
         }
 
         h2 {
@@ -33,20 +34,30 @@ export const Container = styled.div`
         width: 100%;
     }
 
-    @media (min-width: 600px) {
-        .desktop-header {
-            display: initial;
-        }
-    }
-
-    .mobile-header {
-        display: none;
-    }
-
+    
     > main {
         .button-text {
             font-size: 1.5rem;
-            margin-inline: 8vw;
+            margin: 4rem 2rem 0;
+
+        }
+    }
+
+    
+    @media (min-width: 768px) {
+        .mobile-header {
+            display: none;
+        }
+
+        .desktop-header {
+            display: initial;
+        }
+
+        > main {
+            .button-text {
+                font-size: 1.5rem;
+                margin-inline: 12vw;
+            }
         }
     }
 `;
@@ -111,11 +122,30 @@ export const FormNewDish = styled.form`
     }
 
     @media (min-width: 600px) {
-        padding: 2.55rem 0 7.25rem 0;
-        margin-inline: 8vw;
+        margin-inline: 12vw;
+    }
+
+    @media (min-width: 768px) {
+        padding: 8vh 0 7.25rem 0;
+        margin-inline: 12vw;
 
         label {
-            font-size: 1rem;
+            font-size: 2rem;
+        }
+
+        h4 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-container {
+            input {
+                font-size: 1.4rem;
+            }
+
+            > label {
+                margin-bottom: 1rem;
+            }
         }
 
         .new-dish-header {
@@ -130,7 +160,14 @@ export const FormNewDish = styled.form`
                 
                 > label {
                     margin-left: 1rem;
+                    margin-top: 1.2rem;
                     cursor: pointer;
+                }
+            }
+
+            .category {
+                span {
+                    font-size: 1.4rem;
                 }
             }
         }
@@ -138,6 +175,12 @@ export const FormNewDish = styled.form`
         .new-dish-body {
             display: grid;
             grid-template-columns: 1fr .4fr;
+
+            > div {
+                input {
+                    font-size: 1.2rem;
+                }
+            }
         }
 
         .button-wrapper {
@@ -145,8 +188,15 @@ export const FormNewDish = styled.form`
             width: fit-content;
 
             button {
+                font-size: 1.5rem;
+                font-weight: normal;
                 padding-inline: 1.5rem;
             }
+        }
+
+        textarea {
+            font-size: 2rem;
+            max-height: 10rem ;
         }
     }
     

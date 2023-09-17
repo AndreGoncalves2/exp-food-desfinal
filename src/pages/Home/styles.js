@@ -3,19 +3,26 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100%;
     min-height: 100vh;
+    padding-bottom: 10rem;
+    position: relative;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
     
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
     main {
         overflow: auto;
-        margin-bottom: 3rem;
     }
 
     .desktop-header {
         display: none;
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
         .mobile-header {
             display: none;
         }
@@ -25,9 +32,9 @@ export const Container = styled.div`
         }
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
         main {
-            margin-inline: 8vw;
+            margin-inline: 12vw;
         }
     }
 `;
@@ -71,7 +78,7 @@ export const Introduction = styled.div`
             font-weight: 600;
             line-height: 140%;
 
-            color: ${({ theme }) => theme.COLORS.LIGHT_300 };
+            color: ${({ theme }) => theme.COLORS.LIGHT_300};
         }
     
         p {
@@ -81,35 +88,48 @@ export const Introduction = styled.div`
             font-weight: 400;
             line-height: 140%;
 
-            color: ${({ theme }) => theme.COLORS.LIGHT_300 };
+            color: ${({ theme }) => theme.COLORS.LIGHT_300};
         }
 
     }
-    @media (min-width: 600px) {
-        margin: 10.5rem 0 0 0;
-            height: 16.25rem;
 
-            img {
-                width: 35rem;
-                height: 24rem;
+    @media (min-width: 768px) {
+        margin: 10.5rem 0 0 0;
+        height: 16.25rem;
+
+        img {
+            width: 35rem;
+            height: 24rem;
+        }
+        
+        div {
+            padding-right: 5vw;
+            text-align: right;
+            
+            h3 {
+                font-size: 1.9rem;
+                /* max-width: 20rem; */
+                font-weight: 500;
+                line-height: 140%;
             }
             
-            div {
-                padding-right: 10vw;
-                text-align: right;
-                
-                h3 {
-                    font-size: 2.9rem;
-                    font-weight: 500;
-                    line-height: 140%;
-                }
-                
-                p {
-                    width: initial;
-                    font-size: 1rem;
+            p {
+                width: initial;
+                font-size: 1rem;
+                max-width: 20rem;
+                align-self: flex-end;
 
-                    text-align: right;
-                }
+                text-align: right;
             }
+        }
+    }
+
+    @media (min-width: 970px) {
+        div {
+            padding-right: 10vw;
+            h3 {
+                font-size: 2.9rem;
+            }
+        }
     }
 `;

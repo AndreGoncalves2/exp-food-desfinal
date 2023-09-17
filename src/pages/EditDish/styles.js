@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    height: 100vh;
+    min-height: 100vh;
     position: relative;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
@@ -32,23 +32,33 @@ export const Container = styled.div`
         bottom: 0;
         width: 100%;
     }
+    
+    > main {
+        .button-text {
+            font-size: 1.5rem;
+            margin: 4rem 2rem 0;
+
+        }
+    }
 
     @media (min-width: 600px) {
         .desktop-header {
             display: initial;
         }
-    }
 
-    .mobile-header {
-        display: none;
-    }
+        .mobile-header {
+            display: none;
+        }
 
-    > main {
-        .button-text {
-            font-size: 1.5rem;
-            margin-inline: 8vw;
+        > main {
+            .button-text {
+                font-size: 1.5rem;
+                margin-inline: 12vw;
+            }
         }
     }
+    
+
 `;
 
 export const FormNewDish = styled.form`
@@ -111,8 +121,8 @@ export const FormNewDish = styled.form`
     }
 
     @media (min-width: 600px) {
-        padding: 2.55rem 0 7.25rem 0;
-        margin-inline: 8vw;
+        padding: 8vh 0 7.25rem 0;
+        margin-inline: 12vw;
 
         label {
             font-size: 1rem;
@@ -147,6 +157,10 @@ export const FormNewDish = styled.form`
             button {
                 padding-inline: 1.5rem;
             }
+        }
+        
+        textarea {
+            max-height: 10rem ;
         }
     }
     

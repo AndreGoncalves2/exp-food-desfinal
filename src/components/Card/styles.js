@@ -15,9 +15,9 @@ export const Container = styled.div`
     width: 13rem;
 
     border-radius: 0.5rem;
-    border: 1px solid ${({ theme }) => theme.COLORS.DARK_300 };
+    border: 1px solid ${({ theme }) => theme.COLORS.DARK_300};
     
-    background-color: ${({ theme }) => theme.COLORS.DARK_200 };
+    background-color: ${({ theme }) => theme.COLORS.DARK_200};
 
     .heart {
         position: absolute;
@@ -68,7 +68,7 @@ export const Container = styled.div`
         line-height: .6rem;
     }
 
-    @media(min-width: 600px) {
+    @media(min-width: 768px) {
         height: initial;
         
         width: 19rem;
@@ -93,8 +93,10 @@ export const Container = styled.div`
             display: initial;
             line-height: 160%;
             
-            font-family: Roboto;
+            font-family: Roboto, sans-serif;
             font-size: 0.875rem;
+            height: 2.75rem;
+            overflow: hidden;
 
             color: ${({ theme }) => theme.COLORS.LIGHT_400};
         }

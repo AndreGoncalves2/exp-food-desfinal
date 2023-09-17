@@ -4,11 +4,13 @@ import { Header } from "../../components/Header";
 import { DishSmallCard } from "../../components/DishSmallCard";
 import { ButtonText } from "../../components/ButtonText";
 import { Button } from "../../components/Button";
+import { DeskHeader } from "../../components/DeskHeader";
 
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useOrder } from "../../hooks/orderContext";
+import { Footer } from "../../components/Footer";
 
 export function Order() {
     const [priceTotal, setPriceTotal] = useState(0);
@@ -52,6 +54,8 @@ export function Order() {
     return (
         <Container>
             <Header />
+            <DeskHeader />
+
             <ButtonText
                 className="button-text"
                 title="< Voltar"
@@ -82,11 +86,12 @@ export function Order() {
             
             <h2>Total: {priceTotal}</h2>
 
-            <Button 
+            <Button
+                className="button-finish"
                 title="Finalizar"
                 onClick={handleFinalize}
             />
-
+            <Footer />
         </Container>
     );
 };
