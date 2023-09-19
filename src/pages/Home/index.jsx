@@ -38,7 +38,8 @@ export function Home() {
 
     useEffect(() => {
         findDishes("/dish");
-    }, [])
+    }, []);
+
     return (
         <Container>
             <Header />

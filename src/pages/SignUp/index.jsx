@@ -7,12 +7,15 @@ import { ButtonText } from '../../components/ButtonText';
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 
 export function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const { signIn } = useAuth();
 
     const navigate = useNavigate();
 
@@ -25,7 +28,10 @@ export function SignUp() {
 
         api.post("/users", { name, email, password })
         .then(() => {
-            alert("Usuário cadastrado com sucesso")
+            alert("Usuário cadastrado com sucesso");
+            signIn({email, password});
+            navigate("/");
+            
         }).catch(error => {
             if (error.response) {
                 alert(error.response.data.message);

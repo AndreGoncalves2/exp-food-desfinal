@@ -29,14 +29,20 @@ export const Container = styled.div`
         }
     }
 
-    @media (min-width: 600px) {
+    @media (min-width: 768px) {
         padding-top: 20vh;
+
         main {
             flex-direction: row;
             justify-content: space-around;
             
-            h1 {
-                font-size: 4rem;
+            img {
+                height: 4vw;
+                width: 4vw;
+            }
+
+            h2 {
+                font-size: 3vw;
             }
 
             > form {

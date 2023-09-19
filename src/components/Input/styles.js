@@ -19,7 +19,7 @@ export const Container = styled.div`
         align-items: center;
         gap: .3rem;
 
-        color: ${({ theme }) => theme.COLORS.LIGHT_500 };
+        color: ${({ theme }) => theme.COLORS.LIGHT_500};
 
         > svg {
             height: 2rem;
@@ -35,7 +35,7 @@ export const Container = styled.div`
             font-size: 1rem;
             font-weight: 400;
             
-            color: ${({ theme }) => theme.COLORS.LIGHT_500 };
+            color: ${({ theme }) => theme.COLORS.LIGHT_500};
         }
 
         width: 100%;
@@ -44,7 +44,7 @@ export const Container = styled.div`
         border-radius: 0.5rem;
         border: none;
         
-        background-color: ${({ theme }) => theme.COLORS.DARK_900 };
+        background-color: ${({ theme }) => theme.COLORS.DARK_900};
     }
 
     @media (min-width: 600px) {

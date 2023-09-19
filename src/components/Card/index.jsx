@@ -13,6 +13,9 @@ import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useOrder } from "../../hooks/orderContext";
 
+import { AlertMessage } from '../../components/AlertMessage';
+
+
 export function Card({ dishName, price, img, dishId , dishDescription, className }) {
     const [isFavorite, setIsFavorite] = useState(false);
     const [stepperCont, setStepperCont] = useState("");
@@ -75,6 +78,10 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
         };
     };
 
+    function handleAlertError() {
+
+    };
+
     useEffect(() => {
         async function loadFavorites() {
             try {
@@ -123,6 +130,11 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
                 </div>
             }
 
+            <AlertMessage
+                className="show"
+                message="Error" 
+                typeError="ok"
+            />
         </Container>
     )
 }
