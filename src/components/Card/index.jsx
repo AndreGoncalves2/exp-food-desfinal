@@ -14,16 +14,22 @@ import { useNavigate } from "react-router-dom";
 import { useOrder } from "../../hooks/orderContext";
 
 import { AlertMessage } from '../../components/AlertMessage';
+import { useAlert } from "../../hooks/alertContext";
 
 
 export function Card({ dishName, price, img, dishId , dishDescription, className }) {
     const [isFavorite, setIsFavorite] = useState(false);
     const [stepperCont, setStepperCont] = useState("");
+    const [alert, setAlert] = useState("hidden");
     
     const navigate = useNavigate();
 
     const { user, signOut } = useAuth();
     const { setChangeOrder } = useOrder();
+    const { handleAlertError } = useAlert();
+
+    // handleAlertErro
+
     
     
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
@@ -78,10 +84,6 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
         };
     };
 
-    function handleAlertError() {
-
-    };
-
     useEffect(() => {
         async function loadFavorites() {
             try {
@@ -95,6 +97,7 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
         };
 
         loadFavorites();
+
 
     }, []);
 
@@ -131,7 +134,7 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
             }
 
             <AlertMessage
-                className="show"
+                className={alert}
                 message="Error" 
                 typeError="ok"
             />
