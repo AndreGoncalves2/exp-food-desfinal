@@ -15,6 +15,8 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { DeskHeader } from "../../components/DeskHeader";
+import { useAlert } from "../../hooks/alertContext";
+import { AlertMessage } from "../../components/AlertMessage";
 
 export function EditDish() {
     const { id } = useParams();
@@ -30,8 +32,10 @@ export function EditDish() {
     const [img, setImage] = useState(null);
     const [oldImg, setOldImg] = useState(null);
 
+    const { handleAlertError, message, type, state } = useAlert();
     const { signOut } = useAuth();
     const navigate = useNavigate();
+
     const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
 
     function handleSetImg(event) {
@@ -41,11 +45,11 @@ export function EditDish() {
 
     async function handleSubmit() {
         if (!name || !description || !category || !price || !ingredients) {
-            return alert("Preencha todos os campos.");
+            return handleAlertError("Preencha todos os campos.", "warning");
         };
 
         if (!img) {
-            return alert("Selecione uma imagem.");
+            return handleAlertError("Selecione uma imagem.", "warning");
         };
 
         const form = new FormData();
@@ -62,18 +66,18 @@ export function EditDish() {
         try {
             await api.put("/dish", form);
 
-            alert("Alterações aplicadas !");
+            handleAlertError("Alterações aplicadas !", "ok");
             navigate("/");
 
         } catch (error) {
             if (error.response.status == "401") {
-                alert(error.response.data.message);
+                handleAlertError(error.response.data.message, "error");
 
                 signOut();
                 navigate("/");    
 
             } else {
-                alert(error.response.data.message);
+                handleAlertError(error.response.data.message, "error");
             };
         };
     };
@@ -81,10 +85,10 @@ export function EditDish() {
     async function handleDelete(){
         try {
             await api.delete(`/dish/${dishId}`);
-            alert("Excluído com sucesso !");
+            handleAlertError("Excluído com sucesso !", "ok");
             navigate("/");   
         } catch (error) {
-            alert(error);
+            handleAlertError(error.message, "error");
         };
     };
 
@@ -211,6 +215,12 @@ export function EditDish() {
                 </FormNewDish>
             </main>
             <Footer />
+
+            <AlertMessage
+                className={state}
+                message={message} 
+                typeError={type}
+            />
         </Container>
     )
 }

@@ -170,8 +170,8 @@ export const AdmOrderCard = styled.div`
     
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
     
-    .drop-down {
-        span {
+    .drop-down, .wrapper button span div {
+        .drop {
             font-size: .875rem;
         }
     }

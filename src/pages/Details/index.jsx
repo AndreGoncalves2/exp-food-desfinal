@@ -15,13 +15,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { useOrder } from "../../hooks/orderContext";
+import { useAlert } from "../../hooks/alertContext";
+import { AlertMessage } from "../../components/AlertMessage";
 
 export function Details() {
     const [dish, setDish] = useState([]);
     const [ingredients, setIngredients] = useState([]);
     const [stepperCont, setStepperCont] = useState("");
 
+    const { handleAlertError, message, type, state } = useAlert();
     const { setChangeOrder } = useOrder();
+
 
     const formattedPrice = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -36,10 +40,10 @@ export function Details() {
         try {
             const data = await api.post("/order", { stepperCont , totalPrice, id });
             setChangeOrder(data);
-            alert("Produto adicionado");
+            handleAlertError("Produto adicionado com sucesso.", "ok");
 
         } catch(error){
-            alert(error.response.data.message);
+            handleAlertError(error.response.data.message, "error");
         };
     };
 
@@ -113,7 +117,13 @@ export function Details() {
                     </main>
                 </div>
             </div>
-        <Footer /> 
+        <Footer />
+
+        <AlertMessage
+                className={state}
+                message={message} 
+                typeError={type}
+            />
         </Container>
     );
 };

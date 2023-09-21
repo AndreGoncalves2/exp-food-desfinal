@@ -11,26 +11,30 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useOrder } from "../../hooks/orderContext";
 import { Footer } from "../../components/Footer";
+import { useAlert } from "../../hooks/alertContext";
+import { AlertMessage } from "../../components/AlertMessage";
 
 export function Order() {
     const [priceTotal, setPriceTotal] = useState(0);
+
+    const { handleAlertError, message, type, state } = useAlert();
     const navigate = useNavigate();
 
     const { order, setChangeOrder, changeOrder, getUnbilledOrder } = useOrder();
 
     async function handleFinalize() {
         if (order.length === 0) {
-            alert("Pedido sem produtos.");
+            handleAlertError("Pedido sem produtos.", "warning");
             return;
         };
 
         try {
             const sale = await api.post("/sale");
             setChangeOrder(sale);
-            alert("Pedido Finalizado");
+            handleAlertError("Pedido Finalizado", "ok");
         } catch (error) {
-            alert(error.response.data.message);
-        }
+            handleAlertError(error.response, "error");
+        };
     };
     
     useEffect(() => {
@@ -92,6 +96,12 @@ export function Order() {
                 onClick={handleFinalize}
             />
             <Footer />
+
+            <AlertMessage
+                className={state}
+                message={message} 
+                typeError={type}
+            />
         </Container>
     );
 };

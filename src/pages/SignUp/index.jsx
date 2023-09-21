@@ -9,12 +9,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
+import { useAlert } from '../../hooks/alertContext';
+import { AlertMessage } from '../../components/AlertMessage';
 
 export function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    const { handleAlertError, message, type, state } = useAlert();
     const { signIn } = useAuth();
 
     const navigate = useNavigate();
@@ -22,21 +25,21 @@ export function SignUp() {
     async function handleSignUp() {
         
         if (!name || !email ||!password) {
-            alert("Preencha todos os campos");
+            handleAlertError("Preencha todos os campos", "warning");
             return;
         };
 
         api.post("/users", { name, email, password })
         .then(() => {
-            alert("Usuário cadastrado com sucesso");
+            handleAlertError("Usuário cadastrado com sucesso", "ok");
             signIn({email, password});
             navigate("/");
             
         }).catch(error => {
             if (error.response) {
-                alert(error.response.data.message);
+                handleAlertError(error.response.data.message, "error");
             } else {
-                alert("Não foi possível cadastrar");
+                handleAlertError("Não foi possível cadastrar", "error");
             };
         });
     };
@@ -83,6 +86,12 @@ export function SignUp() {
                     />
                 </form>
             </main>
+
+            <AlertMessage
+                className={state}
+                message={message} 
+                typeError={type}
+            />
         </Container>
     );
 };

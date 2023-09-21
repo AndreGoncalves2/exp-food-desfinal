@@ -5,20 +5,30 @@ import { ButtonText } from '../ButtonText';
 import { api } from '../../services/api';
 import { useOrder } from '../../hooks/orderContext';
 import { useNavigate } from 'react-router-dom';
+import { AlertMessage } from '../AlertMessage';
+import { useAlert } from '../../hooks/alertContext';
 
 export function DishSmallCard({ img, title, removeText, removeFav, orderId, dishId, isFavorite }) {
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
+
+    const { handleAlertError, message, type, state } = useAlert();
     const { setChangeOrder } = useOrder();
 
     const navigate = useNavigate();
+
 
     async function handleRemoveClick() {
         if (isFavorite) {
             try {
                 const data = await api.delete(`/favorite/${dishId}`);
                 removeFav(data);
+
             } catch (error) {
-                alert(error.response.data.message);
+                if (error.response.data.message){
+                    handleAlertError(error.response.data.message, "error");
+                } else {
+                    handleAlertError(error.message, "error");
+                };
             };
 
         } else {
@@ -27,9 +37,12 @@ export function DishSmallCard({ img, title, removeText, removeFav, orderId, dish
                     const data = await api.delete(`/order/${orderId}`);
                     setChangeOrder(data);
                 };
-    
             } catch (error) {
-                alert(error.response.data.message);
+                if (error.response.data.message){
+                    handleAlertError(error.response.data.message, "error");
+                } else {
+                    handleAlertError(error.message, "error");
+                };
             };
         };
 
@@ -52,6 +65,12 @@ export function DishSmallCard({ img, title, removeText, removeFav, orderId, dish
                     onClick={handleRemoveClick}
                 />
             </div>
+
+            <AlertMessage
+                className={state}
+                message={message} 
+                typeError={type}
+            />
         </Container>
     )
 }

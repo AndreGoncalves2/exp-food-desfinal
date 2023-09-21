@@ -20,21 +20,17 @@ import { useAlert } from "../../hooks/alertContext";
 export function Card({ dishName, price, img, dishId , dishDescription, className }) {
     const [isFavorite, setIsFavorite] = useState(false);
     const [stepperCont, setStepperCont] = useState("");
-    const [alert, setAlert] = useState("hidden");
     
     const navigate = useNavigate();
 
     const { user, signOut } = useAuth();
     const { setChangeOrder } = useOrder();
-    const { handleAlertError } = useAlert();
-
-    // handleAlertErro
-
-    
+    const { handleAlertError, message, type, state } = useAlert();
     
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
     
     async function handleFavorite() {
+        handleAlertError("error, blabla", "ok")
 
         if (isFavorite) {
 
@@ -77,10 +73,10 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
         try {
             const data = await api.post("/order", { stepperCont , totalPrice, id:dishId });
             setChangeOrder(data);
-            
-            alert("Produto adicionado");
+
+            handleAlertError("Produto adicionado", "ok")
         } catch(error){
-            alert(error);
+            handleAlertError(error, "erro");
         };
     };
 
@@ -95,9 +91,7 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
                 console.log(error.response);
             };
         };
-
         loadFavorites();
-
 
     }, []);
 
@@ -132,12 +126,6 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
                     />
                 </div>
             }
-
-            <AlertMessage
-                className={alert}
-                message="Error" 
-                typeError="ok"
-            />
         </Container>
     )
 }

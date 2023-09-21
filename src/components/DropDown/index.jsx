@@ -1,9 +1,11 @@
-import { Container } from './styles';
-import { useEffect, useState } from 'react';
+import { Container } from "./styles";
+import { useEffect, useState } from "react";
 
-import { TbChevronDown } from 'react-icons/tb';
+import { TbChevronDown } from "react-icons/tb";
 import { IoEllipse } from "react-icons/io5";
-import { api } from '../../services/api';
+import { api } from "../../services/api";
+import { useAlert } from "../../hooks/alertContext";
+import { AlertMessage } from "../AlertMessage";
 
 export function DropDown({ label, setStatus, useCategories, currentCategory, sale, className }) {
     const [dropDownOpen, setDropDownOpen] = useState(false);
@@ -12,28 +14,32 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
     
     const [category, setCategory] = useState({});
 
+    const { handleAlertError, message, type, state } = useAlert();
+
     function handleDropDownClick(e) {
         e.preventDefault();
 
         setDropDownOpen(prevent => !prevent);
-        dropDownOpen ? setClassDropDown('dropdown-close') : setClassDropDown('dropdown-open');
+        dropDownOpen ? setClassDropDown("dropdown-close") : setClassDropDown("dropdown-open");
     };
 
     async function handleChangeCategory(statusName) {
         setDropDownOpen(prevent => !prevent);
-        dropDownOpen ? setClassDropDown('dropdown-close') : setClassDropDown('dropdown-open');
+        dropDownOpen ? setClassDropDown("dropdown-close") : setClassDropDown("dropdown-open");
 
         try {
-            await api.put("/sale", { statusName, sale })
+            await api.put("/sasle", { statusName, sale })
         } catch (error) {
             if (error.response.status == "401") {
-                alert(error.response.data.message);
+                handleAlertError(error.response.data.message, "error");
 
                 signOut();
                 navigate("/");               
+            } else if (error.response.data.message) {
+                handleAlertError(error.response.data.message, "error");
             } else {
-                alert(error.response.data.message);
-            };
+                handleAlertError(error.message, "error");	
+            }
         };
     };
 
@@ -70,8 +76,8 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
                 <button
                     onClick={(e) => handleDropDownClick(e)}
                 >
-                    <span>  { category.color ?  <div><IoEllipse className={category.color} />{category.title} </div> : category.title } </span>
-                    <span><TbChevronDown className='arrow'/></span>
+                    <span className="drop">  { category.color ?  <div><IoEllipse className={category.color} />{category.title} </div> : category.title } </span>
+                    <span><TbChevronDown className="arrow"/></span>
                 </button>
 
                 <ul
@@ -117,6 +123,12 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
                     </button></li>
                 </ul>
             </div>
+
+            <AlertMessage
+                className={state}
+                message={message} 
+                typeError={type}
+            />
         </Container>
     )
 };

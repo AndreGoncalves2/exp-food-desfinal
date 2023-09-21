@@ -15,6 +15,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
+import { useAlert } from "../../hooks/alertContext";
+import { AlertMessage } from "../../components/AlertMessage";
 
 export function CreateDish() {
     const [name, setName] = useState("");
@@ -25,6 +27,7 @@ export function CreateDish() {
 
     const [img, setImage] = useState(null);
 
+    const { handleAlertError, message, type, state } = useAlert();
     const { signOut } = useAuth();
 
     const navigate = useNavigate();
@@ -36,11 +39,11 @@ export function CreateDish() {
 
     async function handleSubmit() {
         if (!name || !description || !category || !price || ingredients == '') {
-            return alert("Preencha todos os campos.");
+            return handleAlertError("Preencha todos os campos.", "warning");
         };
 
         if (!img) {
-            return alert("Selecione uma imagem.");
+            return handleAlertError("Selecione uma imagem.", "warning");
         };
 
         const form = new FormData();
@@ -54,15 +57,15 @@ export function CreateDish() {
 
         try {
             await api.post("/dish", form);
-            alert("Prato cadastrado com sucesso !");
+            handleAlertError("Prato cadastrado com sucesso !", "ok");
             navigate("/");
         } catch (error) {
             if (error.response.status == "401") {
-                alert(error.response.data.message);
+                handleAlertError(error.response.data.message, "error");
                 signOut();
                 navigate("/");                
             } else {
-                alert(error.response.data.message);
+                handleAlertError(error.response.data.message, "error");
             };
         };
     };
@@ -165,6 +168,11 @@ export function CreateDish() {
             </main>
 
             <Footer />
+            <AlertMessage
+                className={state}
+                message={message} 
+                typeError={type}
+            />
         </Container>
     )
 }

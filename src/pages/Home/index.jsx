@@ -8,11 +8,15 @@ import { Footer } from '../../components/Footer';
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import { DeskHeader } from '../../components/DeskHeader';
+import { AlertMessage } from '../../components/AlertMessage';
+import { useAlert } from '../../hooks/alertContext';
 
 export function Home() {
     const [meals, setMeals] = useState([]);
     const [desserts, setDesserts] = useState([]);
     const [drinks, setDrinks] = useState([]);
+
+    const { message, type, state } = useAlert();
 
     async function findDishes(url="/dish") {
 
@@ -81,6 +85,12 @@ export function Home() {
             </main>
             
             <Footer />
+
+            <AlertMessage
+                className={state}
+                message={message} 
+                typeError={type}
+            />
         </Container>
     );
 };

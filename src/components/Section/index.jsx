@@ -15,9 +15,7 @@ export function Section({ title, meals, desserts, drinks }) {
             } else {
                 
                 section.scrollLeft += section.clientWidth
-            }
-            
-
+            };
         };  
 
     return (

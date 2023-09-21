@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 export const AlertContext = createContext();
 
 const AlertProvider = ({ children }) =>  {
-    const [state, setState] = useState("hidden");
+    const [state, setState] = useState("");
     const [message, setMessage] = useState("");
     const [type, setType] = useState("");
 
@@ -13,7 +13,7 @@ const AlertProvider = ({ children }) =>  {
         setState("show");
 
         const timer = setTimeout(() => {
-            setState("hidden")
+            setState("")
         }, 3000);
     
          return () => clearTimeout(timer);
