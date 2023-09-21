@@ -16,7 +16,6 @@ import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { DeskHeader } from "../../components/DeskHeader";
 import { useAlert } from "../../hooks/alertContext";
-import { AlertMessage } from "../../components/AlertMessage";
 
 export function EditDish() {
     const { id } = useParams();
@@ -32,7 +31,7 @@ export function EditDish() {
     const [img, setImage] = useState(null);
     const [oldImg, setOldImg] = useState(null);
 
-    const { handleAlertError, message, type, state } = useAlert();
+    const { handleAlertError } = useAlert();
     const { signOut } = useAuth();
     const navigate = useNavigate();
 
@@ -215,12 +214,6 @@ export function EditDish() {
                 </FormNewDish>
             </main>
             <Footer />
-
-            <AlertMessage
-                className={state}
-                message={message} 
-                typeError={type}
-            />
         </Container>
     )
 }

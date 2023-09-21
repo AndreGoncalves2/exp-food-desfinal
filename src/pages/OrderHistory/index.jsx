@@ -12,6 +12,7 @@ import { api } from "../../services/api";
 import moment from "moment/moment";
 import { IoEllipse } from "react-icons/io5";
 import { Footer } from "../../components/Footer";
+import { EmptyContainer } from "../../components/EmptyContainer";
 
 export function OrderHistory() {
     const [status, setStatus] = useState("");
@@ -80,14 +81,16 @@ export function OrderHistory() {
 
                 <div className="card">
                     <div>
+                        {sales.length > 0 &&
+                            <div className="index">
 
-                        <div className="index">
+                                <span className="status">Status</span>
+                                <span>Código</span>
+                                <span>Detalhamento</span>
+                                <span className="date">Data e hora</span>
+                            </div>
+                        }
 
-                            <span className="status">Status</span>
-                            <span>Código</span>
-                            <span>Detalhamento</span>
-                            <span className="date">Data e hora</span>
-                        </div>
                         { Boolean(user.adm) &&
 
                             sales.map((sale, index) => (
@@ -104,6 +107,7 @@ export function OrderHistory() {
                                     />
                                 </AdmOrderCard>
                             ))
+
                         }
 
                         { Boolean(!user.adm) &&
@@ -116,6 +120,12 @@ export function OrderHistory() {
                                     <p className="sale-dishes">{sale.dishes}</p>
                                 </UserOrderCard>
                             ))
+                        }
+
+                        {sales.length == 0 &&
+                            <EmptyContainer 
+                                message="Nenhum pedido encontrado."
+                            />
                         }
                     </div>
                 </div>

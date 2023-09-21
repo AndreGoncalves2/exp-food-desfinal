@@ -5,10 +5,12 @@ export const Container = styled.div`
         width:100%;
         
         position: fixed; 
-        bottom: 0;
+        bottom: -5.5rem;
         display: flex;
         justify-content: center ;
         align-items: center;
+
+        z-index: 4;
         
         transition: 2s;
         
@@ -16,63 +18,64 @@ export const Container = styled.div`
     
     img {
         height: 2rem;
+        width: 2rem;
     }
     
-    > .message {
+    .message {
+        position: relative;
+        width: 80%;
         display: flex;
+        justify-content: flex-start;
         align-items: center;
-        justify-content: center;
         gap: .5rem;
 
-        z-index: 3;
-        padding:1.5rem;
+        padding:1.5rem 0rem 1.5rem 1rem;
+        border-radius:5px; 
 
-
+        text-align: left;
         float:left; 
         font-weight:100; 
-        font-size:1.6rem;
-    }
+        font-size: 1.6rem;
 
+        i {
+            height: 1.6rem;
+            position: absolute;
+            right: 1rem;
+        }
+    }
+    
     .error   { 
-        background-color:#FFCACA; 
-        border:2px #a60202 solid;
-        color:#a60202; 
-        border-radius:5px; 
-        padding: 1rem;
+        background-color:#160B0B; 
+        color:#DCB3B3; 
+      
     }
     
     .ok     { 
-        background-color:#A6FFBC; 
-        border:2px #00bd00 solid; 
+        background-color:#0C130D; 
         border-bottom: none;
-        color:#00bd00; 
-        border-radius:5px; 
-        padding: 1rem;
+        color:#5EAB62; 
+        
     }
     
     .warning { 
-        background-color:#ffa500; 
-        border:2px #2b2b2b solid; 
-        color:#2b2b2b; 
-        border-radius:5px; 
-        padding: 1rem;
+        background-color:#191207; 
+        color:#FBDFB4; 
+       
     }
     
     .info   { 
         background-color:#B3E7FF; 
         border:2px #018ace solid; 
         color:#018ace; 
-        border-radius:5px; 
-        padding: 1rem;
+        
     }
 
-    /* .hidden {
+    .hidden {
         animation: alert-hidden .4s;
         animation-fill-mode: forwards;
-    } */
+    }
 
     .show {
-        /* display: none; */
         animation: alert-show .4s;
         animation-fill-mode: forwards;
     }
@@ -83,17 +86,23 @@ export const Container = styled.div`
         }
         
         to {
-            transform: translateY(-100%);
+            transform: translateY(-150%);
         }
     }
-
+    
     @keyframes alert-hidden {
         from {
-            transform: translateY(0%); 
+            transform: translateY(-100%);
         }
         
         to {
-            transform: translateY(110%);
+            transform: translateY(0); 
+        }
+    }
+
+    @media (min-width: 768px) {
+        .message {
+            width: 50%;
         }
     }
 `;

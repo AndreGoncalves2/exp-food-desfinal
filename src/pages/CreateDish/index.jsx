@@ -16,7 +16,6 @@ import { useState } from "react";
 import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { useAlert } from "../../hooks/alertContext";
-import { AlertMessage } from "../../components/AlertMessage";
 
 export function CreateDish() {
     const [name, setName] = useState("");
@@ -27,7 +26,7 @@ export function CreateDish() {
 
     const [img, setImage] = useState(null);
 
-    const { handleAlertError, message, type, state } = useAlert();
+    const { handleAlertError } = useAlert();
     const { signOut } = useAuth();
 
     const navigate = useNavigate();
@@ -168,11 +167,6 @@ export function CreateDish() {
             </main>
 
             <Footer />
-            <AlertMessage
-                className={state}
-                message={message} 
-                typeError={type}
-            />
         </Container>
     )
 }

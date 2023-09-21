@@ -31,7 +31,7 @@ export const Container = styled.div`
     }
 
     > h2 {
-        margin: 1.12rem 0 3rem 2.2rem;
+        margin: 2rem 0 3rem 2.2rem;
 
         font-family: Poppins;
         font-size: 1.25rem;
@@ -91,7 +91,7 @@ export const OrderContainer = styled.main`
     flex-direction: column;
     gap: 1.5rem;
 
-    > div {
+    .order-container {
         display: flex;
         align-items: flex-end;
         justify-content: space-between;

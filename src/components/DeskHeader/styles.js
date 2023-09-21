@@ -36,7 +36,7 @@ export const Container = styled.header`
 
     .button-text {
         white-space: nowrap;
-        font-size: 1.4rem;
+        font-size: 1rem;
         line-height: 100%;
     }
 
@@ -68,7 +68,7 @@ export const Container = styled.header`
 
     @media (min-width: 1240px) {
         .button-text {
-            font-size: 1vw;
+            font-size: .8vw;
         }
 
         .order-button {

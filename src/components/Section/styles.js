@@ -25,6 +25,7 @@ export const Container = styled.section`
 
         scroll-behavior: smooth;
     }
+
     .gradient-left, .gradient-right {
         display: none;
     }

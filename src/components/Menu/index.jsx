@@ -82,11 +82,7 @@ export function Menu({ classMenu, isAdmin }) {
                                     title="Novo prato"
                                     onClick={() => navigate("/create")}
                                 />
-
-                                <ButtonText 
-                                    title="Criar usuário"
-                                />
-
+                                
                                 <ButtonText 
                                     title="Sair"
                                     onClick={handleSignOut}

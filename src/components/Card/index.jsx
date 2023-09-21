@@ -13,25 +13,24 @@ import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { useOrder } from "../../hooks/orderContext";
 
-import { AlertMessage } from '../../components/AlertMessage';
 import { useAlert } from "../../hooks/alertContext";
 
 
 export function Card({ dishName, price, img, dishId , dishDescription, className }) {
     const [isFavorite, setIsFavorite] = useState(false);
     const [stepperCont, setStepperCont] = useState("");
+    const [totalPrice, setTotalPrice] = useState();
+    const [formattedPrice, setFormattedPrice] = useState("");
     
     const navigate = useNavigate();
 
     const { user, signOut } = useAuth();
     const { setChangeOrder } = useOrder();
-    const { handleAlertError, message, type, state } = useAlert();
+    const { handleAlertError } = useAlert();
     
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
     
     async function handleFavorite() {
-        handleAlertError("error, blabla", "ok")
-
         if (isFavorite) {
 
             await api.delete(`/favorite/${dishId}`);
@@ -44,11 +43,11 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
     };
 
     function handleCardIcon() {
-        if (user.adm){
+        if (user.adm) {
             return (
                 <button 
                     className="heart" 
-                    onClick={() => navigate(`/dish/${dishId}`)}
+                    onClick={() => navigate(`/dish/edit/${dishId}`)}
                 >   
                 <GoPencil />
                 </button>
@@ -68,8 +67,6 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
     };
 
     async function handleAddOrder() {
-        const numberPrice = price.replace(/[a-zA-Z$]/g, '').replace(',', '.');
-        const totalPrice = numberPrice * stepperCont;
         try {
             const data = await api.post("/order", { stepperCont , totalPrice, id:dishId });
             setChangeOrder(data);
@@ -94,6 +91,17 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
         loadFavorites();
 
     }, []);
+    
+    useEffect(() => {
+        const numberPrice = price.replace(/[a-zA-Z$]/g, '').replace(',', '.');
+        const priceTotal = numberPrice * stepperCont;
+        setTotalPrice(priceTotal);
+
+        
+        setFormattedPrice( new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
+        .format(priceTotal));
+        
+    }, [stepperCont])
 
     return (
         <Container className={className} >
@@ -110,7 +118,7 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
 
             <h3 className="dish-Name" >{dishName}</h3>
             <p className="description">{dishDescription}</p>
-            <h3 className="price" >{price}</h3>
+            <h3 className="price" >{formattedPrice}</h3>
 
             {   Boolean(!user.adm) &&
 

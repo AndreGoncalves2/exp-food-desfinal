@@ -8,7 +8,6 @@ import { Footer } from '../../components/Footer';
 import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import { DeskHeader } from '../../components/DeskHeader';
-import { AlertMessage } from '../../components/AlertMessage';
 import { useAlert } from '../../hooks/alertContext';
 
 export function Home() {
@@ -86,11 +85,7 @@ export function Home() {
             
             <Footer />
 
-            <AlertMessage
-                className={state}
-                message={message} 
-                typeError={type}
-            />
+            
         </Container>
     );
 };

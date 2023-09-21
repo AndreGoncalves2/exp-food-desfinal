@@ -1,14 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { useAlert } from "./alertContext";
-import { AlertMessage } from "../components/AlertMessage";
 
 export const AuthContext = createContext();
 
 function AuthProvider({ children }) {
     const [data, setData] = useState({});
 
-    const { handleAlertError, message, type, state } = useAlert();
+    const { handleAlertError } = useAlert();
 
     async function signIn({ email, password }) {
         try {
@@ -54,11 +53,6 @@ function AuthProvider({ children }) {
     return (
         <AuthContext.Provider value={{ signIn, signOut, user: data.user }}>
             {children}
-            <AlertMessage
-                className={state}
-                message={message} 
-                typeError={type}
-            />
         </AuthContext.Provider>
     );
 };

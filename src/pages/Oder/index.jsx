@@ -12,12 +12,12 @@ import { api } from "../../services/api";
 import { useOrder } from "../../hooks/orderContext";
 import { Footer } from "../../components/Footer";
 import { useAlert } from "../../hooks/alertContext";
-import { AlertMessage } from "../../components/AlertMessage";
+import { EmptyContainer } from "../../components/EmptyContainer";
 
 export function Order() {
     const [priceTotal, setPriceTotal] = useState(0);
 
-    const { handleAlertError, message, type, state } = useAlert();
+    const { handleAlertError } = useAlert();
     const navigate = useNavigate();
 
     const { order, setChangeOrder, changeOrder, getUnbilledOrder } = useOrder();
@@ -71,7 +71,8 @@ export function Order() {
              <OrderContainer>
                 {order &&
                    order.map((prod) => (
-                        <div                
+                        <div    
+                            className="order-container"                
                             key={prod.id}
                         >
                             <DishSmallCard
@@ -86,6 +87,12 @@ export function Order() {
                         </div>
                     ))
                 }
+
+                {order.length == 0 &&
+                    <EmptyContainer
+                        message="Nenhum produto encontrado."
+                    />
+                }
             </OrderContainer>
             
             <h2>Total: {priceTotal}</h2>
@@ -96,12 +103,6 @@ export function Order() {
                 onClick={handleFinalize}
             />
             <Footer />
-
-            <AlertMessage
-                className={state}
-                message={message} 
-                typeError={type}
-            />
         </Container>
     );
 };

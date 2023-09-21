@@ -4,6 +4,8 @@ export const Container = styled.div`
     min-height: 100vh;
     position: relative;
 
+    padding-bottom: 4.8rem;
+
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
     .desktop-header {

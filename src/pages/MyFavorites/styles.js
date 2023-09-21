@@ -63,6 +63,6 @@ export const FavContainer = styled.main`
         padding-inline: 12vw;
         display: grid;
         grid-row-gap: 3rem;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: auto auto auto auto;
     }
 `;

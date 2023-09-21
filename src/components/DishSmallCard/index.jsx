@@ -5,13 +5,12 @@ import { ButtonText } from '../ButtonText';
 import { api } from '../../services/api';
 import { useOrder } from '../../hooks/orderContext';
 import { useNavigate } from 'react-router-dom';
-import { AlertMessage } from '../AlertMessage';
 import { useAlert } from '../../hooks/alertContext';
 
 export function DishSmallCard({ img, title, removeText, removeFav, orderId, dishId, isFavorite }) {
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
 
-    const { handleAlertError, message, type, state } = useAlert();
+    const { handleAlertError } = useAlert();
     const { setChangeOrder } = useOrder();
 
     const navigate = useNavigate();
@@ -65,12 +64,6 @@ export function DishSmallCard({ img, title, removeText, removeFav, orderId, dish
                     onClick={handleRemoveClick}
                 />
             </div>
-
-            <AlertMessage
-                className={state}
-                message={message} 
-                typeError={type}
-            />
         </Container>
     )
 }

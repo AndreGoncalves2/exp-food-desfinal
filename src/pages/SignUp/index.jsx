@@ -10,14 +10,13 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
 import { api } from '../../services/api';
 import { useAlert } from '../../hooks/alertContext';
-import { AlertMessage } from '../../components/AlertMessage';
 
 export function SignUp() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { handleAlertError, message, type, state } = useAlert();
+    const { handleAlertError } = useAlert();
     const { signIn } = useAuth();
 
     const navigate = useNavigate();
@@ -25,8 +24,7 @@ export function SignUp() {
     async function handleSignUp() {
         
         if (!name || !email ||!password) {
-            handleAlertError("Preencha todos os campos", "warning");
-            return;
+            return handleAlertError("Preencha todos os campos", "warning");
         };
 
         api.post("/users", { name, email, password })
@@ -87,11 +85,7 @@ export function SignUp() {
                 </form>
             </main>
 
-            <AlertMessage
-                className={state}
-                message={message} 
-                typeError={type}
-            />
+    
         </Container>
     );
 };

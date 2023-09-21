@@ -5,7 +5,6 @@ import { TbChevronDown } from "react-icons/tb";
 import { IoEllipse } from "react-icons/io5";
 import { api } from "../../services/api";
 import { useAlert } from "../../hooks/alertContext";
-import { AlertMessage } from "../AlertMessage";
 
 export function DropDown({ label, setStatus, useCategories, currentCategory, sale, className }) {
     const [dropDownOpen, setDropDownOpen] = useState(false);
@@ -14,7 +13,7 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
     
     const [category, setCategory] = useState({});
 
-    const { handleAlertError, message, type, state } = useAlert();
+    const { handleAlertError } = useAlert();
 
     function handleDropDownClick(e) {
         e.preventDefault();
@@ -28,7 +27,7 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
         dropDownOpen ? setClassDropDown("dropdown-close") : setClassDropDown("dropdown-open");
 
         try {
-            await api.put("/sasle", { statusName, sale })
+            await api.put("/sale", { statusName, sale })
         } catch (error) {
             if (error.response.status == "401") {
                 handleAlertError(error.response.data.message, "error");
@@ -124,11 +123,7 @@ export function DropDown({ label, setStatus, useCategories, currentCategory, sal
                 </ul>
             </div>
 
-            <AlertMessage
-                className={state}
-                message={message} 
-                typeError={type}
-            />
+       
         </Container>
     )
 };

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { AlertMessage } from "../components/AlertMessage";
 
 export const AlertContext = createContext();
 
@@ -13,7 +14,7 @@ const AlertProvider = ({ children }) =>  {
         setState("show");
 
         const timer = setTimeout(() => {
-            setState("")
+            setState("hidden")
         }, 3000);
     
          return () => clearTimeout(timer);
@@ -22,6 +23,13 @@ const AlertProvider = ({ children }) =>  {
     return (
         <AlertContext.Provider value={{ state, message, type, handleAlertError }}>
             {children}
+
+            <AlertMessage
+                setState={setState}
+                className={state}
+                message={message} 
+                typeError={type}
+            />
         </AlertContext.Provider>
     );
 };

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Footer } from "../../components/Footer";
+import { EmptyContainer } from "../../components/EmptyContainer";
 
 export function MyFavorites() {
     const [favorites, setFavorites] = useState([]);
@@ -48,6 +49,14 @@ export function MyFavorites() {
                             removeText="Remover dos favoritos"
                         />
                     ))
+                }
+
+                {favorites == 0 &&
+
+                    <EmptyContainer 
+                        message="Nenhum item encontrado."
+                    />
+
                 }
             </FavContainer>
             <Footer />

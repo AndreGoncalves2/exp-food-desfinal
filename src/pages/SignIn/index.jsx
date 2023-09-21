@@ -8,14 +8,20 @@ import { Logo } from "../../components/Logo";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/auth";
+import { useAlert } from "../../hooks/alertContext";
 
 export function SingIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const { signIn } = useAuth();
+    const { handleAlertError } = useAlert();
 
     function handleSignIn() {
+        if (!email || !password) {
+            return handleAlertError("Preencha todos os campos.", "warning");
+        };
+
         signIn({ email, password });
     };
     

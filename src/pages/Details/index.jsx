@@ -16,14 +16,14 @@ import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { useOrder } from "../../hooks/orderContext";
 import { useAlert } from "../../hooks/alertContext";
-import { AlertMessage } from "../../components/AlertMessage";
+
 
 export function Details() {
     const [dish, setDish] = useState([]);
     const [ingredients, setIngredients] = useState([]);
     const [stepperCont, setStepperCont] = useState("");
 
-    const { handleAlertError, message, type, state } = useAlert();
+    const { handleAlertError } = useAlert();
     const { setChangeOrder } = useOrder();
 
 
@@ -118,12 +118,6 @@ export function Details() {
                 </div>
             </div>
         <Footer />
-
-        <AlertMessage
-                className={state}
-                message={message} 
-                typeError={type}
-            />
         </Container>
     );
 };
