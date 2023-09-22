@@ -10,10 +10,17 @@ import { useAlert } from '../../hooks/alertContext';
 export function DishSmallCard({ img, title, removeText, removeFav, orderId, dishId, isFavorite }) {
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
 
-    const { handleAlertError } = useAlert();
+    const { handleAlertError, openModal, setModalExecute } = useAlert();
     const { setChangeOrder } = useOrder();
 
     const navigate = useNavigate();
+
+    function deleteDish() {
+        
+            console.log("DELETED");
+
+        
+    }
 
 
     async function handleRemoveClick() {
@@ -32,6 +39,8 @@ export function DishSmallCard({ img, title, removeText, removeFav, orderId, dish
 
         } else {
             try {
+                setModalExecute(deleteDish)
+                openModal();
                 if (confirm("Deseja remover esse prato ?")) {
                     const data = await api.delete(`/order/${orderId}`);
                     setChangeOrder(data);

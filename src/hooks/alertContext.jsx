@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import { AlertMessage } from "../components/AlertMessage";
+import { ConfirmModal } from "../components/ConfirmModal";
 
 export const AlertContext = createContext();
 
@@ -7,6 +8,10 @@ const AlertProvider = ({ children }) =>  {
     const [state, setState] = useState("");
     const [message, setMessage] = useState("");
     const [type, setType] = useState("");
+
+    const [stateModal, setStateModal] = useState("");
+    const [modalResponse, setModalResponse] = useState();
+    const [modalExecute, setModalExecute] = useState();
 
     function handleAlertError(message, type) {
         setMessage(message);
@@ -20,8 +25,16 @@ const AlertProvider = ({ children }) =>  {
          return () => clearTimeout(timer);
     };
 
+        
+
+    function openModal() {
+        setStateModal("show-modal");
+        
+        
+    };
+
     return (
-        <AlertContext.Provider value={{ state, message, type, handleAlertError }}>
+        <AlertContext.Provider value={{ state, message, type, handleAlertError, openModal, setModalExecute }}>
             {children}
 
             <AlertMessage
@@ -29,6 +42,13 @@ const AlertProvider = ({ children }) =>  {
                 className={state}
                 message={message} 
                 typeError={type}
+            />
+
+            <ConfirmModal
+                // modalExecute={modalExecute}
+                className={stateModal}
+                setStateModal={setStateModal}
+                setModalResponse={setModalResponse}
             />
         </AlertContext.Provider>
     );

@@ -83,9 +83,7 @@ export function Home() {
 
             </main>
             
-            <Footer />
-
-            
+            <Footer />            
         </Container>
     );
 };
