@@ -57,4 +57,16 @@ export const Container = styled.div`
         background-color: #3498db;
         color: #fff;
     }
+
+    @media (min-width: 768px) {
+        .modal-content {
+            font-size: 2.5rem;
+            padding: 5rem 5rem 3rem 5rem; 
+        }
+
+        .btn-cancel, .btn-confirm {
+            font-size: 1.6rem;
+            padding: .6rem 1.1rem;
+        }
+    }
 `;

@@ -15,8 +15,6 @@ export function Home() {
     const [desserts, setDesserts] = useState([]);
     const [drinks, setDrinks] = useState([]);
 
-    const { message, type, state } = useAlert();
-
     async function findDishes(url="/dish") {
 
         const { data } = await api.get(`${url}`);

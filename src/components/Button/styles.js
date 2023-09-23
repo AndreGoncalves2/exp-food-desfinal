@@ -17,7 +17,7 @@ export const Container = styled.button`
     font-weight: 500;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
-    background-color: ${({ theme }) => theme.COLORS.RED_100 };;
+    background-color: ${({ theme }) => theme.COLORS.RED_500};
 
     svg {
         width: 1.3rem;

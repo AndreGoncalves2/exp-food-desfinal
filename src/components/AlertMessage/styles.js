@@ -45,31 +45,20 @@ export const Container = styled.div`
     }
     
     .error   { 
-        background-color:#160B0B; 
-        color:#DCB3B3; 
-      
+        background-color: ${({ theme }) => theme.COLORS.RED_100};
+        color: ${({ theme }) => theme.COLORS.RED_600};
     }
     
     .ok     { 
-        background-color:#0C130D; 
-        border-bottom: none;
-        color:#5EAB62; 
-        
+        background-color: ${({ theme }) => theme.COLORS.GREEN_100}; 
+        color: ${({ theme }) => theme.COLORS.GREEN_600}; 
     }
     
     .warning { 
-        background-color:#191207; 
-        color:#FBDFB4; 
-       
+        background-color: ${({ theme }) => theme.COLORS.ORANGE_100}; 
+        color: ${({ theme }) => theme.COLORS.ORANGE_600};
     }
     
-    .info   { 
-        background-color:#B3E7FF; 
-        border:2px #018ace solid; 
-        color:#018ace; 
-        
-    }
-
     .hidden {
         animation: alert-hidden .4s;
         animation-fill-mode: forwards;

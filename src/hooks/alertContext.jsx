@@ -1,6 +1,5 @@
 import { createContext, useContext, useState } from "react";
 import { AlertMessage } from "../components/AlertMessage";
-import { ConfirmModal } from "../components/ConfirmModal";
 
 export const AlertContext = createContext();
 
@@ -9,32 +8,39 @@ const AlertProvider = ({ children }) =>  {
     const [message, setMessage] = useState("");
     const [type, setType] = useState("");
 
-    const [stateModal, setStateModal] = useState("");
-    const [modalResponse, setModalResponse] = useState();
-    const [modalExecute, setModalExecute] = useState();
+    const [timer, setTimer] = useState();
 
     function handleAlertError(message, type) {
         setMessage(message);
         setType(type);
+
+        clearTimeout(timer);
+        
+        if (state == "show") {
+            setState("hidden");
+
+            setTimer(setTimeout(() => {
+                setState("show");
+            }, 200))
+
+            setTimer(setTimeout(() => {
+                setState("hidden");
+            }, 3000))
+        
+            return () => clearTimeout(timer);
+        }
+
         setState("show");
-
-        const timer = setTimeout(() => {
-            setState("hidden")
-        }, 3000);
+       
+        setTimer(setTimeout(() => {
+            setState("hidden");
+        }, 3000))
     
-         return () => clearTimeout(timer);
-    };
-
-        
-
-    function openModal() {
-        setStateModal("show-modal");
-        
-        
+        return () => clearTimeout(timer);
     };
 
     return (
-        <AlertContext.Provider value={{ state, message, type, handleAlertError, openModal, setModalExecute }}>
+        <AlertContext.Provider value={{ state, message, type, handleAlertError }}>
             {children}
 
             <AlertMessage
@@ -42,14 +48,7 @@ const AlertProvider = ({ children }) =>  {
                 className={state}
                 message={message} 
                 typeError={type}
-            />
-
-            <ConfirmModal
-                // modalExecute={modalExecute}
-                className={stateModal}
-                setStateModal={setStateModal}
-                setModalResponse={setModalResponse}
-            />
+            /> 
         </AlertContext.Provider>
     );
 };

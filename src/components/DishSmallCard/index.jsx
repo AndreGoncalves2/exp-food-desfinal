@@ -6,22 +6,32 @@ import { api } from '../../services/api';
 import { useOrder } from '../../hooks/orderContext';
 import { useNavigate } from 'react-router-dom';
 import { useAlert } from '../../hooks/alertContext';
+import { ConfirmModal } from "../ConfirmModal";
+import { useState } from 'react';
 
 export function DishSmallCard({ img, title, removeText, removeFav, orderId, dishId, isFavorite }) {
+    const [stateModal, setStateModal] = useState("");
+    
     const imgUrl = `${api.defaults.baseURL}/dish/${img}`
 
-    const { handleAlertError, openModal, setModalExecute } = useAlert();
+    const { handleAlertError } = useAlert();
     const { setChangeOrder } = useOrder();
 
     const navigate = useNavigate();
 
-    function deleteDish() {
-        
-            console.log("DELETED");
-
-        
+    async function removeDishFromOrder() {
+        try {
+            const data = await api.delete(`/order/${orderId}`);
+            setChangeOrder(data);
+            
+        } catch (error) {
+            if (error.response.data.message){
+                handleAlertError(error.response.data.message, "error");
+            } else {
+                handleAlertError(error.message, "error");
+            };
+        };
     }
-
 
     async function handleRemoveClick() {
         if (isFavorite) {
@@ -38,20 +48,7 @@ export function DishSmallCard({ img, title, removeText, removeFav, orderId, dish
             };
 
         } else {
-            try {
-                setModalExecute(deleteDish)
-                openModal();
-                if (confirm("Deseja remover esse prato ?")) {
-                    const data = await api.delete(`/order/${orderId}`);
-                    setChangeOrder(data);
-                };
-            } catch (error) {
-                if (error.response.data.message){
-                    handleAlertError(error.response.data.message, "error");
-                } else {
-                    handleAlertError(error.message, "error");
-                };
-            };
+            setStateModal("show-modal");
         };
 
     };
@@ -73,6 +70,12 @@ export function DishSmallCard({ img, title, removeText, removeFav, orderId, dish
                     onClick={handleRemoveClick}
                 />
             </div>
+
+            <ConfirmModal
+                onClick={removeDishFromOrder}
+                className={stateModal}
+                setStateModal={setStateModal}
+            />
         </Container>
     )
 }

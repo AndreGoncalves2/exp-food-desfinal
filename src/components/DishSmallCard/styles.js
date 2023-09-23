@@ -29,7 +29,6 @@ export const Container = styled.div`
         font-style: normal;
         font-weight: 400;
 
-        color: ${({ theme }) => theme.COLORS.RED_400};
-
+        color: ${({ theme }) => theme.COLORS.RED_200};
     }
 `;

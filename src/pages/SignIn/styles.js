@@ -17,15 +17,6 @@ export const Container = styled.div`
         flex-direction: column;
         align-items: center;
 
-        img {
-            height: 4vw;
-            width: 4vw;
-        }
-
-        h2 {
-            font-size: 3vw;
-        }
-
         > form {
             margin-top: 4.5rem;
             width: 80%;
@@ -50,6 +41,15 @@ export const Container = styled.div`
             
             h1 {
                 font-size: 4rem;
+            }
+
+            h2 {
+                font-size: 3vw;
+            }
+
+            img {
+                height: 4vw;
+                width: 4vw;
             }
 
             > form {

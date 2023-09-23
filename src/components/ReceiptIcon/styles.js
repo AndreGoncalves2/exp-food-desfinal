@@ -33,6 +33,6 @@ export const Container = styled.div`
         font-weight: 500;
         line-height: 1.2rem;
 
-        background-color: ${({ theme }) => theme.COLORS.RED_100};   
+        background-color: ${({ theme }) => theme.COLORS.RED_500};   
     }
 `;

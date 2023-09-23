@@ -30,7 +30,7 @@ export const Container = styled.div`
         }
 
         .green {
-            color: ${({ theme }) => theme.COLORS.GREEN_100};
+            color: ${({ theme }) => theme.COLORS.GREEN_500};
         }
 
         > button {

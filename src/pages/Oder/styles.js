@@ -105,12 +105,24 @@ export const OrderContainer = styled.main`
         color: ${({ theme }) => theme.COLORS.LIGHT_300};
     }
 
+    .empty-container {
+        h2 {
+            font-size: 1.6rem;
+        }
+    }
+
     @media (min-width: 600px) {
         padding: 0 12vw;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-row-gap: 3rem;
         margin-bottom: 3rem;
+
+        .empty-container {
+            h2 {
+                font-size: 2rem;
+            }
+        }
 
         > div {
             justify-content: initial;

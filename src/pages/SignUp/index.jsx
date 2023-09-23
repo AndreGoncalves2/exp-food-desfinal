@@ -22,10 +22,19 @@ export function SignUp() {
     const navigate = useNavigate();
 
     async function handleSignUp() {
-        
+        const emailValidator = /\S+@\S+\.\S+/;
+    
         if (!name || !email ||!password) {
             return handleAlertError("Preencha todos os campos", "warning");
         };
+        
+        if (!emailValidator.test(email)) {
+            return handleAlertError("Informe um email valido.", "warning");
+        }
+
+        if (password.length < 6 ) {
+            return handleAlertError("Escolha uma senha maior.", "warning");
+        }
 
         api.post("/users", { name, email, password })
         .then(() => {

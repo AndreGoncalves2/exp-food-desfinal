@@ -24,7 +24,7 @@ export const Container = styled.div`
         }
      
         .save {
-            background-color: ${({ theme }) => theme.COLORS.RED_400};
+            background-color: ${({ theme }) => theme.COLORS.RED_200};
         }
      
     }
