@@ -119,8 +119,10 @@ export const Infos = styled.div`
     }
 
     p {
+        overflow: auto;
         font-family: Poppins;
         font-size: 1rem;
+        max-height: 4rem;
 
         font-weight: 400;
         line-height: 140%;
@@ -152,6 +154,23 @@ export const Infos = styled.div`
     }
 
     @media (min-width: 600px) {
+        p::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        p::-webkit-scrollbar-track {
+            border-radius: 8px;
+            background-color: #e7e7e7;
+            border: 1px solid #cacaca;
+        }
+        
+        p::-webkit-scrollbar-thumb {
+            border-radius: 8px;
+          border: 1px solid transparent;
+           background-clip: content-box;
+            background-color: ${({ theme }) => theme.COLORS.DARK_200};
+        }
+
         max-width: 43rem;
         h2 {
             font-size: 2.5rem;
@@ -160,6 +179,7 @@ export const Infos = styled.div`
         p {
             font-size: 1.5rem;
             text-align: left;
+            max-height: 6rem;
         }
 
         .ingredients {

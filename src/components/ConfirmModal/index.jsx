@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Container } from "./styled";
 
 export function ConfirmModal({ className,setStateModal, onClick }) {

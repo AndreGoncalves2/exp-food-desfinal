@@ -82,7 +82,6 @@ export const Introduction = styled.div`
         }
     
         p {
-
             font-family: Poppins, sans-serif;
             font-size: 0.75rem;
             font-weight: 400;
@@ -95,11 +94,11 @@ export const Introduction = styled.div`
 
     @media (min-width: 768px) {
         margin: 10.5rem 0 0 0;
-        height: 16.25rem;
+        height: 25rem;
 
         img {
-            width: 35rem;
-            height: 24rem;
+            width: 45rem;
+            height: 35rem;
         }
         
         div {
@@ -107,16 +106,15 @@ export const Introduction = styled.div`
             text-align: right;
             
             h3 {
-                font-size: 1.9rem;
-                /* max-width: 20rem; */
+                font-size: 3rem;
                 font-weight: 500;
                 line-height: 140%;
             }
             
             p {
                 width: initial;
-                font-size: 1rem;
-                max-width: 20rem;
+                font-size: 1.3rem;
+                /* max-width: 20rem; */
                 align-self: flex-end;
 
                 text-align: right;
@@ -128,7 +126,7 @@ export const Introduction = styled.div`
         div {
             padding-right: 10vw;
             h3 {
-                font-size: 2.9rem;
+                font-size: 4rem;
             }
         }
     }

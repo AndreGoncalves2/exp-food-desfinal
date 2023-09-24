@@ -16,6 +16,7 @@ import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { DeskHeader } from "../../components/DeskHeader";
 import { useAlert } from "../../hooks/alertContext";
+import { ConfirmModal } from "../../components/ConfirmModal";
 
 export function EditDish() {
     const { id } = useParams();
@@ -27,6 +28,8 @@ export function EditDish() {
     const [ingredients, setIngredients] = useState([]);
     const [price, setPrice] = useState("");
     const [description, setDescription] = useState("");
+
+    const [stateModal, setStateModal] = useState("");
 
     const [img, setImage] = useState(null);
     const [oldImg, setOldImg] = useState(null);
@@ -196,7 +199,7 @@ export function EditDish() {
                             title="Excluir prato"
                             onClick={(event) => {
                                 event.preventDefault();
-                                handleDelete();
+                                setStateModal("show-modal");
                             }}
                         
                         />
@@ -214,6 +217,12 @@ export function EditDish() {
                 </FormNewDish>
             </main>
             <Footer />
+
+            <ConfirmModal
+                onClick={handleDelete}
+                className={stateModal}
+                setStateModal={setStateModal}
+            />
         </Container>
     )
 }

@@ -69,24 +69,32 @@ export const Container = styled.div`
     }
 
     @media(min-width: 768px) {
-        height: 30.5rem;
+        height: 60.5rem;
         
-        width: 19rem;
-        gap: .95rem;
+        width: 40rem;
+        gap: 4rem;
+
+        padding: 3rem;
 
         .heart {
-            width: 1.5rem;
-            height: 1.375rem;
+            svg {
+                width: 2.8rem;
+                height: 2.8rem;
+            }
         }
 
         img {
-            width: 11rem;
-            height: 11rem;
+            width: 22rem;
+            height: 22rem;
+
+            cursor: pointer;
         }
 
         .dish-Name {
-            font-size: 1.5rem;
+            font-size: 3.4rem;
+            white-space: nowrap;
             font-weight: 700;
+            width: inherit;
         }
 
         .description {
@@ -94,25 +102,27 @@ export const Container = styled.div`
             line-height: 160%;
             
             font-family: Roboto, sans-serif;
-            font-size: 0.875rem;
-            height: 2.75rem;
+            font-size: 1.75rem;
+            height: 5.5rem;
             overflow: hidden;
 
             color: ${({ theme }) => theme.COLORS.LIGHT_400};
         }
 
         .price {
-            font-size: 2rem;
+            font-size: 4rem;
         }
 
         .card-controls {
             display: flex;
             gap: 1rem;
             margin-bottom: 1.5rem;
+            font-size: 3rem;
 
             .button {
                 line-height: 1.5rem;
-                padding: 0.75rem 1.5rem;
+                padding: 1.5rem 2rem;
+                font-size: 1.8rem;
             }
 
         }

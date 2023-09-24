@@ -118,7 +118,7 @@ export function Card({ dishName, price, img, dishId , dishDescription, className
 
             <h3 className="dish-Name" >{dishName}</h3>
             <p className="description">{dishDescription}</p>
-            <h3 className="price" >{formattedPrice}</h3>
+            <h3 className="price" >{user.adm ? price : formattedPrice}</h3>
 
             {   Boolean(!user.adm) &&
 

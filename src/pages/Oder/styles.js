@@ -6,7 +6,7 @@ export const Container = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    
+    padding-bottom: 10rem;
     
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
     
@@ -73,10 +73,50 @@ export const Container = styled.div`
 
         h1 {
             margin-bottom: 4rem;
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        
+
+        main {
+            grid-template-columns: 1fr 1fr;
+
+            img {
+                width: 12.5rem;
+                height: 12.5rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            button {
+                font-size: 1.5rem;
+            }
+
+            .order-container {
+                > div {
+                    > div {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+
+                        button {
+                            text-align: left;
+                        }
+                    }
+                }
+            }
         }
 
         > .button-finish {
             width: 20%;
+            font-size: 1.5rem;
+            padding-block: 1.5rem;
             margin: 0 12vw;
             align-self: flex-end;
         }

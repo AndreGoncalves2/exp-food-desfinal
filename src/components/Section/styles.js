@@ -31,12 +31,15 @@ export const Container = styled.section`
     }
 
     @media(min-width: 768px) {
-        position: relative;
         margin-left: 0;
         
         h2 {
             margin: 4rem 0 1.5rem 0;
-            font-size: 2rem;
+            font-size: 3rem;
+        }
+
+        .drinks-wrapper, .meals-wrapper , .desserts-wrapper {
+            position: relative;
         }
         
         .meals, .desserts, .drinks {
@@ -51,15 +54,14 @@ export const Container = styled.section`
 
         .gradient-left, .gradient-right {
             pointer-events: none;
+            position: absolute;
 
             display: flex;
             align-items: center;
-            position: absolute;
             
-            height: 27.61rem;
-            bottom: 0;
-            height: 30.5rem;
+            height: 60.5rem;
             width: 17rem;
+            cursor: pointer;
 
             color: white;
 

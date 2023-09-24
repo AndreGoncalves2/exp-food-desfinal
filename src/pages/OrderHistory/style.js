@@ -242,6 +242,10 @@ export const AdmOrderCard = styled.div`
             grid-area: saleDate ;
         }
 
+        .sale-dishes {
+            font-size: 1.1vw;
+        }
+
         .drop-down {
             grid-area: dropDown;
            
@@ -344,6 +348,7 @@ export const UserOrderCard = styled.div`
 
         .sale-dishes {
             grid-area: saleDishes;
+            font-size: 1.1vw;
         }
     }
 `;

@@ -33,11 +33,13 @@ export const Container = styled.div`
     }
 
     @media (min-width: 600px) {
-        padding-top: 20vh;
+        padding-top: 0;
         
         main {
             flex-direction: row;
             justify-content: space-around;
+            height: 100%;
+            align-items: center;
             
             h1 {
                 font-size: 4rem;

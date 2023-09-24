@@ -53,7 +53,12 @@ export const Container = styled.div`
             display: initial;
         }
 
+        
         > main {
+            .input-container label {
+                margin-bottom: 1rem;
+            }
+
             .button-text {
                 font-size: 1.5rem;
                 margin-inline: 12vw;
@@ -95,7 +100,7 @@ export const FormNewDish = styled.form`
             line-height: 1.5rem;
             font-style: normal;
             
-            margin-left: 2rem;
+            margin-left: 1rem;
 
             color: ${({ theme }) => theme.COLORS.LIGHT_100};
             
@@ -129,8 +134,21 @@ export const FormNewDish = styled.form`
         padding: 8vh 0 7.25rem 0;
         margin-inline: 12vw;
 
-        label {
+        .new-dish-body h4, label, .text-label {
             font-size: 2rem;
+        }
+
+        .new-dish-body h4 {
+            margin-bottom: .6rem;
+            font-size: 2.3rem;
+        }
+
+        .new-dish-body div div {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .new-dish-body div div input {
+            height: 1rem;
         }
 
         h4 {
@@ -188,13 +206,13 @@ export const FormNewDish = styled.form`
             width: fit-content;
 
             button {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
                 font-weight: normal;
                 padding-inline: 1.5rem;
             }
         }
 
-        textarea {
+        #text-area {
             font-size: 2rem;
             max-height: 10rem ;
         }

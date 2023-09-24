@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    height: 100vh;
+    overflow: auto; 
+    min-height: 100vh;
     position: relative;
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
     
@@ -37,6 +38,7 @@ export const Container = styled.div`
 
         h1 {
             margin-inline: 12vw;
+            font-size: 3rem;
         }
         
         .mobile-header {
@@ -50,19 +52,43 @@ export const Container = styled.div`
 `;
 
 export const FavContainer = styled.main`
-    overflow: auto;
-    max-height: 50vh;
-
     padding-left: 2.2rem;
 
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 
+    margin-bottom: 10rem;
+
     @media (min-width: 768px) {
         padding-inline: 12vw;
         display: grid;
         grid-row-gap: 3rem;
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: auto auto;
+
+        div {
+            div {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+
+                button {
+                    text-align: left;
+                }
+            }
+
+            img {
+                width: 12.5rem;
+                height: 12.5rem;
+            }
+    
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            button {
+                font-size: 1.5rem;
+            }
+        }
     }
 `;

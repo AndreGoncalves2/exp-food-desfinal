@@ -5,15 +5,16 @@ import { PiCaretRightLight, PiCaretLeftLight } from "react-icons/pi"
 import { useRef } from "react";
 
 export function Section({ title, meals, desserts, drinks }) {
-    const sectionRef = useRef(null);
+    const mealsRef = useRef(null);
+    const dessertsRef = useRef(null);
+    const drinksRef = useRef(null);
 
-        const moveScroll = (direction) => {
-            const section = sectionRef.current;
+        const moveScroll = (direction, ref) => {
+            const section = ref.current;
+            console.log(section)
             if (direction == "left") {
-
                 section.scrollLeft -= section.clientWidth
             } else {
-                
                 section.scrollLeft += section.clientWidth
             };
         };  
@@ -22,43 +23,64 @@ export function Section({ title, meals, desserts, drinks }) {
         <Container>
             <h2>{title}</h2>
             
-            <div className="meals" ref={sectionRef}>
-                <div onClick={() => moveScroll("left")} className="gradient-left"> <span><PiCaretLeftLight /></span> </div>
-                <div onClick={() => moveScroll("right")} className="gradient-right"> <span><PiCaretRightLight /></span> </div>
+            {meals &&
 
-                { meals &&
-                    meals.map((meal) => (
-                        <Card
-                            key={meal.id}
-                            dishId={meal.id}
-                            img={meal.img}
-                            dishName={meal.name}
-                            dishDescription={meal.description}
-                            price={meal.price}
-                        />
-                    ))
-                }
-            </div>
+                <div className="meals-wrapper">
+                    <div onClick={() => moveScroll("left", mealsRef)} className="gradient-left"> <span><PiCaretLeftLight /></span> </div>
+                    <div onClick={() => moveScroll("right", mealsRef)} className="gradient-right"> <span><PiCaretRightLight /></span> </div>
+                    <div className="meals" ref={mealsRef}>
 
-            <div className="desserts">
-                { desserts &&
-                    desserts.map((dessert) => (
-                        <Card
+                        { meals &&
+                            meals.map((meal) => (
+                                <Card
+                                key={meal.id}
+                                dishId={meal.id}
+                                img={meal.img}
+                                dishName={meal.name}
+                                dishDescription={meal.description}
+                                price={meal.price}
+                                />
+                                ))
+                            }
+                    </div>
+                </div>
+            }   
+
+
+            {desserts &&
+                <div className="desserts-wrapper">
+                
+                <div onClick={() => moveScroll("left", dessertsRef)} className="gradient-left"> <span><PiCaretLeftLight /></span> </div>
+                <div onClick={() => moveScroll("right", dessertsRef)} className="gradient-right"> <span><PiCaretRightLight /></span> </div>
+                <div className="desserts" ref={dessertsRef}>
+
+
+                    { desserts &&
+                        desserts.map((dessert) => (
+                            <Card
                             key={dessert.id}
                             dishId={dessert.id}
                             img={dessert.img}
                             dishName={dessert.name}
                             dishDescription={dessert.description}
                             price={dessert.price}
-                        />
-                    ))
-                }
+                            />
+                            ))
+                        }
+                </div>
             </div>
+            }
+            {drinks &&
 
-            <div>
-                { drinks &&
-                    drinks.map((drink) => (
-                        <Card
+                <div className="drinks-wrapper">
+                <div onClick={() => moveScroll("left", drinksRef)} className="gradient-left"> <span><PiCaretLeftLight /></span> </div>
+                <div onClick={() => moveScroll("right", drinksRef)} className="gradient-right"> <span><PiCaretRightLight /></span> </div>
+                <div className="drinks" ref={drinksRef}>
+
+        
+                    { drinks &&
+                        drinks.map((drink) => (
+                            <Card
                             className="drink"
                             key={drink.id}
                             dishId={drink.id}
@@ -66,11 +88,13 @@ export function Section({ title, meals, desserts, drinks }) {
                             dishName={drink.name}
                             dishDescription={drink.description}
                             price={drink.price}
-                        />
-                    ))
-                }
+                            />
+                            ))
+                        }
 
+                </div>
             </div>
+            }
         </Container>
     )
 }

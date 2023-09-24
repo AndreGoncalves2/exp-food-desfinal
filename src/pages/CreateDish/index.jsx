@@ -100,7 +100,7 @@ export function CreateDish() {
                         <div className="file-input-wrapper">
                             <label htmlFor="file-input">
                                 <FiUpload /> {
-                                    img ? "Selecione imagem para alterá-la" :  "Selecione imagem"
+                                    "Selecione imagem"
                                 }
                             </label>
 

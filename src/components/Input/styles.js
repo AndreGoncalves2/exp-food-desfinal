@@ -21,6 +21,14 @@ export const Container = styled.div`
 
         color: ${({ theme }) => theme.COLORS.LIGHT_500};
 
+        width: 100%;
+        height: 3rem;
+        padding: 0.75rem 0.88rem;
+        border-radius: 0.5rem;
+        border: none;
+        
+        background-color: ${({ theme }) => theme.COLORS.DARK_900};
+        
         > svg {
             height: 2rem;
             width: 2rem;
@@ -37,23 +45,11 @@ export const Container = styled.div`
             
             color: ${({ theme }) => theme.COLORS.LIGHT_500};
         }
-
-        width: 100%;
-        height: 3rem;
-        padding: 0.75rem 0.88rem;
-        border-radius: 0.5rem;
-        border: none;
-        
-        background-color: ${({ theme }) => theme.COLORS.DARK_900};
     }
 
     @media (min-width: 600px) {
         label {
             font-size: 1.6rem;
-        }
-
-        .input-box {
-            border: 1px solid ${({ theme }) => theme.COLORS.LIGHT_100};
         }
     }
 `
