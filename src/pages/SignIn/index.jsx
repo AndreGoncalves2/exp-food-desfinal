@@ -11,8 +11,8 @@ import { useAuth } from "../../hooks/auth";
 import { useAlert } from "../../hooks/alertContext";
 
 export function SingIn() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("user@hotmail.com");
+    const [password, setPassword] = useState("user123");
 
     const { signIn } = useAuth();
     const { handleAlertError } = useAlert();
@@ -38,12 +38,14 @@ export function SingIn() {
                         type="email"
                         label="Email"
                         placeholder="exemplo@exemplo.com.br"
+                        value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
 
                     <Input 
                         type="password"
                         label="Senha"
+                        value={password}
                         placeholder="No mínimo 6 caracteres"
                         onChange={(e) => setPassword(e.target.value)}
                     />
