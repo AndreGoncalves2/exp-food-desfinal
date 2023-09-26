@@ -13,7 +13,7 @@ export const Container = styled.div`
     > .button-text {
         margin: 1rem 0 0 2.2rem;
         width: fit-content;
-        font-size: 1.15rem;
+        font-size: 1.5rem;
     }
 
     .desktop-header {

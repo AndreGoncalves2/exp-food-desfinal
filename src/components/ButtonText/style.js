@@ -5,7 +5,7 @@ export const Container = styled.button`
     border: none;
 
     font-family: Poppins;
-    font-size: 0.875rem;
+    font-size: 1.5rem;
     line-height: 1.5rem;
     font-weight: 500;
 
