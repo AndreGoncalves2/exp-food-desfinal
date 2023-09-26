@@ -11,11 +11,11 @@ export const Container = styled.div`
     }
     
     > .button-text {
-        margin: 1rem 2rem 0;
+        margin: 1.8rem 2rem 0;
     }
 
     > h1 {
-        margin: 2rem 0 2rem 2.2rem;
+        margin: 3.5rem 0 2rem 2.2rem;
         font-family: Poppins, sans-serif;
         font-size: 2rem;
         font-style: normal;

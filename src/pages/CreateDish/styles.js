@@ -13,9 +13,6 @@ export const Container = styled.div`
     main {
         padding-bottom: 5rem;
 
-        .button-text {
-        }
-
         h2 {
             color: ${({ theme }) => theme.COLORS.LIGHT_100};
             font-family: Roboto, sans-serif;

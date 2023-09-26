@@ -11,7 +11,7 @@ export const Container = styled.div`
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
     
     > .button-text {
-        margin: 1rem 0 0 2.2rem;
+        margin: 1.8rem 0 0 2rem;
         width: fit-content;
         font-size: 1.5rem;
     }

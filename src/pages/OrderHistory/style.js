@@ -22,9 +22,8 @@ export const Container = styled.div`
         }
 
         > .button-text {
-            margin-left: 2.2rem;
+            margin-left: 2rem;
             align-self: flex-start;
-            margin-bottom: 1rem;
     
             font-size: 1.5rem;
             line-height: 140%;
@@ -34,7 +33,7 @@ export const Container = styled.div`
     
         > h1 {
             margin-inline: 2.20rem;
-            margin-top: 2rem;
+            margin-top: 3.5rem;
 
             font-family: Poppins, sans-serif;
             font-size: 2rem;
