@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom"
 
 export function DeskHeader({ findDishes }) {
     const { getUnbilledOrder, changeOrder } = useOrder();
-    const [orderCont, setOrderCont] = useState("");
+    const [orderCont, setOrderCont] = useState("0");
 
     const { user, signOut } = useAuth();
     const navigate = useNavigate();

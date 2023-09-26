@@ -180,6 +180,7 @@ export const Infos = styled.div`
             font-size: 1.5rem;
             text-align: left;
             max-height: 6rem;
+            padding-right: 1rem;
         }
 
         .ingredients {

@@ -67,7 +67,7 @@ export const Container = styled.section`
 
             z-index: 1;
 
-            background: linear-gradient(-100deg, rgba(0, 10, 15, 0) 0%, #000A0F 100%);
+            background: linear-gradient(-100deg, rgba(0, 10, 15, 0) 30%, #000A0F 100%);
 
             span {
                 pointer-events: all;
@@ -84,7 +84,7 @@ export const Container = styled.section`
             right: 0;
             justify-content: end;
             
-            background: linear-gradient(100deg, rgba(0, 10, 15, 0) 0%, #000A0F 100%);
+            background: linear-gradient(100deg, rgba(0, 10, 15, 0) 30%, #000A0F 100%);
             
             span {
                 margin-right: 2rem;
