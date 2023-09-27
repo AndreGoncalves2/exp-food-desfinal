@@ -71,34 +71,20 @@ export function Order() {
              <OrderContainer>
                 {order &&
                    order.map((prod) => (
-                    <div>
-
                         <div    
                             className="order-container"                
                             key={prod.id}
-                            >
+                        >
                             <DishSmallCard
                                 orderId={prod.id}
                                 title={prod.name}
                                 dishId={prod.dish_id}
                                 img={prod.img}
                                 removeText="Remover dos pedidos"
-                                />
+                            />
 
                             <h3>{prod.quantity}x</h3>
-
                         </div>
-
-                        <div className="onProducts">
-                            <h2>Total: {priceTotal}</h2>
-
-                            <Button
-                                className="button-finish"
-                                title="Finalizar"
-                                onClick={handleFinalize}
-                                />
-                        </div>
-                    </div>
                     ))
                 }
 
@@ -108,7 +94,19 @@ export function Order() {
                     />
                 }
             </OrderContainer>
-            
+
+            { order.length != 0 &&
+                <div>
+                    <h2>Total: {priceTotal}</h2>
+
+                    <Button
+                        className="button-finish"
+                        title="Finalizar"
+                        onClick={handleFinalize}
+                    />
+                </div>
+            }
+
             <Footer />
         </Container>
     );
