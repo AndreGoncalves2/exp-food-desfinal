@@ -29,6 +29,10 @@ export const Container = styled.div`
             h3 {
                 display: none;
             }
+
+            .button-text {
+                font-size: .85rem;
+            }
         }
     }
 

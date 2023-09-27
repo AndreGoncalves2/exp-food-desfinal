@@ -3,16 +3,16 @@ import styled from 'styled-components';
 export const Container = styled.div`
     position: relative;
 
-    height: 18.25rem;
+    height: 27.375rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 1.125rem;
     
     padding: 1.5rem;
-    width: 13rem;
+    /* width: 1rem; */
 
     border-radius: 0.5rem;
     border: 1px solid ${({ theme }) => theme.COLORS.DARK_300};
@@ -31,20 +31,19 @@ export const Container = styled.div`
     }
 
     img {
-        width: 5.5rem;
-        height: 5.5rem;
+        width: 8.25rem;
+        height: 8.25rem;
         border-radius: 50%;
     }
 
     .dish-Name {
-        width: 13rem;
+        width: 17rem;
 
         text-align: center;
         font-family: Poppins;
-        font-size: 0.875rem;
+        font-size: 1.3125rem;
 
         font-weight: 500;
-        line-height: 1.5rem;
 
         color: ${({ theme }) => theme.COLORS.LIGHT_300};
     }
@@ -55,7 +54,7 @@ export const Container = styled.div`
 
     .price {
         font-family: Roboto, sans-serif;
-        font-size: 1rem;
+        font-size: 1.5rem;
 
         font-weight: 400;
         line-height: 100%;
@@ -63,9 +62,26 @@ export const Container = styled.div`
         color: ${({ theme }) => theme.COLORS.BLUE_200};
     }
 
-    button {
-        margin-top: .25rem;
+    .card-controls {
+        div {
+            display: flex;
+            width: fit-content;
+            margin: auto;
+            
+            align-items: flex-end;
+        }
+
+        width: 100%;
+    }
+
+    .button {
+        margin-top: 1.3rem;
         line-height: .6rem;
+
+        font-weight: normal;
+
+        font-size: 1.3125rem;
+        padding-block: 1.2rem;
     }
 
     @media(min-width: 768px) {

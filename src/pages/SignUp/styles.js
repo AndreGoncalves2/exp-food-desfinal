@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 100%;
     height: 100vh;
-    /* padding: 20vh 4rem; */
+    padding: 20vh 4rem;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
     
@@ -26,12 +26,14 @@ export const Container = styled.div`
             h3 {
                 display: none;
             }
+
+            .button-text {
+                font-size: .85rem;
+            }
         }
     }
 
     @media (min-width: 768px) {
-        /* padding-top: 20vh; */
-
         main {
             height: 100%;
             flex-direction: row;

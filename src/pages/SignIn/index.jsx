@@ -35,7 +35,7 @@ export function SingIn() {
                 <form >
                     <h3>Faça login</h3>
                     <Input
-                        type="email"
+                        type="mail"
                         label="Email"
                         placeholder="exemplo@exemplo.com.br"
                         value={email}
@@ -58,7 +58,8 @@ export function SingIn() {
                         }}
                     />
 
-                    <ButtonText 
+                    <ButtonText
+                        className="button-text"
                         title="Criar uma conta"
                         onClick={() => navigate("/signup")}
                     />

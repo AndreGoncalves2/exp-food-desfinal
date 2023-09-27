@@ -60,14 +60,14 @@ export function SignUp() {
                     <h3>Crie sua conta</h3>
                     <Input
                         type="text"
-                        label="Seu nome"
+                        label="Nome"
                         placeholder="Exemplo: Maria da Silva"
                         onChange={(e) => setName(e.target.value)}
                     />
 
                     <Input
-                        type="email"
-                        label="email"
+                        type="Email"
+                        label="Email"
                         placeholder="Exemplo: exemplo@exemplo.com.br"
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -88,6 +88,7 @@ export function SignUp() {
                     />
 
                     <ButtonText
+                        className="button-text"
                         title="Já tenho uma conta"
                         onClick={() => navigate("/")}
                     />

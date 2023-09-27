@@ -8,7 +8,7 @@ export const Container = styled.section`
         margin: 1.5rem 0 1.5rem 0;
 
         font-family: Poppins;
-        font-size: 1.1rem;
+        font-size: 1.4rem;
         font-style: normal;
 
         font-weight: 500;

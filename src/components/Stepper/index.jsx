@@ -31,6 +31,7 @@ export function Stepper({ setStepperCont }) {
     return (
         <Container>
             <button
+                className="button-subtract"
                 onClick={() => handleStepper('-')}
             >
                 <AiOutlineMinus />

@@ -35,12 +35,12 @@ export const Container = styled.header`
     }
 
     h2 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
     img {
-        height: 1.5rem;
-        width: 1.5rem;
+        height: 2rem;
+        width: 2rem;
     }
 
     background-color: ${({ theme }) => theme.COLORS.DARK_700};
