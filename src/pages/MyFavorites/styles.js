@@ -78,16 +78,16 @@ export const FavContainer = styled.main`
             }
 
             img {
-                width: 12.5rem;
-                height: 12.5rem;
+                width: 9rem;
+                height: 9rem;
             }
     
             h2 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             button {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
         }
     }

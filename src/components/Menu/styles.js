@@ -75,13 +75,11 @@ export const MenuContainer = styled.div`
             font-family: Poppins, sans-serif;
             text-align: left;
             font-size: 1.8rem;
-            margin-top: .5rem;
+            margin-top: 1.2rem;
             padding-bottom: .4rem;
 
             
             font-weight: 300;
-
-            border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
 
             color: ${({ theme }) => theme.COLORS.LIGHT_300};
         }

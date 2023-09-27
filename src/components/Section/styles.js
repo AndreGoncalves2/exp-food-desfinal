@@ -59,7 +59,7 @@ export const Container = styled.section`
             display: flex;
             align-items: center;
             
-            height: 60.5rem;
+            height: 44rem;
             width: 17rem;
             cursor: pointer;
 

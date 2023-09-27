@@ -36,7 +36,7 @@ export function SingIn() {
                     <h3>Faça login</h3>
                     <Input
                         type="mail"
-                        label="Email"
+                        label="E-mail"
                         placeholder="exemplo@exemplo.com.br"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -46,7 +46,7 @@ export function SingIn() {
                         type="password"
                         label="Senha"
                         value={password}
-                        placeholder="No mínimo 6 caracteres"
+                        placeholder=""
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     

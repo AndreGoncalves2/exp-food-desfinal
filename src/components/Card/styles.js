@@ -27,6 +27,11 @@ export const Container = styled.div`
         border: none;
 
         color: ${({ theme }) => theme.COLORS.LIGHT_300};
+
+        svg {
+            height: 2rem;
+            width: 2rem;
+        }
     }
 
     img {
@@ -84,29 +89,27 @@ export const Container = styled.div`
     }
 
     @media(min-width: 768px) {
-        height: 60.5rem;
+        height: 44rem;
         
-        width: 40rem;
-        gap: 4rem;
-
-        padding: 6rem;
+        width: 30rem;
+        gap: 1.2rem;
 
         .heart {
             svg {
-                width: 2.8rem;
-                height: 2.8rem;
+                width: 2.4rem;
+                height: 2.4rem;
             }
         }
 
         img {
-            width: 22rem;
-            height: 22rem;
+            width: 17.6rem;
+            height: 17.6rem;
 
             cursor: pointer;
         }
 
         .dish-Name {
-            font-size: 3.4rem;
+            font-size: 2.2rem;
             white-space: nowrap;
             font-weight: 700;
             width: inherit;
@@ -114,37 +117,71 @@ export const Container = styled.div`
 
         .description {
             display: initial;
-            line-height: 160%;
             
             font-family: Roboto, sans-serif;
-            font-size: 1.75rem;
-            height: 5.5rem;
+            font-size: 1.4rem;
+            
             overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            
+            max-height: 3.2rem;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
 
             color: ${({ theme }) => theme.COLORS.LIGHT_400};
         }
 
+        .description::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        .description::-webkit-scrollbar-track {
+            border-radius: 8px;
+            background-color: #e7e7e7;
+            border: 1px solid #cacaca;
+        }
+        
+        .description::-webkit-scrollbar-thumb {
+            border-radius: 8px;
+            border: 1px solid transparent;
+            background-clip: content-box;
+            background-color: ${({ theme }) => theme.COLORS.DARK_200};
+        }
+
         .price {
-            font-size: 4rem;
+            font-size: 1.6rem;
         }
 
         .card-controls {
             display: flex;
+            justify-content: center;
             gap: 2rem;
-            margin-bottom: 1.5rem;
-            font-size: 2.5rem;
+            
+            margin-top: 1.5rem;
+            font-size: 2.4rem;
+
+            font-family: Poppins, sans-serif;
 
             > div {
                 align-items: center;
-                gap: 2rem;
+                gap: 1.3rem;
+                margin: 0;
+
+                > button {
+                    svg {
+                        height: 2.2rem;
+                        width: 2.2rem;
+                    }
+                }
             }
 
             .button {
                 width: fit-content;
                 margin: 0;
-                line-height: 1.5rem;
-                padding: 2rem 3rem;
-                font-size: 1.8rem;
+                line-height: 1rem;
+                padding: 1.2rem 2.4rem;
+                font-size: 1.4rem;
             }
 
         }

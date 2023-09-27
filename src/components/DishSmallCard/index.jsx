@@ -65,6 +65,7 @@ export function DishSmallCard({ img, title, removeText, removeFav, orderId, dish
 
             <div>
                 <h2>{title}</h2>
+                
                 <ButtonText
                     title={removeText}
                     onClick={handleRemoveClick}

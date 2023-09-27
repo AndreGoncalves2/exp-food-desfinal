@@ -80,7 +80,7 @@ export function Order() {
                                 title={prod.name}
                                 dishId={prod.dish_id}
                                 img={prod.img}
-                                removeText="Remover dos pedidos"
+                                removeText="Remover dos pedido"
                             />
 
                             <h3>{prod.quantity}x</h3>

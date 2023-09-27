@@ -4,6 +4,7 @@ export const Container = styled.div`
     display: flex;
     gap: .88rem;
     justify-content: center;
+    font-family: Poppins, sans-serif;
     align-items: center;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100 };

@@ -43,9 +43,12 @@ export const Container = styled.div`
             color: ${({ theme }) => theme.COLORS.LIGHT_300};
         }
     
-        > button {
-            width: 55%;
-            margin-left: 35%;
+        .button-finish {
+            width: 50%;
+            margin: 0 auto;
+
+            font-size: 1.2rem;
+            padding-block: 1rem;
         }
     }
 
@@ -89,16 +92,16 @@ export const Container = styled.div`
             grid-template-columns: 1fr 1fr;
 
             img {
-                width: 12.5rem;
-                height: 12.5rem;
+                width: 9rem;
+                height: 9rem;
             }
 
             h2 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             button {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
 
             .order-container {
@@ -117,7 +120,7 @@ export const Container = styled.div`
         }
 
         .onProducts {
-            margin-top: 3rem;
+            margin-top: 5rem;
             padding-inline: 12vw;
 
             display: flex;
@@ -125,10 +128,13 @@ export const Container = styled.div`
 
             h2 {
                font-size: 1.7rem ;
+               margin: 0;
             }
 
             .button-finish {
-                width: 20%;
+                width: 45%;
+                margin: 0;
+                align-self: flex-end;
                 height: fit-content;
                 font-size: 1.5rem;
                 padding-block: 1.5rem;

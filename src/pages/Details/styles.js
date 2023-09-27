@@ -189,10 +189,6 @@ export const Infos = styled.div`
             div {
                 width: fit-content;
                 flex-basis: 22%;
-                
-                input {
-
-                }
             }
         }
     }
@@ -207,6 +203,7 @@ export const Controls = styled.div`
         > button {
             max-width: fit-content;
             padding-inline: 1.5rem;
+            font-size: 1.1rem;
         }
     }
 `;

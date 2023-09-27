@@ -93,7 +93,6 @@ export const Introduction = styled.div`
         img {
             width: 14.5rem;
             height: 12rem;
-
         }
 
         div {
@@ -111,11 +110,11 @@ export const Introduction = styled.div`
 
     @media (min-width: 768px) {
         margin: 10.5rem 0 0 0;
-        height: 25rem;
+        height: 20rem;
 
         img {
             width: 30rem;
-            height: 30rem;
+            height: 25rem;
         }
         
         div {
@@ -147,7 +146,7 @@ export const Introduction = styled.div`
     @media (min-width: 1024px) {
         img {
             width: 42rem;
-            height: 31rem;
+            height: 29rem;
         }
 
         div {

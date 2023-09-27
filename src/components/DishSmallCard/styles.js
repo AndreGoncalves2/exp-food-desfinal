@@ -25,7 +25,7 @@ export const Container = styled.div`
 
     button {
         font-family: Roboto, sans-serif;
-        font-size: 0.75rem;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 400;
 
