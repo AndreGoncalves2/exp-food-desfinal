@@ -54,6 +54,11 @@ export const Container = styled.div`
             flex-direction: column;
             gap: 1rem;
 
+            .sale-dishes {
+                font-size: 1.12rem;
+                
+            }
+
             > div {
                 display: flex;
                 flex-direction: column;

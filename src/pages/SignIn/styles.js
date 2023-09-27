@@ -3,7 +3,7 @@ import  styled  from 'styled-components';
 export const Container = styled.div`
     width: 100%;
     height: 100vh;
-    padding-top: 25vh;
+    padding: 25vh 4rem 0 ;
 
     background-color: ${({ theme }) => theme.COLORS.DARK_400};
     
@@ -17,21 +17,44 @@ export const Container = styled.div`
         flex-direction: column;
         align-items: center;
 
+        .logo {
+            img {
+                height: 3.7rem;
+                width: 3.7rem;
+            }
+
+            h2 {
+                font-size: 3rem;
+            }
+        }
+
         > form {
             margin-top: 4.5rem;
-            width: 80%;
-            max-width: 37rem;
+            width: 100%;
             
             display: flex;
             flex-direction: column;
             gap: 2rem;
 
+            label {
+                font-size: 1.5rem;
+            }
+
+            .input-box input {
+                font-size: 1.4rem;
+            }
+
             h3 {
                 display: none;
             }
 
+            .button-submit {
+                padding: 1rem;
+                font-size: 1.2rem;
+            }
+
             .button-text {
-                font-size: .85rem;
+                font-size: 1rem;
             }
         }
     }

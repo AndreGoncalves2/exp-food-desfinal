@@ -20,7 +20,7 @@ export const Container = styled.div`
         font-family: 'Roboto', sans-serif;
         font-weight: 700;
         
-        font-size: 2.3rem;
+        font-size: 2.2rem;
         color: ${({ theme }) => theme.COLORS.LIGHT_100};
     }
 
@@ -35,6 +35,7 @@ export const Container = styled.div`
 
     img {
         height: 2.7rem;
+        width: 2.7rem;
     }
 
     @media (min-width: 600px) {

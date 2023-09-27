@@ -80,6 +80,7 @@ export function SignUp() {
                     />
 
                     <Button
+                        className="button-submit"
                         title="Criar conta"
                         onClick={(e) => {
                             e.preventDefault();

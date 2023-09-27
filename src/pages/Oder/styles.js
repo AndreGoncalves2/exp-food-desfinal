@@ -30,22 +30,25 @@ export const Container = styled.div`
         color: ${({ theme }) => theme.COLORS.LIGHT_300};
     }
 
-    > h2 {
-        margin: 2rem 0 3rem 2.2rem;
-
-        font-family: Poppins;
-        font-size: 1.25rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 160%;
-
-        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    .onProducts {
+        > h2 {
+            margin: 2rem 0 3rem 2.2rem;
+    
+            font-family: Poppins;
+            font-size: 1.25rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 160%;
+    
+            color: ${({ theme }) => theme.COLORS.LIGHT_300};
+        }
+    
+        > button {
+            width: 55%;
+            margin-left: 35%;
+        }
     }
 
-    > button {
-        width: 55%;
-        margin-left: 35%;
-    }
 
     > footer {
         position: absolute;

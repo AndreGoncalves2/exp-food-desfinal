@@ -76,6 +76,10 @@ export const FormNewDish = styled.form`
         gap: 1.5rem; 
     }
     
+    #text-area {
+        font-size: 1.15rem;
+    }
+    
     .file-input-wrapper {
         position: relative;
         display: flex;

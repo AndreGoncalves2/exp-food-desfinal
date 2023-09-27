@@ -72,13 +72,14 @@ export const MenuContainer = styled.div`
         }
 
         button {
-
             font-family: Poppins, sans-serif;
             text-align: left;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            margin-top: .5rem;
+            padding-bottom: .4rem;
+
             
             font-weight: 300;
-            line-height: 140%;
 
             border-bottom: 1px solid ${({ theme }) => theme.COLORS.DARK_1000};
 

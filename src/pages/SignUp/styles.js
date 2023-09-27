@@ -16,6 +16,18 @@ export const Container = styled.div`
         display: flex;
         flex-direction: column;
 
+        .logo {
+            img {
+                height: 3.7rem;
+                width: 3.7rem;
+            }
+
+            h2 {
+                font-size: 3rem;
+            }
+        }
+
+
         form {
             margin-top: 4.5rem;
             width: 100%;
@@ -23,12 +35,25 @@ export const Container = styled.div`
             flex-direction: column;
             gap: 2rem;
 
-            h3 {
-                display: none;
+            label {
+                font-size: 1.5rem;
+            }
+
+            .input-box input {
+                font-size: 1.4rem;
+            }
+
+            .button-submit {
+                padding: 1rem;
+                font-size: 1.2rem;
             }
 
             .button-text {
-                font-size: .85rem;
+                font-size: 1rem;
+            }
+
+            h3 {
+                display: none;
             }
         }
     }

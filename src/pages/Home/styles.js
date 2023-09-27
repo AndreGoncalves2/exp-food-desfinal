@@ -66,14 +66,10 @@ export const Introduction = styled.div`
         display: flex;
         flex-direction: column;
         gap: .2rem;
-        /* margin: 2.25rem 0rem 1.3rem 30vw; */
-        /* width: vw; */
         
         justify-content: center;
         
         h3 {
-            /* width: fit-content; */
-
             font-family: Poppins, sans-serif;
             font-size: 1.6rem;
             font-weight: 600;
@@ -83,7 +79,7 @@ export const Introduction = styled.div`
         }
     
         p {
-            width: 15rem;
+            width: 50vw;
             font-family: Poppins, sans-serif;
             font-size: .95rem;
             font-weight: 400;
@@ -91,8 +87,6 @@ export const Introduction = styled.div`
 
             color: ${({ theme }) => theme.COLORS.LIGHT_300};
         }
-
-        
     }
     
     @media (max-width: 374px) {
@@ -109,6 +103,7 @@ export const Introduction = styled.div`
             }
 
             p {
+                width: initial;
                 font-size: .75rem;
             }
         }
@@ -152,7 +147,7 @@ export const Introduction = styled.div`
     @media (min-width: 1024px) {
         img {
             width: 42rem;
-            height: 35rem;
+            height: 31rem;
         }
 
         div {

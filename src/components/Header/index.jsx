@@ -22,13 +22,8 @@ export function Header() {
 
     const navigate = useNavigate();
 
-    const { user, signOut } = useAuth();
+    const { user } = useAuth();
     const isAdmin = Boolean(user.adm);
-
-    function handleSignOut() {
-        signOut();
-        navigate("/");
-    };
 
     useEffect(() => {
         async function loadOrders() {

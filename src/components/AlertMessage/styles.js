@@ -26,6 +26,7 @@ export const Container = styled.div`
         width: 80%;
         display: flex;
         justify-content: flex-start;
+        font-family: Poppins, sans-serif;
         align-items: center;
         gap: .5rem;
 

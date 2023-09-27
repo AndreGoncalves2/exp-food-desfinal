@@ -50,7 +50,8 @@ export function SingIn() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     
-                    <Button 
+                    <Button
+                        className="button-submit"
                         title="Entrar"
                         onClick={(e) => {
                             e.preventDefault();
