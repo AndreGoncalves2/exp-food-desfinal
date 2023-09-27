@@ -116,14 +116,24 @@ export const Container = styled.div`
             }
         }
 
-        > .button-finish {
-            width: 20%;
-            font-size: 1.5rem;
-            padding-block: 1.5rem;
-            margin: 0 12vw;
-            align-self: flex-end;
-        }
+        .onProducts {
+            margin-top: 3rem;
+            padding-inline: 12vw;
 
+            display: flex;
+            justify-content: space-between;
+
+            h2 {
+               font-size: 1.7rem ;
+            }
+
+            .button-finish {
+                width: 20%;
+                height: fit-content;
+                font-size: 1.5rem;
+                padding-block: 1.5rem;
+            }
+        }
     }
     
 `;

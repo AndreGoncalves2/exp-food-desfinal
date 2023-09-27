@@ -12,7 +12,6 @@ export const Container = styled.div`
     gap: 1.125rem;
     
     padding: 1.5rem;
-    /* width: 1rem; */
 
     border-radius: 0.5rem;
     border: 1px solid ${({ theme }) => theme.COLORS.DARK_300};
@@ -90,7 +89,7 @@ export const Container = styled.div`
         width: 40rem;
         gap: 4rem;
 
-        padding: 3rem;
+        padding: 6rem;
 
         .heart {
             svg {
@@ -131,13 +130,20 @@ export const Container = styled.div`
 
         .card-controls {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
             margin-bottom: 1.5rem;
-            font-size: 3rem;
+            font-size: 2.5rem;
+
+            > div {
+                align-items: center;
+                gap: 2rem;
+            }
 
             .button {
+                width: fit-content;
+                margin: 0;
                 line-height: 1.5rem;
-                padding: 1.5rem 2rem;
+                padding: 2rem 3rem;
                 font-size: 1.8rem;
             }
 
