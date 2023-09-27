@@ -96,7 +96,7 @@ export function Order() {
             </OrderContainer>
 
             { order.length != 0 &&
-                <div>
+                <div className="onProducts">
                     <h2>Total: {priceTotal}</h2>
 
                     <Button
