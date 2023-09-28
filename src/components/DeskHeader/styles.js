@@ -48,6 +48,10 @@ export const Container = styled.header`
     .input-container {
         .input-box {
             border: none;
+            
+            input {
+                font-size: 1.35rem;
+            }
         }
 
         max-width: 50.6rem;

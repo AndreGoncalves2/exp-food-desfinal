@@ -80,6 +80,24 @@ export const Container = styled.section`
             }
         }
 
+        .gradient-left::before, .gradient-right::before {
+            content: "";
+            position: absolute;
+            width: 10rem;
+            height: 100%;
+            display: block;
+            left: 0;
+            top: 0;
+            
+            background: linear-gradient(to left, transparent 0%, black 130%);
+        }
+
+        .gradient-right::before {
+            right: 0;
+            left: initial;
+            background: linear-gradient(to right, transparent 0%, black 130%);
+        }
+
         .gradient-right {
             right: 0;
             justify-content: end;

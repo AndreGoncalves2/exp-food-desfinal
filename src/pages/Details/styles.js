@@ -151,6 +151,7 @@ export const Infos = styled.div`
         width: fit-content;
         padding-inline: 1.5rem;
 
+        font-size: 1rem;
     }
 
     @media (min-width: 600px) {
@@ -172,6 +173,7 @@ export const Infos = styled.div`
         }
 
         max-width: 43rem;
+
         h2 {
             font-size: 2.5rem;
         }

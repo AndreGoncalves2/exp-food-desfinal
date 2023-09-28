@@ -46,7 +46,7 @@ export const Container = styled.div`
             border-radius: 0.3rem;
             
             font-family: Roboto, sans-serif;
-            font-size: 0.87rem;
+            font-size: 1rem;
             font-style: normal;
             font-weight: 400;
             line-height: 160%;
@@ -59,9 +59,14 @@ export const Container = styled.div`
                 line-height: 1rem;
                 gap: .5rem;
 
+                div {
+
+                    font-size: 1.2rem;
+                }
+
                 svg {
-                        height: .5rem;
-                        width: .5rem;
+                        height: 1rem;
+                        width: 1rem;
                     }
                 
                 .arrow {
@@ -93,11 +98,10 @@ export const Container = styled.div`
                     background: transparent;
                     border: none;
 
-                    padding: .7rem 1rem;
-
+                    padding: .6rem 1rem;
 
                     font-family: Roboto, sans-serif;
-                    font-size: 0.87rem;
+                    font-size: 1.2rem;
                     font-style: normal;
                     font-weight: 400;
                     line-height: 160%;
@@ -107,8 +111,8 @@ export const Container = styled.div`
                     opacity: 0;
 
                     svg {
-                        height: .5rem;
-                        width: .5rem;
+                        height: 1rem;
+                        width: 1rem;
                     }
                 }
             }
@@ -142,13 +146,13 @@ export const Container = styled.div`
 
             to {
                 z-index: 1;
-                height: 290%; 
+                height: 320%; 
             }
         }
 
         @keyframes hidden-dropdown {
             from {
-                height: 290%;
+                height: 320%;
                 z-index: 1;
             }
 
