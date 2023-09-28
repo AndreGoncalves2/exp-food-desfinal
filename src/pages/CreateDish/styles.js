@@ -131,7 +131,7 @@ export const FormNewDish = styled.form`
         padding: 8vh 0 7.25rem 0;
         margin-inline: 12vw;
 
-        .new-dish-body h4, label, .text-label {
+        label, .text-label {
             font-size: 2rem;
         }
 
@@ -155,7 +155,7 @@ export const FormNewDish = styled.form`
 
         .input-container {
             input {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
             }
 
             > label {
@@ -182,7 +182,7 @@ export const FormNewDish = styled.form`
 
             .category {
                 span {
-                    font-size: 1.4rem;
+                    font-size: 1.2rem;
                 }
             }
         }
@@ -210,7 +210,7 @@ export const FormNewDish = styled.form`
         }
 
         #text-area {
-            font-size: 2rem;
+            font-size: 1.15rem;
             max-height: 10rem ;
         }
     }

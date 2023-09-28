@@ -127,11 +127,63 @@ export const FormNewDish = styled.form`
     }
 
     @media (min-width: 600px) {
+        margin-inline: 12vw;
+    }
+
+    @media (min-width: 768px) {
+        
         padding: 8vh 0 7.25rem 0;
         margin-inline: 12vw;
 
-        label {
-            font-size: 1rem;
+        label, .text-label {
+            font-size: 2rem;
+        }
+
+        .new-dish-body h4 {
+            margin-bottom: .6rem;
+            font-size: 2.3rem;
+        }
+        
+        .new-dish-body div div {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+
+        .new-dish-body div div input {
+            height: 1rem;
+        }
+
+        .new-dish-header {
+            display: grid;
+            grid-template-columns: .5fr 1.3fr 1fr;
+            gap: 2.88rem;
+
+            .file-input-wrapper {
+                white-space: nowrap;
+
+                min-width: 14.2rem;
+                
+                > label {
+                    margin-left: 1rem;
+                    margin-top: 1.2rem;
+                    cursor: pointer;
+                }
+            }
+
+            .drop {
+                font-size: 1.2rem;
+            }
+
+        }
+    
+
+        .input-container {
+            input {
+                font-size: 1.2rem;
+            }
+
+            > label {
+                margin-bottom: 1rem;
+            }
         }
 
         .new-dish-header {
@@ -169,5 +221,4 @@ export const FormNewDish = styled.form`
             max-height: 10rem ;
         }
     }
-    
 `;  
