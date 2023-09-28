@@ -11,7 +11,7 @@ export function Section({ title, meals, desserts, drinks }) {
 
         const moveScroll = (direction, ref) => {
             const section = ref.current;
-            console.log(section)
+            
             if (direction == "left") {
                 section.scrollLeft -= section.clientWidth
             } else {

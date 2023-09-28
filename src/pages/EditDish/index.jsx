@@ -102,7 +102,6 @@ export function EditDish() {
         setPrice(data.price);
         setOldImg(data.img);
         setDishId(data.id);
-        // setIngredients(data.ingredients.split(','));
     };
 
     useEffect(() => {
@@ -142,7 +141,7 @@ export function EditDish() {
                             </label>
 
                             <Input
-                            label="Imagem do prato"
+                            label="Imagem do prato *"
                                 id="file-input"
                                 type="file"
                                 onChange={handleSetImg}
@@ -151,7 +150,7 @@ export function EditDish() {
 
                         <Input 
                             className="input-name"
-                            label="Nome"
+                            label="Nome *"
                             value={name}
                             type="text"
                             placeholder="Ex.: Salada Ceasar"
@@ -159,7 +158,7 @@ export function EditDish() {
                         />
 
                         <DropDown 
-                            label="Categoria"
+                            label="Categoria *"
                             currentCategory={oldCategory}
                             setStatus={setCategory}
                             useCategories={[{title: "Refeição"}, {title: "Sobremesa"}, {title: "Bebidas"}]}
@@ -168,13 +167,13 @@ export function EditDish() {
                     
                     <div className="new-dish-body">
                         <InputFake 
-                            title="Ingredientes"
+                            title="Ingredientes *"
                             dish_id={id}
                             setIngredients={setIngredients}
                         />
 
                         <Input 
-                            label="Preço"
+                            label="Preço *"
                             type="number"
                             
                             placeholder={formattedPrice.format(price)}
@@ -186,7 +185,7 @@ export function EditDish() {
 
 
                     <TextArea 
-                        label="Descrição"
+                        label="Descrição *"
                         value={description}
                         placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                         onChange={(e) => setDescription(e.target.value)}

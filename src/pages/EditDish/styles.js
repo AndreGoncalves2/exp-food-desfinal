@@ -135,6 +135,10 @@ export const FormNewDish = styled.form`
         padding: 8vh 0 7.25rem 0;
         margin-inline: 12vw;
 
+        h2 {
+            font-size: 3.5rem;
+        }
+
         label, .text-label {
             font-size: 2rem;
         }
@@ -214,6 +218,7 @@ export const FormNewDish = styled.form`
 
             button {
                 padding-inline: 1.5rem;
+                font-size: 1.2rem;
             }
         }
         

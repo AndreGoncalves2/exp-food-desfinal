@@ -105,7 +105,7 @@ export function CreateDish() {
                             </label>
 
                             <Input
-                                label="Imagem do prato"
+                                label="Imagem do prato *"
                                 id="file-input"
                                 type="file"
                                 onChange={handleSetImg}
@@ -114,7 +114,7 @@ export function CreateDish() {
 
                         <Input
                             className="input-name"
-                            label="Nome"
+                            label="Nome *"
                             type="text"
                             placeholder="Ex.: Salada Ceasar"
                             onChange={(e) => setName(e.target.value)}
@@ -122,7 +122,7 @@ export function CreateDish() {
 
                         <DropDown
                             className="category"
-                            label="Categoria"
+                            label="Categoria *"
                             currentCategory={"Refeição"}
                             setStatus={setCategory}
                             useCategories={[{title: "Refeição"}, {title: "Sobremesa"}, {title: "Bebidas"}]}
@@ -131,12 +131,12 @@ export function CreateDish() {
                     
                     <div className="new-dish-body">
                         <InputFake 
-                            title="Ingredientes" 
+                            title="Ingredientes *" 
                             setIngredients={setIngredients}
                         />
 
                         <Input 
-                            label="Preço"
+                            label="Preço *"
                             value={price}
                             placeholder="R$ 0,00"
                             onBlur={(e) => formatPrice(e)}
@@ -146,7 +146,7 @@ export function CreateDish() {
                     </div>
 
                     <TextArea 
-                        label="Descrição"
+                        label="Descrição *"
                         placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
                         onChange={(e) => setDescription(e.target.value)}
                     />
