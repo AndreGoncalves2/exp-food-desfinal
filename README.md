@@ -20,7 +20,7 @@
 Sistema de comércio eletrônico que permita aos usuários comuns fazer pedidos e aos administradores gerenciar produtos e pedidos.
 
 ## Principais funcionalidades:
-### Usuários Comun
+### Usuários Comum
 - **Adicionar Produtos ao Carrinho:** Os usuários comuns podem navegar pelo catálogo de produtos e adicionar itens ao seu carrinho de compras.
 - **Consultar o histórico:** Os usuários podem consultar os pedidos finalizados e acompanhar o status da compra.
 - **Ver Status do Pedido:** Os usuários podem acompanhar o status de seus pedidos. Isso permite aos usuários saber em que estágio está sua compra.
