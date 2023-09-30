@@ -77,7 +77,7 @@ export const FormNewDish = styled.form`
     }
     
     #text-area {
-        font-size: 1.15rem;
+        font-size: 1.2rem;
     }
     
     .file-input-wrapper {
