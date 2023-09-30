@@ -85,7 +85,7 @@ export const FormNewDish = styled.form`
 
         > label {
             position: absolute;
-            top: 3rem;
+            top: 3.2rem;
             display: flex;
             align-items: center;
             gap: .5rem;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div` 
     font-family: Roboto, sans-serif;
     
-    font-size: 1rem;
+    font-size: 1.6rem;
     font-weight: 400;
     
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
@@ -46,7 +46,7 @@ export const Container = styled.div`
             border-radius: 0.3rem;
             
             font-family: Roboto, sans-serif;
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-style: normal;
             font-weight: 400;
             line-height: 160%;

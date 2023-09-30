@@ -10,7 +10,6 @@ export const Container = styled.div`
         color: ${({ theme }) => theme.COLORS.LIGHT_400};
         font-family: Roboto, sans-serif;
         
-        font-size: 1rem;
         font-weight: 400;
     }
 
@@ -40,7 +39,7 @@ export const Container = styled.div`
             border: none;
 
             font-family: Roboto, sans-serif;
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 400;
             
             color: ${({ theme }) => theme.COLORS.LIGHT_500};

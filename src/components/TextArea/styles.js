@@ -25,7 +25,7 @@ export const Container = styled.div`
         color: ${({ theme }) => theme.COLORS.LIGHT_400};
         font-family: Roboto, sans-serif;
         
-        font-size: 1rem;
+        font-size: 1.6rem;
         font-weight: 400;
     }
 `;

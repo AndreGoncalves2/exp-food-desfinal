@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
     h4 {
         font-family: Roboto, sans-serif;
-        font-size: 1rem;
+        font-size: 1.6rem;
         font-weight: 400;
 
         margin-bottom: 1rem;
